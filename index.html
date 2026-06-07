@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="生成AIの重要ニュースを毎日観測するエンジニア向けダイジェスト">
+    <title>Daily GenAI Log</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="space-layer" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Daily GenAI Log ホーム">
+        <span class="brand-mark"><span></span></span>
+        <span class="brand-copy">
+          <strong>DAILY GENAI LOG</strong>
+          <small>INTELLIGENCE ARCHIVE</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="メインナビゲーション">
+        <a class="is-active" href="#briefing">BRIEFING</a>
+        <a href="#signals">SIGNALS</a>
+        <a href="#sources">SOURCES</a>
+      </nav>
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span>CODEX READY</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="briefing">
+        <div class="hero-kicker"><span>DAILY TRANSMISSION</span><i></i><time id="edition-date">----</time></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="overview-label">TODAY'S RESEARCH OVERVIEW</span>
+            <h1>本日の<br><em>調査結果概要</em></h1>
+            <p id="edition-summary">調査データを読み込んでいます。</p>
+            <ul class="overview-highlights" id="overview-highlights"></ul>
+          </div>
+          <div class="orbit-visual" aria-hidden="true">
+            <div class="orbit orbit-a"></div>
+            <div class="orbit orbit-b"></div>
+            <div class="orbit orbit-c"></div>
+            <div class="core"><span>AI</span></div>
+            <span class="satellite satellite-a"></span>
+            <span class="satellite satellite-b"></span>
+            <span class="coordinates">35.6762° N<br>139.6503° E</span>
+          </div>
+        </div>
+        <div class="metrics" aria-label="本日の集計">
+          <div><span>SCANNED</span><strong id="metric-scanned">--</strong><small>sources</small></div>
+          <div><span>CAPTURED</span><strong id="metric-captured">--</strong><small>signals</small></div>
+          <div><span>CRITICAL</span><strong id="metric-critical">--</strong><small>updates</small></div>
+          <div><span>UPDATED</span><strong id="metric-updated">--:--</strong><small>JST</small></div>
+        </div>
+        <a class="scroll-cue" href="#signals">
+          <span>SCROLL FOR SIGNALS</span>
+          <i></i>
+        </a>
+      </section>
+
+      <section class="content-section" id="signals">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">01 / PRIORITY SIGNALS</span>
+            <h2>今日、押さえるべきこと</h2>
+          </div>
+          <div class="filter-row" id="filter-row" aria-label="記事フィルター"></div>
+        </div>
+        <div class="article-grid" id="article-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="content-section lower-grid" id="sources">
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">02 / TRACKING</span>
+              <h2>観測タグ</h2>
+            </div>
+            <span class="panel-code">CFG::TAGS</span>
+          </div>
+          <div class="tag-cloud" id="tag-cloud"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">03 / SOURCE ARRAY</span>
+              <h2>重点ソース</h2>
+            </div>
+            <span class="panel-code">CFG::URLS</span>
+          </div>
+          <div class="source-list" id="source-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">DGL<span>/</span>26</div>
+      <p>CURATED BY CODEX · STORED IN GIT · BUILT FOR ENGINEERS</p>
+      <a href="https://github.com/56kuma/daily-genai-log" target="_blank" rel="noreferrer">VIEW REPOSITORY ↗</a>
+    </footer>
+
+    <template id="article-template">
+      <article class="article-card">
+        <div class="card-meta">
+          <span class="priority-badge"></span>
+          <time></time>
+        </div>
+        <div>
+          <div class="card-tags"></div>
+          <h3></h3>
+          <ul class="card-points"></ul>
+        </div>
+        <div class="card-footer">
+          <span class="source-name"></span>
+          <a target="_blank" rel="noreferrer" aria-label="元記事を開く">READ SOURCE <span>↗</span></a>
+        </div>
+      </article>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>

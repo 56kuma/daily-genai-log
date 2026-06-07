@@ -1,0 +1,152 @@
+{
+  "date": "2026-06-07",
+  "updatedAt": "2026-06-07T06:07:56+09:00",
+  "summary": "直近の生成AI情報は、公式側ではCodexとエージェント向け開発基盤の拡張が続き、OpenAIはAWS展開とCodexの役割拡張を公表しました。Hugging FaceとGoogleはそれぞれエージェント最適化CLIとローカル実行向けGemma 4 12Bを前面に出しており、国内コミュニティではDB接続MCPと複数エージェント連携の再現手順が増えています。XとRedditは直近36時間では公式発表の反復、宣伝色の強い投稿、一次情報不足が多く、採録対象は絞りました。",
+  "highlights": [
+    "OpenAIは2026-06-01にAWS上でのCodex一般提供、2026-06-02にCodex向けプラグイン・Sites・Annotationsを発表しました。",
+    "Hugging Faceは2026-06-04に`hf` CLIのエージェント最適化を公開し、Googleは2026-06-03にGemma 4 12Bのローカルなエージェント実行を前面に出しました。",
+    "QiitaとZennではMCP ToolboxのOracle接続、Claude CodeとCodexのリアルタイム連携、codebase-memory-mcpによるトークン削減など、手順付きの実装知見が増えています。"
+  ],
+  "metrics": {
+    "scanned": 27,
+    "captured": 8,
+    "critical": 2
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "cad", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "sources": [
+    { "name": "OpenAI News", "priority": "high" },
+    { "name": "Anthropic News", "priority": "high" },
+    { "name": "Google DeepMind Blog", "priority": "high" },
+    { "name": "Hugging Face Blog", "priority": "medium" },
+    { "name": "X", "priority": "medium" },
+    { "name": "Zenn", "priority": "medium" },
+    { "name": "Qiita", "priority": "medium" },
+    { "name": "Reddit Japan", "priority": "medium" },
+    { "name": "Reddit Global", "priority": "medium" }
+  ],
+  "articles": [
+    {
+      "title": "OpenAI frontier models and Codex are now available on AWS",
+      "summary": "OpenAIは2026-06-01に、フロンティアモデル群とCodexをAWS上で一般提供すると発表しました。既存のAWSガバナンスやセキュリティ運用に載せたまま導入できる点が主眼で、エンタープライズ導入の摩擦を下げる更新です。",
+      "points": [
+        "OpenAI公式が、CodexとフロンティアモデルをAWSで一般提供すると明記しました。",
+        "企業は既存のAWS運用基盤の上で評価から本番展開へ移りやすくなります。",
+        "重大な主張はOpenAI公式記事で確認し、性能比較の二次情報は採録対象から外しました。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws/",
+      "publishedAt": "2026-06-01",
+      "priority": "critical",
+      "tags": ["agent", "coding", "API"]
+    },
+    {
+      "title": "Codex for every role, tool, and workflow",
+      "summary": "OpenAIは2026-06-02に、Codex向けのロール別プラグイン、共有用Sites、部分修正向けAnnotationsを公開しました。Codexを単なる実装支援から、ドキュメント、分析、社内ツール共有まで広げる方向が明確です。",
+      "points": [
+        "Codex plugin directory経由のロール別プラグイン導入、Sitesのプレビュー提供、Annotationsの対象拡大が発表されました。",
+        "開発だけでなく、分析資料やスプレッドシート、共有サイトまでCodexの適用面が広がります。",
+        "導入可否や権限管理はOpenAIの管理者設定前提なので、PoC前にワークスペース権限を確認すべきです。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/codex-for-every-role-tool-workflow/",
+      "publishedAt": "2026-06-02",
+      "priority": "critical",
+      "tags": ["agent", "coding", "software design"]
+    },
+    {
+      "title": "Introducing the Services Track and Partner Hub of the Claude Partner Network",
+      "summary": "Anthropicは2026-06-03にClaude Partner NetworkのServices TrackとPartner Hubを公開し、HubをClaudeへつなぐ新しいMCP connectorにも言及しました。技術面では、エンタープライズ導入でMCP接続が標準機能として広がっている流れを補強します。",
+      "points": [
+        "Anthropic公式がPartner HubとClaude接続用MCP connectorを案内しています。",
+        "企業導入文脈でClaude CodeとMCPが標準的な統合経路になりつつあることを示します。",
+        "内容は主に導入基盤の話で、性能主張は採らず、機能公開の事実だけを扱いました。"
+      ],
+      "source": "Anthropic News",
+      "url": "https://www.anthropic.com/news/services-track-partner-hub",
+      "publishedAt": "2026-06-03",
+      "priority": "signal",
+      "tags": ["agent", "MCP", "API"]
+    },
+    {
+      "title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+      "summary": "Hugging Faceは2026-06-04に、`hf` CLIをエージェント向けに最適化した設計を公開しました。CLI側で`CODEX_SANDBOX`などの環境変数を読み、コーディングエージェント経由の利用を検知して最適化する点が実務的です。",
+      "points": [
+        "`hf` CLIがClaude CodeやCodexなどの実行環境変数を読んでエージェント利用を判定すると明記されています。",
+        "CLIとSDKをエージェント前提で設計する流れは、Hub連携や自動化タスクの安定化に直結します。",
+        "記事内の利用統計はHugging Face公式ブログの一次情報として扱い、外部比較は追加しませんでした。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/hf-cli-for-agents",
+      "publishedAt": "2026-06-04",
+      "priority": "signal",
+      "tags": ["agent", "coding", "open-source"]
+    },
+    {
+      "title": "Bringing Gemma 4 12B to your Laptop: Unlocking Local, Agentic Workflows with Google AI Edge",
+      "summary": "Googleは2026-06-03に、Gemma 4 12BをGoogle AI Edge経由でローカル実行し、データ分析、Webページ生成、日常的なツール利用を行う流れを公開しました。ローカル・マルチモーダル・エージェント実行の実装面で追う価値があります。",
+      "points": [
+        "Google Developers BlogがGemma 4 12Bのローカルでのagentic workflowを正式に紹介しました。",
+        "日常マシン上でのデータ処理やスクリプト生成が主眼で、クラウド依存を減らした実装検証に向きます。",
+        "性能数値の横比較は避け、公開されたユースケースと導入経路のみを採録しました。"
+      ],
+      "source": "Google DeepMind Blog",
+      "url": "https://developers.googleblog.com/en/bringing-gemma-4-12b-to-your-laptop-unlocking-local-agentic-workflows-with-google-ai-edge/",
+      "publishedAt": "2026-06-03",
+      "priority": "signal",
+      "tags": ["agent", "model-release", "open-source"]
+    },
+    {
+      "title": "Google の MCP Toolbox for Databases から Oracle Autonomous Database に wallet 接続してみた",
+      "summary": "Qiitaの2026-06-06記事で、GoogleのMCP Toolbox for DatabasesからOracle Autonomous Databaseへwallet接続する手順が整理されています。MCP Toolbox自体はGoogle公式GitHubでOracle対応が明記されており、記事内容は再現しやすい実装メモです。",
+      "points": [
+        "Qiita記事はOracle ADBへのwallet接続手順を具体的に書いており、MCP Toolboxの対象DBとしてOracleが一次情報でも確認できます。",
+        "DB接続系MCPを評価する際の接続設定、構成ファイル、導入前提の確認に役立ちます。",
+        "ベンチマークや性能主張ではなく、セットアップ再現性を評価軸に採録しました。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/asahide/items/01276a606cb3532d4df8",
+      "publishedAt": "2026-06-06",
+      "priority": "signal",
+      "tags": ["MCP", "API", "coding"]
+    },
+    {
+      "title": "Claude CodeとCodex間のリアルタイム通信でチェスをプレイさせた話",
+      "summary": "Qiitaの2026-06-02記事で、`h5i` を使ってClaude CodeとCodexをリアルタイム通信させ、相互にメッセージを送りながらチェスを進める実験が紹介されました。複数コーディングエージェントのメッセージ中継を最小構成で試す題材として有用です。",
+      "points": [
+        "記事には`h5i init`、両側へのプロンプト、`h5i msg watch`や`history`などの確認手順が載っています。",
+        "用途自体は遊びですが、エージェント間リアルタイム通信の最小再現として価値があります。",
+        "実運用の生産性主張ではなく、通信レイヤの実験として扱うべきです。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/Koukyosyumei/items/40a9d9a7440c02e0f2e7",
+      "publishedAt": "2026-06-02",
+      "priority": "signal",
+      "tags": ["agent", "coding", "open-source"]
+    },
+    {
+      "title": "Claude Code のトークン消費を抑える - codebase-memory-mcp の紹介",
+      "summary": "Zennの2026-05-07記事で、`codebase-memory-mcp` を使ってコード探索をグラフ問い合わせへ置き換える実践が紹介されています。記事はGitHub公開物とarXiv論文を参照しており、トークン削減の根拠を一次情報で追える点が評価できます。",
+      "points": [
+        "GitHub公開の`codebase-memory-mcp`とarXiv論文を一次情報として参照し、Windows含む導入手順まで整理されています。",
+        "ファイル探索中心のエージェント運用で起きるコンテキスト肥大を、構造検索で抑える発想が実務的です。",
+        "削減率はリポジトリ条件で変わるため、記事中の数値は参考値として扱い、自分のコードベースで再計測すべきです。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/omeroid/articles/fb40dd4136bc78",
+      "publishedAt": "2026-05-07",
+      "priority": "signal",
+      "tags": ["MCP", "coding", "open-source"]
+    }
+  ]
+}

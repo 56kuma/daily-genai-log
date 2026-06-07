@@ -1,0 +1,37 @@
+{
+  "date": "YYYY-MM-DD",
+  "updatedAt": "YYYY-MM-DDTHH:mm:ss+09:00",
+  "summary": "その日の生成AI動向を2〜3文で要約する。",
+  "highlights": [
+    "最重要な変化や発表。",
+    "エンジニアへの具体的な影響。",
+    "継続して観測すべき事項。"
+  ],
+  "metrics": {
+    "scanned": 0,
+    "captured": 0,
+    "critical": 0
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 }
+  ],
+  "sources": [
+    { "name": "Source name", "priority": "high" }
+  ],
+  "articles": [
+    {
+      "title": "記事タイトル",
+      "summary": "エンジニアにとっての意味を含む短い要約。",
+      "points": [
+        "何が発表・公開されたか。",
+        "実装や運用にどのような影響があるか。",
+        "注意点または次に確認すべきこと。"
+      ],
+      "source": "Source name",
+      "url": "https://example.com/original-article",
+      "publishedAt": "YYYY-MM-DD",
+      "priority": "critical",
+      "tags": ["agent", "coding"]
+    }
+  ]
+}
