@@ -1,0 +1,150 @@
+{
+  "timezone": "Asia/Tokyo",
+  "lookbackHours": 36,
+  "language": "ja",
+  "maxArticles": 12,
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/",
+      "priority": "high",
+      "tags": ["OpenAI", "model", "API"]
+    },
+    {
+      "name": "Anthropic News",
+      "url": "https://www.anthropic.com/news",
+      "priority": "high",
+      "tags": ["Anthropic", "Claude", "agent"]
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "url": "https://deepmind.google/discover/blog/",
+      "priority": "high",
+      "tags": ["Google", "research", "model"]
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog",
+      "priority": "medium",
+      "tags": ["open-source", "model", "tooling"]
+    }
+  ],
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "CAD", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "excludeKeywords": [
+    "sponsored",
+    "求人",
+    "投資助言"
+  ],
+  "xResearch": {
+    "enabled": true,
+    "lookbackHours": 36,
+    "maxPosts": 8,
+    "queries": [
+      "\"AI agent\" coding -filter:replies",
+      "\"Claude Code\" OR Codex -filter:replies",
+      "MCP tool OR MCP server -filter:replies",
+      "generative AI CAD OR \"text to CAD\"",
+      "\"software design\" LLM agent"
+    ],
+    "accounts": [
+      "OpenAI",
+      "AnthropicAI",
+      "GoogleDeepMind",
+      "huggingface"
+    ],
+    "selectionRules": [
+      "公式発表前の技術デモ、実装知見、OSS公開を優先する",
+      "原投稿へのURLを保存する",
+      "宣伝だけの投稿や根拠のない性能主張は除外する",
+      "重大な主張はGitHub、論文、公式文書で裏付ける"
+    ]
+  },
+  "communityResearch": {
+    "enabled": true,
+    "lookbackHours": 36,
+    "maxPosts": 12,
+    "platforms": [
+      {
+        "name": "Zenn",
+        "url": "https://zenn.dev/",
+        "language": "ja",
+        "priority": "medium",
+        "queries": [
+          "生成AI エージェント",
+          "Claude Code OR Codex",
+          "MCP",
+          "生成AI CAD",
+          "LLM ソフトウェア設計"
+        ]
+      },
+      {
+        "name": "Qiita",
+        "url": "https://qiita.com/",
+        "language": "ja",
+        "priority": "medium",
+        "queries": [
+          "生成AI エージェント",
+          "Claude Code OR Codex",
+          "MCP",
+          "生成AI CAD",
+          "LLM ソフトウェア設計"
+        ]
+      },
+      {
+        "name": "Reddit Japan",
+        "url": "https://www.reddit.com/",
+        "language": "ja",
+        "priority": "medium",
+        "queries": [
+          "生成AI",
+          "AIエージェント",
+          "Claude Code OR Codex",
+          "MCP 日本語"
+        ],
+        "subreddits": [
+          "newsokur",
+          "ja"
+        ]
+      },
+      {
+        "name": "Reddit Global",
+        "url": "https://www.reddit.com/",
+        "language": "en",
+        "priority": "medium",
+        "queries": [
+          "AI agent coding",
+          "Claude Code OR Codex",
+          "MCP server OR MCP tool",
+          "generative AI CAD",
+          "LLM software design"
+        ],
+        "subreddits": [
+          "LocalLLaMA",
+          "MachineLearning",
+          "artificial",
+          "ClaudeAI",
+          "ChatGPTCoding"
+        ]
+      }
+    ],
+    "selectionRules": [
+      "実装コード、検証手順、ベンチマーク、失敗事例を含む投稿を優先する",
+      "投稿本文ではなく元記事、GitHub、論文へのリンクがある場合は一次情報も確認する",
+      "投票数や反応数だけで採用せず、技術的新規性と再現可能性を評価する",
+      "同じニュースの転載や要約は重複として除外する",
+      "Redditの未検証情報はその旨を要約に明記し、重大な主張は一次情報で裏付ける",
+      "投稿または記事の恒久URLを保存する"
+    ]
+  }
+}

@@ -1,26 +1,31 @@
 # Daily GenAI Log
 
-Codexが毎日調査した生成AI情報を、静的HTMLで読むための保存先です。
+Codex が日次で生成 AI の情報を調査し、静的 HTML で閲覧できるログとして保存するためのリポジトリです。
 
 ## 使い方
 
-1. `config/research.json` に重点URL・タグ・除外語を追加する
-2. Codexへ「設定に従って本日の生成AI情報を調査し、`data/YYYY-MM-DD.json` と `data/index.json` を更新して」と依頼する
-3. ローカルで確認する
+1. `config/research.json` に調査対象ソース、タグ、除外条件を定義します。
+2. Codex が当日の調査結果を `data/YYYY-MM-DD.json` と `data/index.json` に反映します。
+3. ローカル確認が必要な場合は、次のコマンドで簡易サーバーを起動します。
 
 ```powershell
 python -m http.server 8000
 ```
 
-`http://localhost:8000` を開きます。ビルドや依存関係は不要です。
+`http://localhost:8000` を開くと、ビルド不要で内容を確認できます。
 
 ## 構成
 
-- `config/research.json`: 調査対象と優先タグ
-- `data/index.json`: トップページが読む最新号
-- `data/YYYY-MM-DD.json`: 日ごとの調査結果
-- `data/template.json`: Codexが生成時に従うJSONテンプレート
+- `config/research.json`: 調査対象と選定ルール
+- `data/index.json`: 最新版とアーカイブ一覧
+- `data/YYYY-MM-DD.json`: 日次ログ本体
+- `data/template.json`: 日次 JSON のテンプレート
 - `index.html` / `styles.css` / `app.js`: 表示用の静的サイト
 
-`research.json` の `priority` は `high` / `medium` / `low`、タグの `weight` は `1` から `5` を目安にします。調査結果は `data/template.json` と同じ形式で生成します。
-上部概要は `highlights`、各記事の箇条書きは `articles[].points` に3項目前後で記録します。
+`research.json` の `priority` は `high` / `medium` / `low`、タグの `weight` は `1` から `5` を想定しています。日次ログは `data/template.json` と同じ形で作成し、概要は `highlights`、各記事の要点は `articles[].points` に 3 項目前後で記録します。
+
+## Automation policy
+
+- `data/YYYY-MM-DD.json` と `data/index.json` を更新した後、automation は JSON 構文、件数、重複、参照先の検証を行います。
+- 検証が通った場合、automation は同じ run の中で `git add`、`git commit`、`git push` まで実行します。
+- 検証失敗や、関係のない差分が混在していて安全に確定できない場合は、commit / push の前で停止して理由を報告します。
