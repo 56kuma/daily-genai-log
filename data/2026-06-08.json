@@ -1,0 +1,100 @@
+{
+  "date": "2026-06-08",
+  "updatedAt": "2026-06-08T06:07:38+09:00",
+  "summary": "2026-06-08 時点の生成AI情報は、公式媒体では OpenAI の Enterprise 向け Codex 運用変更が最重要でした。コミュニティでは Xcode 26.5 の enterprise 設定、BigQuery MCP による自然言語分析、Claude Code と MCP の業務自動化が実装レベルで共有されています。X と Reddit は直近候補を走査しましたが、公式発表の重複、宣伝色、一次情報不足が多く、採録は見送りました。",
+  "highlights": [
+    "OpenAI は 2026-06-05 に、対象 Enterprise ワークスペースで Codex の plugin sharing を既定有効化し、`requirements.toml` で無効化できる運用に変更しました。",
+    "2026-06-07 の Zenn 記事で、Xcode 26.5 が Claude Agent の `settings.json` と Codex の `config.toml` による enterprise 設定を扱えることが整理され、Apple 公式文書とも整合しました。",
+    "2026-06-06〜2026-06-07 の Qiita 記事では、BigQuery MCP による自然言語分析と、Jira/Slack をまたぐ Claude Code×MCP 自動化が実例付きで共有され、Google Cloud と Anthropic/MCP の一次情報で再現条件を確認できました."
+  ],
+  "metrics": {
+    "scanned": 22,
+    "captured": 4,
+    "critical": 1
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "CAD", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "sources": [
+    { "name": "OpenAI News", "priority": "high" },
+    { "name": "OpenAI Help Center", "priority": "high" },
+    { "name": "Anthropic News", "priority": "high" },
+    { "name": "Google DeepMind Blog", "priority": "high" },
+    { "name": "Hugging Face Blog", "priority": "medium" },
+    { "name": "Apple Developer", "priority": "medium" },
+    { "name": "Google Cloud Documentation", "priority": "medium" },
+    { "name": "Anthropic Docs", "priority": "medium" },
+    { "name": "X", "priority": "medium" },
+    { "name": "Zenn", "priority": "medium" },
+    { "name": "Qiita", "priority": "medium" },
+    { "name": "Reddit Japan", "priority": "medium" },
+    { "name": "Reddit Global", "priority": "medium" }
+  ],
+  "articles": [
+    {
+      "title": "Plugin sharing for Enterprise workspaces",
+      "summary": "OpenAI は 2026-06-05 の Enterprise/Edu 向け release notes で、対象 ChatGPT Enterprise ワークスペースの Codex における plugin sharing を既定有効化しました。ローカルで作ったプラグインをワークスペースへ配布できる一方、管理者は `requirements.toml` を MDM または cloud-managed configuration で配布して無効化できます。",
+      "points": [
+        "Codex のプラグイン共有が『申請して有効化』から『対象 workspace では既定有効』へ変わった点が新規性です。",
+        "運用上は、共有可能になったことで skill・app・MCP 設定をチーム配布しやすくなる一方、管理者側で設定ガバナンスを先に整える必要があります。",
+        "重大な主張は OpenAI Help Center の 2026-06-05 release notes と Plugins in Codex の公式説明で確認しました。"
+      ],
+      "source": "OpenAI Help Center",
+      "url": "https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes?email_hash=0d7a7050906b225db2718485ca0f3472",
+      "publishedAt": "2026-06-05",
+      "priority": "critical",
+      "tags": ["agent", "coding", "software design"]
+    },
+    {
+      "title": "Xcode の Claude Agent・Codex が settings.json・config.toml でセットアップできるように",
+      "summary": "2026-06-07 の Zenn 記事では、Xcode 26.5 から Coding Intelligence の enterprise configuration として、Claude Agent は `settings.json`、Codex は `config.toml` で認証・接続先設定を管理できる点が整理されています。Claude.ai / ChatGPT 直結だけでなく、Amazon Bedrock、Google Vertex AI、Microsoft Foundry などへ寄せたい組織導入に効く変更です。",
+      "points": [
+        "Xcode 内蔵エージェントを『個人サインイン前提』から『設定ファイル配布前提』へ持ち上げられる点が技術的新規性です。",
+        "記事は Finder から設定ファイルを開く導線まで含めており、チーム配布の運用イメージを再現しやすい内容でした。",
+        "主張の裏付けは Apple Developer の setting up coding intelligence ドキュメントと Xcode 26.5 の enterprise configuration 説明で確認しました。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/treastrain/articles/bc9435a36fe498",
+      "publishedAt": "2026-06-07",
+      "priority": "signal",
+      "tags": ["agent", "coding", "API"]
+    },
+    {
+      "title": "Cursor / Claude Code × MCP × BigQuery で「自然言語データ分析」環境を作る",
+      "summary": "2026-06-07 の Qiita 記事は、Cursor や Claude Code を MCP 経由で BigQuery に接続し、自然言語でデータ抽出・SQL 生成・結果解釈まで回す構成を整理しています。BigQuery の remote MCP server を前提にしており、分析エージェントをノートブックなしで動かす実務寄りのユースケースです。",
+      "points": [
+        "BigQuery 側が公式に remote MCP server と `execute_sql` などの tool を持つため、記事の構成は単なる概念説明ではなく実配線まで踏み込んでいます。",
+        "会話経由の分析であっても、BigQuery 側は `SELECT` 制限や query label などの制約を持つため、再現時の安全性と監査性を確保しやすい点が実務上のポイントです。",
+        "主張は Google Cloud の `Use the BigQuery remote MCP server` と BigQuery MCP tools reference を一次情報として確認しました。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/souma_ai_2026/items/cae3d715297c4942853d",
+      "publishedAt": "2026-06-07",
+      "priority": "signal",
+      "tags": ["agent", "MCP", "API"]
+    },
+    {
+      "title": "Claude Code×MCPでタスク管理を自動化する方法5選",
+      "summary": "2026-06-06 の Qiita 記事は、Claude Code と MCP を使って Jira 起票、Slack 通知、進捗取得、期日リマインドといったタスク管理の定型作業を自然言語で自動化する具体例をまとめています。読み取り系から始める、トークンを直書きしない、本番更新は dry-run で確認する、という安全策まで含めている点が実践的です。",
+      "points": [
+        "Jira と Slack をまたぐ連携例が `@modelcontextprotocol/server-jira` や Slack 向け MCP server を前提にしており、設定断片だけで再現に入りやすい構成でした。",
+        "記事の価値は『全部自動化できる』という煽りではなく、読み取り系から段階導入する安全な運用手順まで書いている点にあります。",
+        "重大な部分は Anthropic の Claude Code MCP ドキュメントと modelcontextprotocol/servers の公式 GitHub を一次情報として確認しました。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kamome_susume/items/4823e15d88724ec7ceb6",
+      "publishedAt": "2026-06-06",
+      "priority": "signal",
+      "tags": ["agent", "MCP", "software design"]
+    }
+  ]
+}
