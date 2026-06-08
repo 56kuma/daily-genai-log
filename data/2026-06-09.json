@@ -1,0 +1,114 @@
+{
+  "date": "2026-06-09",
+  "updatedAt": "2026-06-09T06:07:42+09:00",
+  "summary": "2026-06-09 実行分の直近36時間調査では、公式ソースの新規技術発表は Hugging Face の OpenEnv 強化が最も強く、国内コミュニティでは Claude Code / Codex の運用設計、GitHub Actions 権限設計、tmux による長時間実行、Oracle MCP の監査実装が具体策として目立った。OpenAI と Anthropic の新着は同期間に技術実装へ直結する更新が少なく、X と Reddit は削除済み・宣伝色・一次情報不足の候補が多かったため採録を見送った。",
+  "highlights": [
+    "Hugging Face は 2026-06-08 に OpenEnv をコミュニティ主導へ広げ、MCP 互換を前提にした agentic RL 環境の共通レイヤー化を打ち出した。",
+    "日本語圏では 2026-06-08 投稿が集中し、Claude Code / Codex の指示ファイル反映タイミング、GitHub Actions v1.0 GA の権限設計、tmux を使った長時間実行、Oracle SQLcl MCP の監査追跡が実務ノウハウとして整理された。",
+    "X と Reddit Japan / Global は直近候補を走査したが、削除済み投稿、宣伝のみ、一次情報で裏付けられない性能主張が多く、本文採録は見送った。"
+  ],
+  "metrics": {
+    "scanned": 26,
+    "captured": 5,
+    "critical": 0
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "CAD", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "sources": [
+    { "name": "OpenAI News", "priority": "high" },
+    { "name": "Anthropic News", "priority": "high" },
+    { "name": "Google DeepMind Blog", "priority": "high" },
+    { "name": "Hugging Face Blog", "priority": "high" },
+    { "name": "OpenAI Engineering", "priority": "high" },
+    { "name": "Claude Code Docs", "priority": "high" },
+    { "name": "Oracle Docs", "priority": "high" },
+    { "name": "Langfuse Docs", "priority": "medium" },
+    { "name": "X", "priority": "medium" },
+    { "name": "Zenn", "priority": "medium" },
+    { "name": "Qiita", "priority": "medium" },
+    { "name": "Reddit Japan", "priority": "medium" },
+    { "name": "Reddit Global", "priority": "medium" }
+  ],
+  "articles": [
+    {
+      "title": "The Open Source Community is backing OpenEnv for Agentic RL",
+      "summary": "Hugging Face が 2026-06-08 に公開した公式記事。OpenEnv を単一プロジェクトではなくコミュニティ運営の標準レイヤーとして再定義し、端末・ブラウザ・各種ハーネス向けの agentic RL 環境を共通 API で扱う方向を明示した。公式記事内で GitHub リポジトリと RFC が直接リンクされており、再現性は高い。",
+      "points": [
+        "公式記事では、OpenEnv を Meta-PyTorch、Reflection、Unsloth、Modal、Prime Intellect、Nvidia、Hugging Face などを含む委員会が協調運営し、コードも `huggingface/OpenEnv` に置くと説明している。",
+        "技術的新規性は、環境を RL フレームワークではなく配備・接続レイヤーとして切り出し、`reset()` / `step()` / `state()` を持つ API を HTTP、WebSocket、Docker、MCP で扱える共通面に寄せた点にある。",
+        "再現可能性は高く、GitHub リポジトリと RFC 006-008 が提示されているため、手元で環境定義や評価パイプラインの追試に進みやすい。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/openenv-agentic-rl",
+      "publishedAt": "2026-06-08",
+      "priority": "signal",
+      "tags": ["agent", "MCP", "open-source", "research"]
+    },
+    {
+      "title": "CLAUDE.md と AGENTS.md は同一セッション中にいつ読まれるのかを比較検証",
+      "summary": "2026-06-08 の Qiita 投稿。Codex CLI v0.137.0 と Claude Code で指示ファイルをセッション途中に更新した際の反映差を観察した個人検証で、運用設計上の注意点がある。OpenAI は Codex が会話の初回推論で AGENTS.md 群を初期プロンプトへ集約すると説明し、Anthropic は CLAUDE.md を各セッション開始時に読み込むと説明しているため、記事の実験結果は『バージョン依存の挙動差を示す観測』として読むのが妥当だ。",
+      "points": [
+        "OpenAI Engineering の `Unrolling the Codex agent loop` は、Codex が初回推論時に `$CODEX_HOME` と project root から AGENTS.md 群を集約して initial prompt を作ると説明しており、同一セッション途中の更新が即反映されない可能性を示唆する。",
+        "Claude Code Docs は CLAUDE.md をセッション開始時に読み込み、ネストされた CLAUDE.md はその配下のファイルに触れた時だけ読み込むと説明している。記事はこの差を踏まえ、手元では Claude Code 側の方が途中変更を拾いやすかったと報告している。",
+        "再現可能性は中程度で、手順自体は単純だがツールのバージョンと会話状態に依存する。チーム運用では重要なルールを短い AGENTS.md / CLAUDE.md に固定し、長い会話へ途中追記して頼らない設計が安全だ。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kirozero/items/e64c607f657613da8f4a",
+      "publishedAt": "2026-06-08",
+      "priority": "signal",
+      "tags": ["agent", "coding", "software design"]
+    },
+    {
+      "title": "SQLcl MCP の監査証跡と Langfuse トレースを突き合わせる実装",
+      "summary": "2026-06-08 の Qiita 投稿。Oracle SQLcl MCP Server の監査情報と Langfuse の trace_id を結び、LLM 側の推論トレースと DB 側の SQL 実行履歴を一続きで追う方法を実装している。Oracle 公式は SQLcl MCP の `DBTOOLS$MCP_LOG`、`V$SESSION`、Unified Audit を監査の基盤として説明しており、Langfuse 公式は trace_id を外部 ID に合わせて生成・参照できることを説明している。",
+      "points": [
+        "Oracle 公式ドキュメントは SQLcl MCP Server が `V$SESSION` と `DBTOOLS$MCP_LOG` を使った監視を提供すると説明しており、Database Tools MCP では `CLIENTCONTEXT` を Unified Auditing と相関させられるとしている。",
+        "Langfuse 公式ドキュメントは deterministic な trace_id 生成、trace URL 取得、session grouping を提供しており、記事の『trace_id を DB セッションへ注入して付き合わせる』設計を一次情報で裏付けられる。",
+        "再現可能性は高く、参照ビュー、識別子、監査先が具体的なので、Oracle を MCP で開く際の最低限の可観測性パターンとして流用しやすい。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/asahide/items/4b6ace1e169c18ef829a",
+      "publishedAt": "2026-06-08",
+      "priority": "signal",
+      "tags": ["MCP", "API", "software design", "research"]
+    },
+    {
+      "title": "Claude Code GitHub Actions v1.0 GA を権限設計から理解する",
+      "summary": "2026-06-08 の Zenn 投稿。Claude Code GitHub Actions を『権限を絞った新入社員』として捉え、導入時に必要な GitHub App 権限、課金経路、GA への移行点を整理している。内容は Claude Code Docs の GitHub Actions ページを一次情報にしており、実務導入で見落としがちな least privilege と workflow 変更点を短時間で掴める。",
+      "points": [
+        "Claude Code Docs は `/install-github-app` に repository admin 権限が必要で、GitHub App に Contents、Issues、Pull requests の read & write 権限を要求すると明記している。",
+        "v1.0 GA では `@beta` から `@v1` への変更、`direct_prompt` から `prompt` への移行、各種オプションの `claude_args` 集約、mode の自動判定が必要になった。",
+        "再現可能性は高く、必要権限、Secrets、workflow YAML、Bedrock / Vertex で quickstart が使えない条件まで明示されているため、PoC から本番導入へ移る前のチェックリストとして使える。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/nabecoach/articles/2fbe5ca332ae60",
+      "publishedAt": "2026-06-08",
+      "priority": "signal",
+      "tags": ["agent", "coding", "API", "software design"]
+    },
+    {
+      "title": "Claude Code と tmux を組み合わせた長時間・並列実行パターン整理",
+      "summary": "2026-06-08 の Zenn 投稿。Claude Code の `/bg`、Agent View、`--teammate-mode tmux` を、tmux の detach / attach と組み合わせてどう使い分けるかを整理している。新機能そのものよりも『長時間タスクを放置しても壊れにくい運用面』に価値があり、Claude Code Docs の Agent teams と Agent view を一次情報にしている。",
+      "points": [
+        "記事は `/bg` で十分な短時間タスク、tmux セッションへ `claude` を閉じ込めて数日単位で流す運用、`--teammate-mode tmux` で役割ごとに並列ペインを張る運用の3パターンに整理している。",
+        "Claude Code Docs の Agent teams / Agent view は並列セッションの正式サポートを示しており、tmux はその上で接続断耐性とロー出力追跡を補う役割として位置付けられている。",
+        "再現可能性は高く、`tmux new-session`、`tmux send-keys`、`tmux attach` の最小コマンドで追試できる。ただし `--teammate-mode` の可用性は Claude Code のバージョン依存なので、記事どおり release notes の確認が前提になる。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/goki602/articles/2026-06-07-claude-code-tmux-agent-sessions",
+      "publishedAt": "2026-06-08",
+      "priority": "signal",
+      "tags": ["agent", "coding", "software design"]
+    }
+  ]
+}

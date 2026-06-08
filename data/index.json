@@ -1,6 +1,7 @@
 {
-  "latest": "data/2026-06-08.json",
+  "latest": "data/2026-06-09.json",
   "archive": [
+    "data/2026-06-09.json",
     "data/2026-06-08.json",
     "data/2026-06-07.json"
   ]
