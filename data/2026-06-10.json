@@ -1,0 +1,83 @@
+{
+  "date": "2026-06-10",
+  "updatedAt": "2026-06-10T06:06:07+09:00",
+  "summary": "2026-06-10 実行分の直近36時間調査では、Anthropic の Claude Fable 5 / Mythos 5 公開が最重要の新規発表だった。加えて、Hugging Face では `agents.md` を使って Space 同士をエージェント連鎖する実例が公開され、国内では Claude Code を補助役に使った QA 自動化の具体例が確認できた。OpenAI、Google DeepMind、X、Zenn、Reddit Japan / Global は今回の窓では重複、宣伝色、一次情報不足、または技術実装への新規性不足のため本文採録を見送った。",
+  "highlights": [
+    "Anthropic は 2026-06-09 に Claude Fable 5 と Claude Mythos 5 を公開し、一般提供モデルと trusted access 向け高能力モデルを安全ガード付きで分離した。",
+    "Hugging Face Staff の 2026-06-09 記事は、`agents.md` と Gradio API だけで画像生成 Space と単眼 3D 再構成 Space を直列接続できることを実例で示した。",
+    "コミュニティ発では、Claude Code をコード生成補助に使い、MagicPod の WebAPI / TypeScript ステップで複数ユーザー依存テストを自動化する再現可能な QA パターンが確認できた。"
+  ],
+  "metrics": {
+    "scanned": 28,
+    "captured": 3,
+    "critical": 1
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "CAD", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "sources": [
+    { "name": "OpenAI News", "priority": "high" },
+    { "name": "Anthropic News", "priority": "high" },
+    { "name": "Google DeepMind Blog", "priority": "high" },
+    { "name": "Hugging Face Blog", "priority": "high" },
+    { "name": "Hugging Face Docs", "priority": "high" },
+    { "name": "X", "priority": "medium" },
+    { "name": "Zenn", "priority": "medium" },
+    { "name": "Qiita", "priority": "medium" },
+    { "name": "Reddit Japan", "priority": "medium" },
+    { "name": "Reddit Global", "priority": "medium" }
+  ],
+  "articles": [
+    {
+      "title": "Claude Fable 5 and Claude Mythos 5",
+      "summary": "Anthropic が 2026-06-09 に公開した公式発表。一般提供向けの Claude Fable 5 と、Project Glasswing 経由の trusted access 向け Claude Mythos 5 を同時に出し、最上位能力を広く使わせつつ高リスク領域だけ別経路へ逃がす新しい公開形態を採った。モデル能力だけでなく、ガードレール運用まで含めて今回の最重要更新と判断できる。",
+      "points": [
+        "Anthropic 公式は、Fable 5 を『一般公開した中で最強のモデル』と位置付けつつ、サイバーセキュリティなど一部トピックでは Opus 4.8 へフォールバックする safeguard を実装したと説明している。",
+        "技術的新規性は、同一基盤モデルを一般公開用の安全版 Fable 5 と、Project Glasswing 向けの Mythos 5 に切り分けた配布設計にある。高能力モデル公開を access control と classifier 運用で成立させる実例として重要だ。",
+        "再現可能性は高い。公式記事内で価格、制限、適用領域、主要ベンチマーク、trusted access 方針まで明示されており、利用者はそのまま API / Claude 側で挙動確認に進める。"
+      ],
+      "source": "Anthropic News",
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+      "publishedAt": "2026-06-09",
+      "priority": "critical",
+      "tags": ["model-release", "agent", "coding", "research"]
+    },
+    {
+      "title": "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces",
+      "summary": "Hugging Face Staff の Mishig Davaadorj が 2026-06-09 に公開した記事。`agents.md` を公開している Gradio Space 同士をエージェントが連結し、画像生成から 3D Gaussian splat 化、Three.js ビューア配備までを組み立てる手順を実例で示した。記事単体で終わらず、Hub ドキュメントと Space リポジトリまで辿れるため追試しやすい。",
+      "points": [
+        "Hugging Face の公式 Hub ドキュメントは、全 Gradio Space が `agents.md` を公開し、schema URL、call/poll endpoint、upload 方法、`HF_TOKEN` の扱いを返すと説明している。記事の中心主張は一次情報で裏付けられる。",
+        "技術的新規性は、個別 SDK や専用ラッパーなしで、エージェントが `agents.md` を読んで複数 Space を動的に直列接続する点にある。『モデルを呼ぶ』より『公開された生成プリミティブを組み合わせる』方向へ設計重心が移っている。",
+        "再現可能性は高い。記事から `ideogram-ai/ideogram4`、`VAST-AI/TripoSplat`、完成済み Space リポジトリまで直接辿れ、curl ベースの手順も公式 docs に載っている。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/mishig/spaces-agents-md",
+      "publishedAt": "2026-06-09",
+      "priority": "signal",
+      "tags": ["agent", "CAD", "open-source", "coding"]
+    },
+    {
+      "title": "Claude Codeと一緒に、MagicPodのWebAPI × TypeScript自動テストを作った話",
+      "summary": "2026-06-08 の Qiita 投稿。複数ユーザー操作が必要なモバイル通知テストを、MagicPod の WebAPI ステップと TypeScript ステップで補完しつつ、コード生成を Claude Code に委ねた事例だ。新機能そのものの発表ではないが、ノーコード QA とエージェント補助コーディングを接続した実務パターンとして具体度が高い。",
+      "points": [
+        "記事では、通知を受ける側は実機 UI、通知を発生させる側は WebAPI で再現し、投稿 ID やコメント ID の抽出だけを TypeScript ステップで補う構成を採っている。複数ユーザー同時 UI 操作ができない制約を API 側へ逃がした点が肝だ。",
+        "MagicPod のサポート記事では TypeScript ステップが 2026-03-08 公開の v1.59.0 で追加されたと確認でき、記事の前提機能は一次情報で裏付けられる。Claude Code 側の役割は、実装ロジックを日本語指示から生成し、エラー出力を踏まえて修正する補助エージェントとして使うことにある。",
+        "再現可能性は中程度から高め。対象サービス固有 API は必要だが、UI 操作と API 呼び出しを混ぜるテスト設計、HTML/JSON から識別子を抜く TypeScript 補助、エラー全文を渡してエージェントに修正させる運用は他サービスにも転用しやすい。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/ayshiina/items/8965ba4f5840807031cb",
+      "publishedAt": "2026-06-08",
+      "priority": "signal",
+      "tags": ["agent", "coding", "API", "software design"]
+    }
+  ]
+}

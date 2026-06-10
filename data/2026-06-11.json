@@ -1,0 +1,189 @@
+﻿{
+    "date":  "2026-06-11",
+    "updatedAt":  "2026-06-11T06:06:19+09:00",
+    "summary":  "2026-06-11実行の直近36時間調査では、AnthropicのClaude Fable 5とClaude Mythos 5公開が最重要トピックだった。Hugging Faceでは、Gradio Spaceの`agents.md`を介してエージェントが画像生成Spaceと3D再構成Spaceを直結できる実例が公開され、再現用リポジトリも確認できた。国内コミュニティでは、QiitaでMCP 2025-11-25認可仕様をKeycloak 26.6とAmazon Bedrock AgentCore Gatewayで検証した記事と、Claude CodeとCodexの利用枠をCLI内で監視する実装記事を採用した。OpenAIとGoogle DeepMindは直近36時間で採用に足る新規公式発表なし、X・Zenn・Redditは重複告知、自己宣伝寄り、または一次情報不足のため今回は採用を見送った。",
+    "highlights":  [
+                       "Anthropicは2026-06-09にClaude Fable 5を一般公開し、より制限の少ないClaude Mythos 5をProject Glasswing経由のtrusted accessで提供開始した。",
+                       "Hugging FaceはSpaceごとの`agents.md`と公式ドキュメントにより、エージェントがGradio SpaceをAPIとして読み取り、画像生成から3D再構成まで連鎖呼び出しできる状態を示した。",
+                       "Qiitaでは、MCP認可の実装検証と、Claude CodeとCodexの利用枠可視化という実運用に直結する再現可能な手順が共有された。"
+                   ],
+    "metrics":  {
+                    "scanned":  31,
+                    "captured":  4,
+                    "critical":  1
+                },
+    "tags":  [
+                 {
+                     "name":  "agent",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "coding",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "model-release",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "CAD",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "software design",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "API",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "MCP",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "open-source",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "benchmark",
+                     "weight":  3
+                 },
+                 {
+                     "name":  "research",
+                     "weight":  2
+                 }
+             ],
+    "sources":  [
+                    {
+                        "name":  "OpenAI News",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Anthropic News",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Google DeepMind Blog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Hugging Face Blog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Hugging Face Docs",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "AWS Docs",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "MCP Spec",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Keycloak Docs",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "X",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Zenn",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Qiita",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Reddit Japan",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Reddit Global",
+                        "priority":  "medium"
+                    }
+                ],
+    "articles":  [
+                     {
+                         "title":  "Claude Fable 5 and Claude Mythos 5",
+                         "summary":  "Anthropicが2026-06-09に公開した次世代モデル発表。Claude Fable 5はMythos級の能力を一般向けに安全制御付きで公開したモデルで、危険な領域の問い合わせはClaude Opus 4.8へフォールバックする。より制限の少ないClaude Mythos 5はProject Glasswing経由で限定提供され、サイバー防御や生命科学向けのtrusted access拡大も予告された。性能主張は公式発表とsystem cardへの参照で確認できるが、一部の長期自律作業や科学研究の成果は現時点では社内評価中心で、外部再現は限定的である。",
+                         "points":  [
+                                        "一般公開モデルFable 5は、Anthropic自身がこれまで一般提供した中で最も高性能と位置づけ、ソフトウェア工学、知識労働、視覚、科学研究を主要改善点として挙げている。",
+                                        "安全面では、新しい分類器で高リスク問い合わせをブロックし、一部はOpus 4.8へ切り替える設計を採用している。誤検知はあるが、平均では5%未満のセッションで発火すると説明されている。",
+                                        "再現可能性は限定的で、価格や提供形態は明示されている一方、高度なサイバー防御や創薬支援の成果はProject Glasswingや社内実験が中心で、外部ユーザーがそのまま追試できる形ではまだない。"
+                                    ],
+                         "source":  "Anthropic News",
+                         "url":  "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+                         "publishedAt":  "2026-06-09",
+                         "priority":  "critical",
+                         "tags":  [
+                                      "model-release",
+                                      "agent",
+                                      "coding",
+                                      "research"
+                                  ]
+                     },
+                     {
+                         "title":  "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces",
+                         "summary":  "Hugging Face Community Blogの2026-06-09記事。Gradio Spaceが公開する`agents.md`をエージェントが読み、`ideogram-ai/ideogram4`で画像生成し、`VAST-AI/TripoSplat`で単画像から3D Gaussian splatを生成、さらにThree.jsビューアと配備まで自動化した事例を示している。公式ドキュメントでも`agents.md`のURL形式、`gradio_api/info`、`/upload`、`/call/v2`、`HF_TOKEN`利用が明文化されており、記事の主要主張は一次情報で裏付けられる。",
+                         "points":  [
+                                        "技術的新規性は、Spaceを人間向けUIではなくエージェント向けツール面として扱う点にある。`agents.md`がAPIスキーマ、呼び出し方法、アップロード手順、認証方法を1ファイルで返すため、LLMエージェントがゼロ統合作業で外部モデルを連鎖利用できる。",
+                                        "再現可能性は高い。公式ドキュメントに`https://huggingface.co/spaces/\u003cnamespace\u003e/\u003crepo\u003e/agents.md`形式と具体的なcurl例があり、記事内でもSpace repoを公開している。",
+                                        "記事自体はコミュニティ投稿だが、核となる仕組みはHugging Face Docsで確認できる。新しいアプリを一から作るのではなく、既存Spaceをつなぐ方向へ寄せる実務インパクトが大きい。"
+                                    ],
+                         "source":  "Hugging Face Blog",
+                         "url":  "https://huggingface.co/blog/mishig/spaces-agents-md",
+                         "publishedAt":  "2026-06-09",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "agent",
+                                      "CAD",
+                                      "open-source",
+                                      "API"
+                                  ]
+                     },
+                     {
+                         "title":  "[Bedrock AgentCore Gateway × Keycloak]MCP 2025-11-25 認可仕様に準拠したKeycloakでCIMDと認可コードフローを利用したMCP認可を試してみた",
+                         "summary":  "Qiitaの2026-06-09投稿。Amazon Bedrock AgentCore GatewayとKeycloakを組み合わせ、MCP 2025-11-25認可仕様に沿ってCIMDとOAuth 2.1認可コードフローを検証している。本文はAWS公式ドキュメント、MCP公式仕様、KeycloakのMCPガイドと26.6.0 release note、関連GitHub PRにリンクしており、MCP認可を実環境でどう組み上げるかをかなり具体的に追える。",
+                         "points":  [
+                                        "技術的新規性は、MCP 2025-11-25で重要度が増したCIMDと保護リソースメタデータの要件を、Keycloak 26.6の実験的CIMD対応とAgentCore Gatewayのマネージド認可機能で実運用寄りに検証している点にある。",
+                                        "一次情報では、MCP仕様がOAuth 2.1、Protected Resource Metadata、CIMD系の要件を列挙し、Keycloak公式も`--features=cimd`での実験的対応を案内している。AWS公式はGatewayが複数ツールを単一MCP endpointへ統合し、入出力認証を扱うことを明示している。",
+                                        "再現可能性は高めで、必要ドメイン構成、ALBやVPC Endpointを含むAWS構成、Keycloak側の設定方針、CIMDと認可コードフローの役割分担が順序立てて示されている。ただしRFC 8707 Resource Indicatorsはまだ完全対応前で、そこはワークアラウンド前提である。"
+                                    ],
+                         "source":  "Qiita",
+                         "url":  "https://qiita.com/mitsu3333/items/0ca5bd39c4dba6a8c6eb",
+                         "publishedAt":  "2026-06-09",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "MCP",
+                                      "agent",
+                                      "API",
+                                      "software design"
+                                  ]
+                     },
+                     {
+                         "title":  "Claude Code と Codex のレート残量を確認するためにブラウザを開くのをやめた話",
+                         "summary":  "Qiitaの2026-06-10投稿。Claude CodeとCodexを併用する開発者が、ClaudeのOAuth usage endpointと`codex app-server`のJSON-RPCを使って5時間枠と週枠の利用率、リセット時刻を端末ペインへ常時表示する構成をまとめている。公開・安定APIではないことを明示しつつ、取得ロジック、キャッシュ方針、viewerとdaemon分離まで書かれており、実務の運用知見として有用。",
+                         "points":  [
+                                        "Claude側は`https://api.anthropic.com/api/oauth/usage`にBearer tokenと`anthropic-beta: oauth-2025-04-20`ヘッダを付けて問い合わせ、`five_hour`と`seven_day`の利用率と`resets_at`を取得する。",
+                                        "Codex側は`codex app-server`へJSON-RPCで`initialize`後に`account/rateLimits/read`を送り、`primary`を5時間枠、`secondary`を週枠として読み出す。記事はサンプルレスポンス形式まで示している。",
+                                        "再現可能性は高いが、著者自身が公開・安定したAPIではないと注意している通り、CLI更新でフィールドやエンドポイントが変わる前提の自家用ツールである。実装をそのまま製品依存の監視基盤に昇格させるのは危険。"
+                                    ],
+                         "source":  "Qiita",
+                         "url":  "https://qiita.com/tatsuya582/items/5ca0c12a8495530f7d09",
+                         "publishedAt":  "2026-06-10",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "coding",
+                                      "API",
+                                      "agent",
+                                      "software design"
+                                  ]
+                     }
+                 ]
+}
