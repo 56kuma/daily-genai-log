@@ -1,0 +1,206 @@
+﻿{
+    "date":  "2026-06-12",
+    "updatedAt":  "2026-06-12T06:07:15+09:00",
+    "summary":  "2026-06-12実行の直近36時間調査では、GoogleのDiffusionGemma公開が最も技術的新規性の高いトピックだった。OpenAIはOracle Universal CreditsからOpenAIモデルとCodexへ到達できる新しい調達経路を公式化し、Hugging FaceではPhysicsInternを研究用サイドキックとして再整理した公開リポジトリ付き記事が出た。国内コミュニティでは、QiitaでOpenSpecの既存プロジェクト導入知見と、コーディングエージェントのコード探索方式を一次資料ベースで整理した記事を採用した。AnthropicはDXC連携やClaude Corpsなど直近告知はあったが、技術的新規性より事業・制度寄りで再現性も薄いため見送り、X・Zenn・Reddit日本語圏・海外は重複告知、自己宣伝寄り、一次情報不足の投稿が中心で今回は不採用とした。",
+    "highlights":  [
+                       "Googleは2026-06-10にDiffusionGemmaを公開し、26B MoE、Apache 2.0、256トークン並列生成という構成で、低並列ローカル推論の速度重視ワークロードを狙い撃ちした。",
+                       "OpenAIはOracle Cloud Infrastructure上でOracle Universal CreditsをOpenAIモデルとCodexに充当できると発表し、既存の購買・統制フローを崩さずに導入できる経路を増やした。",
+                       "Qiitaでは、OpenSpecのブラウンフィールド導入手順と、Claude Code、Codex、Copilot系のコード探索手法比較が、GitHub、VS Code Docs、Preprints.orgなどの一次資料と結び付いた形で共有された。"
+                   ],
+    "metrics":  {
+                    "scanned":  29,
+                    "captured":  5,
+                    "critical":  1
+                },
+    "tags":  [
+                 {
+                     "name":  "agent",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "coding",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "model-release",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "CAD",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "software design",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "API",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "MCP",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "open-source",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "benchmark",
+                     "weight":  3
+                 },
+                 {
+                     "name":  "research",
+                     "weight":  2
+                 }
+             ],
+    "sources":  [
+                    {
+                        "name":  "OpenAI News",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Anthropic News",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Google DeepMind Blog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Hugging Face Blog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "OpenSpec GitHub",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Preprints.org",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "VS Code Docs",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "GitHub Changelog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Qiita",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "X",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Zenn",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Reddit Japan",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Reddit Global",
+                        "priority":  "medium"
+                    }
+                ],
+    "articles":  [
+                     {
+                         "title":  "DiffusionGemma: 4x faster text generation",
+                         "summary":  "Googleが2026-06-10に公開した実験的オープンモデル。26B Mixture of Expertsで推論時は3.8Bのみを活性化し、自己回帰ではなく256トークン単位の並列生成を採用することで、単一GPUでの低並列ローカル推論を高速化する。Apache 2.0で重みを公開し、Hugging Face、MLX、vLLM、Transformers、NeMoなど既存エコシステムへの導線も用意した。一方で品質は標準Gemma 4より低く、本番品質より速度重視の編集、穴埋め、インタラクティブ用途向けと明示されている。",
+                         "points":  [
+                                        "技術的新規性は、拡散モデルをテキスト生成へ大規模適用し、自己回帰の逐次デコードを外してローカルGPUの計算資源を使い切る設計にある。Googleは単一H100で1000 tokens/s超、GeForce RTX 5090で700 tokens/s超という目安も示した。",
+                                        "再現可能性は高い。重みはApache 2.0で公開され、Hugging Face配布、developer guide、Hackable Diffusion、Unsloth、NeMo、MLX、vLLM、Transformersへの接続情報まで揃っている。",
+                                        "重要な留保として、Google自身が標準Gemma 4の方が高品質な本番出力に向くと明言している。高速化の主戦場は高QPSクラウドではなく、単一アクセラレータでの低から中バッチ推論である。"
+                                    ],
+                         "source":  "Google DeepMind Blog",
+                         "url":  "https://blog.google/innovation-and-ai/technology/developers-tools/diffusion-gemma-faster-text-generation/",
+                         "publishedAt":  "2026-06-10",
+                         "priority":  "critical",
+                         "tags":  [
+                                      "model-release",
+                                      "open-source",
+                                      "research",
+                                      "coding"
+                                  ]
+                     },
+                     {
+                         "title":  "Access OpenAI models and Codex through your Oracle cloud commitment",
+                         "summary":  "OpenAIが2026-06-10に発表したOCI向け流通更新。Oracle Cloud Infrastructureの既存コミットメント、特にeligible Oracle Universal Creditsを使ってOpenAIの先端モデルとCodexへアクセスできるようにする。新しい購買経路を増やさず、既存の調達・ガバナンス枠組みで導入したい大企業向けの摩擦を下げる内容で、利用開始はcoming weeksとされている。",
+                         "points":  [
+                                        "技術的新規性そのものはモデル改善ではなく、企業導入の制約になりがちな調達と統制のレイヤーをOCI経由で吸収し、Codexを既存クラウド契約の延長で扱えるようにした点にある。",
+                                        "一次情報としてはOpenAI公式発表が、eligible Oracle Universal CreditsをOpenAIモデルとCodexへ充当できること、OCI顧客向け提供開始が数週間以内であることを明示している。",
+                                        "再現可能性は限定的で、現時点ではSKU、リージョン、API面の差分、適用条件が公開されていない。すぐに検証できる実装手順というより、企業契約と販売チャネルの更新として捉えるのが妥当である。"
+                                    ],
+                         "source":  "OpenAI News",
+                         "url":  "https://openai.com/index/openai-on-oracle-cloud/",
+                         "publishedAt":  "2026-06-10",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "API",
+                                      "coding",
+                                      "agent"
+                                  ]
+                     },
+                     {
+                         "title":  "PhysicsIntern: from an Autonomous Benchmark-runner to a Research Sidekick",
+                         "summary":  "Hugging Face Community Blogの2026-06-11記事。PhysicsInternを、単発ベンチ向け自律エージェントから、研究者が問題文を与えて文献調査、導出、検証コード、レビューを段階的に回せるサイドキックへ再構成している。公開GitHubリポジトリでは、Claude Code、Pi、OpenAI Codex CLIの3ホストに対応し、problem.mdを起点にfresh-context sub-agentを使う運用と成果物構成まで明示されている。",
+                         "points":  [
+                                        "技術的新規性は、研究支援を単一の巨大プロンプトではなく、problem.md、research_log.md、plan.md、導出と計算と批評のファイル群を永続状態にして、各工程をfresh-context sub-agentに分離している点にある。",
+                                        "再現可能性は高い。公開リポジトリにinit-physics-intern.sh、Codex、Claude、Pi向け起動手順、ワークスペース構造、slash command相当の研究フローが載っているため、そのまま試せる。",
+                                        "ただし性能主張はまだ限定的で、記事はコミュニティ投稿であり、研究品質向上の度合い自体は査読論文で固まったものではない。READMEにもMCP統合など未実装項目が明示されている。"
+                                    ],
+                         "source":  "Hugging Face Blog",
+                         "url":  "https://huggingface.co/blog/dlouapre/physics-intern",
+                         "publishedAt":  "2026-06-11",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "agent",
+                                      "coding",
+                                      "open-source",
+                                      "research"
+                                  ]
+                     },
+                     {
+                         "title":  "〖AI駆動開発〗OpenSpecを既存プロジェクトに導入したときにやったことまとめ",
+                         "summary":  "Qiitaの2026-06-10投稿。OpenSpecを新規開発ではなく既存のスクラム開発と既存リポジトリへ入れるときの導入手順と運用判断を具体化している。openspec init、openspec/config.yaml、/opsx:explore、/opsx:propose、/opsx:apply、/opsx:archiveまでを、既存WikiやPRを参照したspec起こしとセットで説明しており、公式GitHub README、Installation docs、Telemetry設定の一次情報と突き合わせ可能だった。",
+                         "points":  [
+                                        "技術的新規性は、AI向けspec駆動開発をグリーンフィールド前提にせず、既存のブランチ運用、PRレビュー、スクラム開発に重ねて運用した実践知をかなり具体的に出している点にある。",
+                                        "一次情報ではOpenSpec公式READMEがbuilt for brownfield not just greenfieldを掲げ、openspec init、/opsx:propose、/opsx:apply、/opsx:archiveの基本導線と、OPENSPEC_TELEMETRY=0およびDO_NOT_TRACK=1のテレメトリ無効化を明示している。",
+                                        "再現可能性は高めだが、導入効果の大半は著者チームの運用報告であり、どの程度うまくいくかは既存ドキュメント整備度とチームの合意プロセスに強く依存する。"
+                                    ],
+                         "source":  "Qiita",
+                         "url":  "https://qiita.com/ko-he-8/items/cf5f75ba755c844211a2",
+                         "publishedAt":  "2026-06-10",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "software design",
+                                      "coding",
+                                      "agent"
+                                  ]
+                     },
+                     {
+                         "title":  "各コーディングエージェントがコードを「どう把握」しているのか差異と特徴を調べた",
+                         "summary":  "Qiitaの2026-06-10投稿。7つのコーディングエージェントを比較したPreprints.orgの探索的研究と、VS Code Docs、GitHub Changelogの一次資料を使って、字句検索、意味検索、構造検索、エージェント検索、マルチエージェントという5類型で整理している。Claude Code、Gemini CLI、Codex CLIが実行時探索寄り、CursorとCopilotが埋め込みハイブリッド寄りという整理は、少なくとも引用元の一次資料と整合していた。",
+                         "points":  [
+                                        "技術的新規性は、コーディングエージェントがコードベース全読みに頼るのではなく、探索戦略の設計差でトークン効率と挙動が大きく変わる点を、日本語で一次資料リンク付きに噛み砕いたところにある。",
+                                        "一次情報では、Preprints.org掲載の探索的研究が7エージェント比較とトークン消費差、VS Code DocsがCopilotのworkspace context、GitHub Changelogがsemantic code search indexingのGAを確認できる。",
+                                        "再現可能性は中程度で、元研究自体が単一タスク、単一リポジトリの探索的調査かつ査読前であるため、普遍的優劣として読むのは危険である。ただし検索方式の整理と公式ドキュメントへの導線は実務上有用である。"
+                                    ],
+                         "source":  "Qiita",
+                         "url":  "https://qiita.com/hokutoh/items/cb6344af8c76b2672338",
+                         "publishedAt":  "2026-06-10",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "coding",
+                                      "agent",
+                                      "research",
+                                      "software design"
+                                  ]
+                     }
+                 ]
+}
