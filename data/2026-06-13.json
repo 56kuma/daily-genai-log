@@ -1,0 +1,184 @@
+{
+  "date": "2026-06-13",
+  "updatedAt": "2026-06-13T13:03:44+09:00",
+  "summary": "2026-06-13実行の直近36時間調査では、Anthropicが2026-06-12にFable 5とMythos 5へのアクセスを輸出規制指令により全停止した件が最も実務インパクトの大きい更新だった。Hugging FaceではAi2がモデル開発ループ向け評価基盤olmo-evalを公開し、開発中チェックポイント比較、ツール使用評価、サンドボックス実行を一つのワークベンチへまとめた。国内コミュニティでは、QiitaでAnthropic APIのprompt cachingを実運用へ組み込む手順と、Google Colab MCP ServerをClaude CodeやGemini CLIから使う構成が一次資料ベースで整理された。OpenAI NewsとGoogle DeepMind Blogは直近36時間に採用水準の新規技術発表がなく、X・Zenn・Reddit日本語圏・海外は重複告知、正確な投稿日確認の難しさ、自己宣伝寄り投稿、一次情報不足のため今回は不採用とした。",
+  "highlights": [
+    "Anthropicは2026-06-12にFable 5とMythos 5を全顧客向けに停止した。発端は輸出規制指令で、対象は外国籍者向け停止だが、技術的に選別しきれないため全停止に広がった。",
+    "Ai2は2026-06-12にolmo-evalを公開し、タスク定義、実行ハーネス、ツール使用評価、結果比較を分離したまま再構成できる開発向け評価基盤をオープンにした。",
+    "Qiitaでは、Anthropic API prompt cachingの具体的な計測手順と、Google Colab MCP Serverをローカルのコーディングエージェントから呼び出す実装導線が、公式 docs と GitHub を根拠に共有された。"
+  ],
+  "metrics": {
+    "scanned": 33,
+    "captured": 4,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic API Docs",
+      "priority": "high"
+    },
+    {
+      "name": "Google Developers Blog",
+      "priority": "high"
+    },
+    {
+      "name": "GitHub",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "summary": "Anthropicが2026-06-12に出した停止声明。米政府の輸出規制指令により、Fable 5とMythos 5を外国籍者向けに止めるよう求められたが、技術的に対象者だけを切り分けられないため全顧客向け停止へ拡大した。声明では、問題視されたのは既知の軽微な脆弱性を見つける狭い jailbreak 手法で、他の公開モデルでも同程度の能力は見られると反論している。モデル改善のニュースではないが、利用可能性が即日変わるため実務インパクトは非常に大きい。",
+      "points": [
+        "技術的新規性はモデル自体ではなく、最先端モデルの提供可否が輸出規制と jailbreak リスク評価で即時に左右されることを、公式声明ベースで明文化した点にある。",
+        "一次情報としてAnthropicは、2026-06-12 17:21 ETに指令を受けたこと、Fable 5とMythos 5を全顧客向けに無効化したこと、他のAnthropicモデルは影響を受けないことを明記している。",
+        "再現可能性は低い。停止理由となった手法の詳細、復旧時期、是正条件は公開されておらず、外部ユーザーが技術的に追試できる情報は限られる。一方で、ワークフロー上はOpus 4.8や他モデルへの即時切替が必要になる。"
+      ],
+      "source": "Anthropic News",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "publishedAt": "2026-06-12",
+      "priority": "critical",
+      "tags": [
+        "model-release",
+        "agent",
+        "coding",
+        "API"
+      ]
+    },
+    {
+      "title": "olmo-eval: An evaluation workbench for the model development loop",
+      "summary": "Ai2がHugging Face Blogで2026-06-12に公開した評価基盤。完成済みモデルの単発ベンチではなく、学習中チェックポイントに対して同じ評価群を繰り返し回し、差分を設計判断へ戻すためのワークベンチとして設計されている。タスク、スイート、ハーネスを分離しつつ、ツール使用を伴うマルチターン評価、DockerやModalを使うサンドボックス、LLM-as-a-judge、インスタンス単位比較までまとめて扱える。GitHubリポジトリではuv.lock付きで公開されており、そのまま試しやすい。",
+      "points": [
+        "技術的新規性は、ベンチマーク定義と実行ポリシーを分離したまま、通常のQA評価からツール使用を伴うエージェント評価まで同じ実験スキーマに載せられる点にある。",
+        "一次情報では、Hugging Face記事が task/suite/harness abstraction、sandbox and capability-routing、pairwise comparison を説明し、GitHub README が vLLM、LiteLLM、Docker、Podman、Modal、uv.lock による再現可能なセットアップを示している。",
+        "再現可能性は高い。公開GitHubに `uv sync --frozen`、`olmo-eval run`、タスク登録例、dry-run の手順があり、評価用コードをそのままローカルまたはコンテナ環境で追試できる。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/allenai/olmo-eval",
+      "publishedAt": "2026-06-12",
+      "priority": "signal",
+      "tags": [
+        "benchmark",
+        "open-source",
+        "research",
+        "agent"
+      ]
+    },
+    {
+      "title": "Anthropic API のプロンプトキャッシュで Claude のトークンコストを 6 割削減した実装手順 — cache_control の付け方とヒット率の確認【2026】",
+      "summary": "Qiitaの2026-06-13投稿。Anthropic APIのprompt cachingをPython SDKで有効化し、`cache_control` の付け方、`response.usage` によるヒット率確認、5分TTLと1時間TTLの使い分けを整理している。著者環境では1週間・600リクエストで入力トークン課金が約6割減だったと報告しているが、これはワークロード依存の実測値である。Anthropic公式 docs では、5分キャッシュ、1時間キャッシュ、cache read/writeの価格倍率、prompt prefix 全体がキャッシュ対象になることが確認できるため、主張の中核は一次情報で裏付けられる。",
+      "points": [
+        "技術的新規性は新機能の存在そのものより、長い system/tools ブロックを持つエージェント系アプリで、どこに `cache_control` を置けば実際にコストと待ち時間を下げられるかを具体的に整理している点にある。",
+        "一次情報ではAnthropic公式 docs が、トップレベル `cache_control` と明示的ブロック指定の両方、デフォルト5分TTL、1時間TTL、5分writeが1.25倍、readが0.1倍という価格体系を明示している。",
+        "再現可能性は高い。記事のPython例と公式 docs のサンプルをそのまま使えば試せる。ただし『6割削減』は著者の運用条件での実測であり、全ワークロードにそのまま一般化はできない。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/yureki_lab/items/faf7af4dbd77b7253e22",
+      "publishedAt": "2026-06-13",
+      "priority": "signal",
+      "tags": [
+        "API",
+        "coding",
+        "agent"
+      ]
+    },
+    {
+      "title": "Google Colab MCPサーバー入門 — AIエージェントからGPUを活用するクラウド実行環境",
+      "summary": "Qiitaの2026-06-13投稿。Google Colab MCP Serverを使い、Claude CodeやGemini CLIなどのローカルエージェントから、ブラウザ上のColabセッションを直接操作する構成を整理している。Google Developers Blogの2026-03-17発表とGitHubリポジトリでは、セル追加、コード実行、依存関係追加、ノートブック整理をMCP越しに行えること、`uvx git+https://github.com/googlecolab/colab-mcp` で設定できること、対応クライアント条件が示されている。今回の新規性は日本語での実装導線整理であり、公式リリース自体は3月のものだ。",
+      "points": [
+        "技術的新規性は、ローカルのコーディングエージェントをクラウドGPU付きのColabノートブックへ直接つなぎ、コピー&ペーストではなくMCP経由のプログラム制御に変える点にある。",
+        "一次情報ではGoogle Developers Blogが、任意のMCP対応エージェントからColabを開放すると説明し、セル追加、コード実行、依存追加、ノートブック整理を例示している。GitHub README は `uvx` での導入、対応クライアント、`notifications/tools/list_changed` 要件を明記している。",
+        "再現可能性は高めだが条件がある。ブラウザでColabセッションを開いておく必要があり、クライアント側もローカル実行と通知対応を備えていなければならない。それでもセットアップは公開されており追試可能である。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kai_kou/items/8e08a71b779642240d55",
+      "publishedAt": "2026-06-13",
+      "priority": "signal",
+      "tags": [
+        "MCP",
+        "agent",
+        "coding",
+        "API"
+      ]
+    }
+  ]
+}
