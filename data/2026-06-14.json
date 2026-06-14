@@ -1,0 +1,208 @@
+{
+  "date": "2026-06-14",
+  "updatedAt": "2026-06-14T06:06:24+09:00",
+  "summary": "2026-06-14時点の直近36時間調査では、Anthropicが2026-06-12 17:21 ETに受領した米政府指令に基づきFable 5とMythos 5の提供停止を告知した件が最重要だった。公式側ではHugging Face上で、GitHubネイティブなAIコードレビュー基盤Sergeと、FastAPI+Svelteで再設計されたMTEBリーダーボードが公開され、保守運用と評価基盤の実装論が前進した。国内コミュニティではQiitaで、Smithyを使ってBedrock AgentCore GatewayからBedrock Knowledge BaseのRetrieve APIを直接MCPツール化する手順と、Claude Code+OpenSCADでコードから3Dプリント住宅模型を起こすCADワークフローが共有された。OpenAI NewsとGoogle DeepMind Blogは調査窓内で採択できる新規技術記事がなく、X、Zenn、Reddit日本語圏・海外は重複、宣伝色、根拠不足、またはアクセス制約により採択なしとした。",
+  "highlights": [
+    "Anthropicは2026-06-12公開の声明で、Fable 5とMythos 5の全提供停止を告知し、根拠は狭いjailbreak報告であり他の公開モデルでも近い能力はあると反論した。",
+    "Hugging Faceでは、PRレビューをGitHubフローへ寄せるSergeと、比較・透明性・API利用を強化した新MTEBリーダーボードが直近公開され、開発者向け基盤整備が目立った。",
+    "Qiitaでは、SmithyでAWS APIから最小MCP面を切り出す実践と、Claude CodeをOpenSCAD編集に使うコード駆動CADの試作が共有され、日本語圏は手順再現性の高い実装記事が中心だった."
+  ],
+  "metrics": {
+    "scanned": 31,
+    "captured": 5,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "AWS Docs",
+      "priority": "high"
+    },
+    {
+      "name": "Smithy",
+      "priority": "high"
+    },
+    {
+      "name": "OpenSCAD Docs",
+      "priority": "high"
+    },
+    {
+      "name": "GitHub",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "summary": "Anthropicが2026-06-12に公開した声明。米政府の輸出管理指令によりFable 5とMythos 5を全顧客向けに停止したと説明しつつ、根拠になったとみられるjailbreakは狭い条件の報告で、公開済み他社モデルでも同等の挙動は得られると主張している。6月9日のFable 5 / Mythos 5発表記事で示していた防御多層化方針と、30日データ保持を含む監視前提の運用が、そのまま停止判断の論点になったことまで追えるため、モデル提供、セーフガード、運用ポリシーが一体で動く事例として重要度が高い。",
+      "points": [
+        "投稿日と恒久URLを確認できる一次情報では、声明は2026-06-12公開で、指令受領は同日17:21 ET、停止対象はFable 5とMythos 5のみで他モデルは継続としている。",
+        "技術的新規性は、商用公開済み最先端モデルの停止理由として、普遍的な脱獄ではなく狭いjailbreak報告、監視前提の防御多層化、30日保持ポリシーまで明示している点にある。",
+        "再現可能性は限定的だが、6月9日のFable 5 / Mythos 5公開記事と照合すると、分類器、段階的アクセス、監視、誤検知許容という安全設計の前提を追跡できる。"
+      ],
+      "source": "Anthropic News",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "publishedAt": "2026-06-12",
+      "priority": "critical",
+      "tags": [
+        "model-release",
+        "agent",
+        "coding",
+        "API"
+      ]
+    },
+    {
+      "title": "Introducing Serge: GitHub-Native AI Code Review",
+      "summary": "Hugging Face上の2026-06-12公開記事。SergeはPRコメントから `@askserge please review` で起動し、GitHub Action、GitHub App、ステージングWeb Appの3形態で動くAIコードレビュー基盤として設計されている。`.ai/review-rules.md` をデフォルトブランチから読む、`.ai/context-script` とread-onlyツールで文脈だけ増やす、OpenAI互換APIならOpenAIでもHugging Face RouterでもローカルvLLM/TGIでも差し替えられる、といった実運用向けの境界設計が具体的だった。",
+      "points": [
+        "投稿日と恒久URLは記事ページで確認でき、GitHubネイティブ運用、公開リポジトリ、ドキュメントURLまで揃っているため追試入口が明確だった。",
+        "技術的新規性は、AIレビューを別UIに逃がさずGitHub既存レビュー体験へ埋め込み、レビュー方針を `.ai/review-rules.md` へ置き、PR本文を未信頼入力として扱う運用境界を明文化した点にある。",
+        "再現可能性は高く、記事の手順どおりに `LLM_API_KEY` を設定し、ワークフローを追加し、PR上で `@askserge please review` とコメントすれば最小構成を試せる。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/huggingface/serge",
+      "publishedAt": "2026-06-12",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "open-source",
+        "API"
+      ]
+    },
+    {
+      "title": "MTEB Leaderboard: From a slow demo to feature-rich leaderboard",
+      "summary": "Hugging Face上の2026-06-12公開記事。埋め込み評価のMTEBリーダーボードをFastAPI+Svelteで作り直し、速度、フィルタ、比較、透明性、API利用を強化したという報告だった。単なる見た目刷新ではなく、タスク詳細の可視化、学習済みデータとの関係表示、サイズ帯ごとの比較、CSV/API取得まで含めており、評価表そのものを『掘れる道具』へ寄せている点が実務的だった。",
+      "points": [
+        "投稿日と恒久URLは記事ページで確認でき、記事内からSpace本体、タスク画面、モデル比較、API docsへ到達できる。",
+        "技術的新規性は、単一スコア表から、タスク別透明性、比較UI、性能対サイズ・実行時間の可視化を持つ評価フロントエンドへ進化させた点にある。",
+        "再現可能性は高く、公開SpaceとAPI docsからCSV取得やAPI呼び出しが可能で、記事中でFastAPI+Svelte採用と公開エンドポイントが明示されている。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/Samoed/mteb-v3-leaderboard",
+      "publishedAt": "2026-06-12",
+      "priority": "signal",
+      "tags": [
+        "benchmark",
+        "open-source",
+        "research",
+        "API"
+      ]
+    },
+    {
+      "title": "Smithyがすごい！AgentCoreゲートウェイとBedrockナレッジベースが直接つながる！！（LambdaやAgentCoreランタイムいらない）",
+      "summary": "Qiitaの2026-06-13投稿。AWSのSmithyモデルと `aws/api-models-aws` にある `bedrock-agent-runtime` のJSON ASTを使い、Bedrock AgentCore GatewayからKnowledge Baseの `Retrieve` APIだけを最小のMCPツールとして公開する手順を示している。著者はClaudeにSmithy定義の切り出しを任せつつ、Knowledge Base作成、 `aws bedrock-agent-runtime retrieve` での動作確認、Gateway側のIAM認証まで具体化しており、AWS APIから必要断面だけをMCP面に露出する設計として参考になる。",
+      "points": [
+        "投稿日と恒久URLはQiita記事で確認でき、Smithy公式サイトと `aws/api-models-aws` リポジトリを一次情報として参照している。",
+        "技術的新規性は、AgentCore Gatewayで巨大なAWS API全体ではなく、Smithyから `Retrieve` 操作だけを抽出し、Knowledge Base検索専用の最小MCPインターフェースへ落とし込んでいる点にある。",
+        "再現可能性は高く、記事にあるとおり Knowledge Base作成、 `aws bedrock-agent-runtime retrieve` による確認、 `bedrock-agent-runtime-2023-07-26.json` を元にしたSmithy生成、Gateway設定の順で追試できる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/moritalous/items/a3ac103480966ccec75d",
+      "publishedAt": "2026-06-13",
+      "priority": "signal",
+      "tags": [
+        "MCP",
+        "API",
+        "agent",
+        "coding"
+      ]
+    },
+    {
+      "title": "Claude Code × OpenSCAD × 3Dプリンターで、憧れの3Dプリンター住宅を施工してみた",
+      "summary": "Qiitaの2026-06-13投稿。Claude CodeでOpenSCADコードを編集し、STL出力からBambu Studioのスライス、Bambu Lab P1Sでの出力、針金による配筋、軽量粘土の充填までを1/30スケール住宅模型として通した記録だった。『自然言語で形状変更して即コード差分へ落とす』というコード駆動CADの流れが具体的で、生成AI CADの実務前段にある試作ワークフローとして観測価値がある。",
+      "points": [
+        "投稿日と恒久URLはQiita記事で確認でき、OpenSCADを中心にしたツールチェーンが `Claude Code -> OpenSCAD -> STL -> Bambu Studio -> 3Dプリンタ` の順で明示されている。",
+        "技術的新規性は、一般的なGUI CADではなく、OpenSCADコードをClaude Codeに自然言語で編集させることで、寸法変更や穴位置調整をそのままコード更新に落とし込んでいる点にある。",
+        "再現可能性は中程度で、記事にある材料・工程・ツール名で小型試作は追えるが、最終物の品質はプリンタ機種、造形条件、充填材、配筋方法に依存する。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/issey_dotlog/items/19b84d3a38c1c9aa9567",
+      "publishedAt": "2026-06-13",
+      "priority": "signal",
+      "tags": [
+        "CAD",
+        "coding",
+        "agent",
+        "software design"
+      ]
+    }
+  ]
+}
