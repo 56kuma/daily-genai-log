@@ -1,0 +1,178 @@
+{
+  "date": "2026-06-15",
+  "updatedAt": "2026-06-15T06:06:34+09:00",
+  "summary": "2026-06-15時点の直近36時間調査では、Databricksが2026-06-13に公開したOmnigentが最重要だった。Claude Code、Codex、Pi、自作エージェントを上位レイヤーで束ねる『meta-harness』をApache 2.0で公開し、共通API、ポリシー、共有セッション、クラウド実行まで実装している。国内ではQiitaで、Amazon Bedrock AgentCoreハーネスにSmithyの最小スキーマを差し込み、Knowledge BaseのRetrieveだけをMCP面として露出する手順が共有された。海外コミュニティではReddit GlobalでZyphraのZONOS2公開が早く伝播し、公式のZyphra記事、Hugging Faceモデルカード、GitHub実装で裏取りできた。OpenAI Newsの最新は2026-06-12のOpenAI Academy記事で技術新規性が弱く、Anthropic Newsは2026-06-12のPublic Record/提携告知中心、Google DeepMind Blogは2026-06-11の研究助成告知、Hugging Face Blogは2026-06-12のSerge/MTEB以降に窓内採択できる生成AI技術記事がなく、XとZennは取得制約または鮮度不足、Reddit日本語圏は該当なしとして不採択にした。",
+  "highlights": [
+    "Databricksは2026-06-13にOmnigentを公開し、既存エージェントの上に共通セッション、ポリシー、共有UI、クラウドサンドボックスを載せるmeta-harnessという新しい実装レイヤーを打ち出した。",
+    "Qiitaでは、Bedrock AgentCore GatewayにSmithyのインラインJSON ASTを与え、Knowledge BaseのRetrieve操作だけをRAGツールとして公開する最小MCP構成が具体手順つきで共有された。",
+    "Reddit Globalで観測したZONOS2は、Zyphra公式の2026-06-12記事とHugging Face/GitHubの公開物で裏付けが取れ、オープンウェイトTTSでもMoE化と高忠実度音声複製が前面に出てきた。"
+  ],
+  "metrics": {
+    "scanned": 26,
+    "captured": 3,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Databricks Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Zyphra",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face",
+      "priority": "high"
+    },
+    {
+      "name": "GitHub",
+      "priority": "high"
+    },
+    {
+      "name": "Smithy",
+      "priority": "high"
+    },
+    {
+      "name": "AWS API Models",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Introducing Omnigent: A Meta-Harness to Combine, Control and Share Your Agents",
+      "summary": "Databricksが2026-06-13に公開した公式記事。OmnigentはClaude Code、Codex、Pi、自作エージェントを『ハーネスの上の共通レイヤー』で束ね、合成、制御、協働を担うmeta-harnessとしてApache 2.0で公開された。新規性は、単一モデルや単一エージェントの改善ではなく、複数ハーネスを横断する共通API、状態依存ポリシー、共有セッション、クラウドサンドボックスを一体で実装している点にある。GitHub READMEで `omnigent` のインストール、Node.js 22 LTS以上と `tmux` 前提、`omnigent claude` / `omnigent codex` 起動、ローカルWeb UI、複数エージェント連携まで確認でき、再現可能性は高い。",
+      "points": [
+        "投稿日と恒久URLはDatabricks Blogで2026-06-13と確認でき、同記事からApache 2.0のGitHubリポジトリへ遷移できる。",
+        "技術的新規性は、Claude CodeやCodexを置き換えるのではなく、その上に共通セッション・ポリシー・共有UI・クラウド実行を載せるmeta-harnessをOSSとして定義した点にある。",
+        "再現可能性は高く、GitHub READMEの `uv tool install omnigent`、Node.js 22 LTS、`tmux`、`omnigent claude` / `omnigent codex`、`http://localhost:6767` までの手順が公開されている。"
+      ],
+      "source": "Databricks Blog",
+      "url": "https://www.databricks.com/blog/introducing-omnigent-meta-harness-combine-control-and-share-your-agents",
+      "publishedAt": "2026-06-13",
+      "priority": "critical",
+      "tags": [
+        "agent",
+        "coding",
+        "software design",
+        "open-source"
+      ]
+    },
+    {
+      "title": "Amazon Bedrock AgentCore ハーネスでRAG検索機能付きAIエージェントを爆速で構築する",
+      "summary": "Qiitaの2026-06-13投稿。Amazon Bedrock AgentCoreハーネスとGatewayを使い、SmithyのインラインJSON ASTでBedrock Knowledge Baseの `Retrieve` 操作だけを切り出し、RAG検索ツールとして接続する手順が具体化されている。新規性は、巨大なAWS API全体ではなく `bedrock-agent-runtime` から必要な1操作だけを最小MCP面として露出する設計にある。Smithy 2.0仕様と `aws/api-models-aws` の一次情報で、AWS APIモデルがSmithy JSON ASTとして公開されていること、そこから独自ツール面を作る発想が裏付けられる。記事中のKnowledge Base作成、Gateway設定、インラインスキーマ貼り付け、ハーネス接続の順で追試できるため再現可能性は高い。",
+      "points": [
+        "投稿日と恒久URLはQiita記事で2026-06-13と確認でき、Knowledge Base作成、Gateway設定、Smithyスキーマ投入、ハーネス接続まで順番に記載されている。",
+        "技術的新規性は、`Retrieve` だけを対象にした最小スキーマで、Knowledge Base検索専用のMCP的ツール面を短時間で構成している点にある。",
+        "再現可能性は高く、Smithy 2.0仕様と `aws/api-models-aws` のJSON AST公開方針を一次情報で確認した上で、記事のインラインスキーマをそのまま試せる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kamo-shika/items/edad802613b45b3d18f1",
+      "publishedAt": "2026-06-13",
+      "priority": "signal",
+      "tags": [
+        "MCP",
+        "API",
+        "agent",
+        "coding"
+      ]
+    },
+    {
+      "title": "ZONOS2: real-time TTS with 8B params, 900M active, and high-fidelity voice cloning",
+      "summary": "Reddit Globalの2026-06-15観測投稿。投稿自体はコミュニティ要約だが、Zyphra公式の2026-06-12記事、Hugging Faceモデルカード、GitHub実装へのリンクがまとまっており、主張の裏取りがしやすかった。技術的新規性は、オープンソースTTSで初のMoE構成を打ち出し、8B総パラメータ・900M active、UTF-8 bytes入力、DAC 44.1kHz音声、6M時間超学習、ゼロショット音声複製、`stable` / `expressive` モードまで一式を公開している点にある。再現可能性も高く、Hugging FaceモデルカードとGitHubで `uv sync`、`python -m minisgl` によるローカルTTSサーバー起動、`curl` での音声生成まで確認できる。",
+      "points": [
+        "投稿日はReddit Global投稿で4時間前表示を確認でき、恒久URLはコメント付き投稿URLで固定されている。主要な技術主張はZyphra公式記事の2026-06-12付け公開情報で裏付けた。",
+        "技術的新規性は、MoEをリアルタイムTTSに持ち込み、音質・速度・音声複製忠実度のトレードオフを縮めようとしている点と、UTF-8 bytes入力で多言語・コードスイッチ対応を前面に出している点にある。",
+        "再現可能性は高く、Hugging FaceモデルカードにLinux + NVIDIA GPU前提、`uv sync`、`uv run python -m minisgl --model-path Zyphra/ZONOS2`、`curl` での生成手順が明記されている。"
+      ],
+      "source": "Reddit Global",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1u4lk5c/zonos2_realtime_tts_with_8b_params_900m_active/",
+      "publishedAt": "2026-06-15",
+      "priority": "signal",
+      "tags": [
+        "model-release",
+        "open-source",
+        "research",
+        "benchmark"
+      ]
+    }
+  ]
+}
