@@ -1,0 +1,169 @@
+{
+  "date": "2026-06-16",
+  "updatedAt": "2026-06-16T06:09:01+09:00",
+  "summary": "2026-06-16時点の直近36時間調査では、公式媒体の窓内採択は少なく、OpenAI Newsの2026-06-14『Introducing the OpenAI Partner Network』はパートナー制度中心で技術的新規性が弱いため除外した。代わりに、Qiitaで公開された実務寄り3件を採択した。1件目はAWS FinOps Agentのパブリックプレビュー検証で、AWS公式ブログとユーザーガイドに照らして、us-east-1での初期セットアップとコスト異常調査フローを追える。2件目はClaude Managed Agentsの自社サンドボックスとMCPトンネルの整理で、Anthropic公式ブログとManaged Agents docsを踏まえ、オーケストレーションはAnthropic側に残しつつ、ツール実行とネットワーク境界を自社側へ寄せる設計判断を具体化している。3件目はClaude Codeを複数リポジトリ・複数文脈で安全運用するガードレールで、Hooks・Permissions・Subagentsの公式文書を根拠に、破壊的コマンド遮断や文脈分離を機械的に実装する方法をまとめている。Anthropic News、Google DeepMind Blog、Hugging Face Blogは窓内に採択できる新規技術記事がなく、Xは公開面からの安定取得が難しく、Zenn・Reddit日本語圏・Reddit Globalも直近は考察寄り、自己宣伝、または根拠不足のため除外した。",
+  "highlights": [
+    "AWS FinOps Agentのパブリックプレビュー検証が最重要だった。AWS公式ブログの2026-06-10発表どおり、Cost Explorer、Cost Anomaly Detection、Cost Optimization Hub、Compute Optimizer、CloudTrailを束ねて、自然言語問い合わせ、異常調査、Jira/Slack連携、HTML/PDF/PPTレポートまで一体で扱えることを、Qiitaの2026-06-16投稿が画面付きで追っている。",
+    "Anthropic系では、2026-06-15公開のQiita記事が、Claude Managed AgentsのSelf-hosted sandboxesとMCP tunnelsを企業境界内運用の観点から整理していた。Anthropic公式ブログとManaged Agents docsが示すとおり、agent loopはAnthropic側、tool executionは自社側という責務分離が要点で、private MCP接続も単一の外向き接続で扱える。",
+    "Claude Code運用では、複数repo・複数文脈の混線を防ぐガードレール整理が有用だった。Claude Code docsのHooks、Permissions、Subagentsを根拠に、PreToolUseで危険コマンドを拒否し、deny優先の権限ルールと独立コンテキストのsubagentを組み合わせる実装方針が再現可能な形でまとまっている。"
+  ],
+  "metrics": {
+    "scanned": 23,
+    "captured": 3,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "AWS Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Claude Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Claude API Docs",
+      "priority": "high"
+    },
+    {
+      "name": "Claude Code Docs",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "AWS FinOps Agent (プレビュー)使ってみた",
+      "summary": "Qiitaの2026-06-16投稿。2026-06-10付のAWS公式ブログとAWS FinOps Agent user guideを踏まえ、パブリックプレビューとして公開されたFinOps Agentを実際に立ち上げ、Web UIから質問・異常調査フローまで確認している。技術的新規性は、Amazon Bedrock上のエージェントがCost Explorer、Cost Anomaly Detection、Cost Optimization Hub、Compute Optimizer、CloudTrailを束ね、Jira/Slack連携、HTML/PDF/PPTレポート、context fileとmemoryまで一体で扱える点にある。再現可能性は高く、us-east-1でのAgent作成、IAMロール設定、Webアプリ起動、自然言語問い合わせまで画面付きで追え、主要主張はAWS公式ブログとAWS docsで裏付けた。",
+      "points": [
+        "一次情報ではAWS公式ブログが2026-06-10にパブリックプレビュー開始を告知し、自然言語によるコスト問い合わせ、異常調査、Jira/Slack通知、定期レポート、context fileとmemoryを含むことを明示している。",
+        "Qiita記事はAgent作成、IAMロール準備、Web UI起動までをスクリーンショット付きで追っており、コンソール導線と最低限の初期設定をそのまま再現しやすい。",
+        "重大な性能比較ではなく、現時点で使える機能面の確認に留まっているため、根拠のない効率主張を避けつつ、プレビューの実装面だけを採録できる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/sagochiko/items/ec5691e150e084d5d443",
+      "publishedAt": "2026-06-16",
+      "priority": "critical",
+      "tags": [
+        "agent",
+        "API",
+        "coding"
+      ]
+    },
+    {
+      "title": "Claude Managed Agents の自社サンドボックスとMCPトンネル：エンタープライズ境界内でエージェントを動かす設計判断",
+      "summary": "Qiitaの2026-06-15投稿。Anthropicが2026-05-19に発表したClaude Managed Agentsのself-hosted sandboxesとMCP tunnelsを、エンタープライズ境界内でどう使い分けるかという観点で整理している。技術的新規性は、agent loopはAnthropic側に残しつつ、tool executionだけを自社インフラまたは管理済みサンドボックスへ移し、private MCP serverにも外向き単一接続で到達できる構成を実用レベルで比較している点にある。再現可能性は高く、Anthropic公式ブログとManaged Agents docsがself-hosted sandboxes public beta、MCP tunnels research preview、worker実装、provider選択、データ境界を明記しており、記事の設計判断を一次情報で追認できる。",
+      "points": [
+        "Anthropic公式ブログは2026-05-19付で、self-hosted sandboxesをpublic beta、MCP tunnelsをresearch previewとして告知し、企業境界内でsandbox実行とprivate MCP接続を扱えると説明している。",
+        "Managed Agents docsは、オーケストレーションはAnthropic側、ツール実行は自社側に残ること、tool inputs/outputsはcontrol planeへ戻ること、MCP tunnelsはself-hosted sandboxesと独立に組み合わせられることを明記している。",
+        "Qiita記事はCloudflare、Daytona、Modal、Vercelなどの選択軸を、長時間ステートフルか大量並列か、社内接続が必要かという実務判断に落としており、製品宣伝ではなく構成比較のメモとして有用だった。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/YushiYamamoto/items/398b6c20b6b9405607cd",
+      "publishedAt": "2026-06-15",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "API",
+        "software design"
+      ]
+    },
+    {
+      "title": "Claude Code を複数リポジトリ・複数文脈で安全に回す実務ガードレール",
+      "summary": "Qiitaの2026-06-15投稿。Claude Codeを複数repo・複数文脈で並行利用するときに、文脈混線、誤コミット先、破壊的コマンド実行をどう抑えるかを7項目のガードレールとして整理している。技術的新規性は、Claude Code公式のHooks、Permissions、Subagentsを組み合わせ、PreToolUseで危険コマンドを拒否し、deny優先の権限ルールと独立コンテキストのsubagentで事故半径を縮めるという運用設計を具体化している点にある。再現可能性も高く、公式docsがPreToolUseのallow/deny/ask/defer、deny優先の権限評価、subagentの独立コンテキストを明記しているため、記事中のサンプル方針を自環境へ移しやすい。",
+      "points": [
+        "Claude Code Hooks docsはPreToolUseでBashやEditなどの呼び出し前にallow、deny、ask、deferを返せること、危険な `rm -rf` をスクリプトで拒否できることを明示している。",
+        "Permissions docsはdenyがallowより常に優先されること、allow対象を絞ったうえで一部だけhookで止める構成が可能なことを示しており、多repo運用の最小権限化に直結する。",
+        "Subagents docsは各subagentが独立したcontext window、tool access、permissionsで動くと説明しており、探索タスクと変更タスクを分離して文脈汚染を減らす設計の根拠になる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/nogataka/items/ae7642efce4d104f3e0c",
+      "publishedAt": "2026-06-15",
+      "priority": "signal",
+      "tags": [
+        "coding",
+        "agent",
+        "software design",
+        "API"
+      ]
+    }
+  ]
+}
