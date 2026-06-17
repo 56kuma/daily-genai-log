@@ -1,0 +1,154 @@
+{
+  "date": "2026-06-17",
+  "updatedAt": "2026-06-17T06:05:58+09:00",
+  "summary": "2026-06-17実行の直近36時間調査では、公式ソースで新規性と技術的中身が十分あったのはOpenAIの2026-06-16研究記事1件だった。OpenAIは、実運用に近い会話文脈を候補モデルへ差し替えてリリース前の望ましくない挙動率を見積もるDeployment Simulationを公開し、1.3百万件の匿名化会話と12万件の社内コーディングエージェント軌跡で、従来の静的な難問評価より配備後リスク予測を改善できると説明した。コミュニティ枠ではQiitaから、Amazon Bedrock AgentCore Harness上でスキル発火・スキル実行・最終回答を分離して評価するSkillOps実践と、RTX 4070 12GBでQwen 35B-A3Bをllama.cppの`--cpu-moe`運用に切り替えて約34.6 tok/sまで引き上げた再現ログを採用した。前者はAWS公式ドキュメントでCloudWatch上のobservability収集経路を追認でき、後者はベンダーベンチマークではなく筆者の単一GPU実測だが、コマンド、フラグ、比較表が明示されていて再現しやすい。Anthropic News、Google DeepMind Blog、Hugging Face Blogは直近窓に新しい技術発表がなく、Xは公開ページの抽出が不安定、ZennとReddit日本語圏・海外は議論中心か自己宣伝色が強く、一次情報で十分に裏付けられる新規投稿を採用しなかった。",
+  "highlights": [
+    "OpenAIは2026-06-16にDeployment Simulationを公開し、匿名化した過去会話を候補モデルで再生成することで、配備前に実運用近傍のリスク頻度を推定する評価系を詳説した。",
+    "QiitaのSkillOps記事は、Bedrock AgentCore Harnessでスキル起動条件、ツール実行列、最終回答品質を分けて評価する実装パターンを提示し、AgentCore observabilityの公式ログ経路で追える形に落としている。",
+    "QiitaのQwen 35B検証は、疎なMoEではエキスパートをGPUへ多く載せるほど速いとは限らず、`--cpu-moe`でVRAMをattentionとKV cacheに優先配分したほうが速くなるという実務上の知見を残した。"
+  ],
+  "metrics": {
+    "scanned": 20,
+    "captured": 3,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "OpenAIがDeployment Simulationでリリース前の挙動を実運用文脈から予測",
+      "summary": "OpenAIの2026-06-16付研究記事。技術的新規性は、従来の静的な難問プロンプト中心の安全評価ではなく、匿名化した実運用会話の接頭文脈を候補モデルで差し替えて、配備前に望ましくない挙動の発生率を推定する点にある。さらに標準チャットだけでなく、ツール呼び出しを含むコーディングエージェント軌跡にも拡張し、実システムに接続せず別LLMでツール応答を模擬する方式まで説明している。再現可能性は中程度以上で、記事本文に評価設計、対象カテゴリ数、データ規模、誤差の見方、エージェント軌跡の扱いが具体的に記載され、論文リンクも提示されている。ただし評価基盤そのものの実装コードは公開されていないため、外部の完全再現には独自の収集・監査パイプライン構築が要る。",
+      "points": [
+        "Deployment Simulationは、既存配備モデルの過去会話から元の応答だけを除去し、新しい候補モデルで再生成することで、配備後に近い文脈分布で望ましくない挙動率を見積もる手法として説明されている。",
+        "OpenAIはGPT-5系Thinking配備をまたいで約130万件の匿名化会話を分析し、GPT-5.4 Thinkingでは20種類の望ましくない挙動について事前予測を登録したうえで、従来のchallenging prompts基準より配備後頻度の方向と率を良く当てたとしている。",
+        "エージェント文脈では、GPT-5.4由来の社内コーディングエージェント軌跡12万件を用いてGPT-5.5の内部配備を模擬し、ライブな外部システムに触らせず別LLMでツール応答を再現することで、高忠実度のリスク評価を狙っている。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/deployment-simulation/",
+      "publishedAt": "2026-06-16",
+      "priority": "critical",
+      "tags": [
+        "research",
+        "agent",
+        "coding",
+        "API"
+      ]
+    },
+    {
+      "title": "Bedrock AgentCore上のスキル評価をSkillOpsとして分解する実践",
+      "summary": "Qiitaの2026-06-15投稿。Amazon Bedrock AgentCore Harness上で、スキルを含むエージェントを『スキルが呼ばれるべきか』『正しいスキルやツールをたどったか』『最終回答が正しいか』に分解して評価するSkillOps案を実装している。技術的新規性は、単なる最終回答スコアではなく、スキル読込と実行過程を独立した観測対象として扱い、失敗箇所をプロンプト、スキル定義、ツール選択、エージェント全体設計のどこに切り分けるかを明示した点にある。再現可能性は高く、記事内でBedrock AgentCore Harness、Tavilyのremote MCP server、2つのskills、評価用期待JSON、CloudWatch observabilityの見方、参照GitHub repoが示されている。主要な基盤主張はAWSのAgentCore observability公式ドキュメントで裏付けられる。",
+      "points": [
+        "記事の検証系は、Amazon Bedrock AgentCore Harnessに1つのremote MCP serverとしてTavilyをつなぎ、`allergic_food_search` と `food_research` の2スキルを組み合わせて、旅行先の飲食店候補を探させる構成を取っている。",
+        "評価は『スキル発火』『スキル実行』『エージェント最終結果』の3層で行い、期待するスキル名やツール呼び出し列をJSONで定義して、実行ログとの差分から改善点を特定する流れにしている。",
+        "AWS公式ドキュメントは、AgentCore runtimeのobservabilityデータがCloudWatchのgenerative AI observability画面と `/aws/bedrock-agentcore/runtimes/<agent_id>-<endpoint_name>/otel-rt-logs` などへ出力されることを明記しており、記事で使う観測経路を一次情報で追認できる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/licux/items/9c640601a1dde7c18d9f",
+      "publishedAt": "2026-06-15",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "API",
+        "software design"
+      ]
+    },
+    {
+      "title": "RTX 4070 12GBでQwen 35B-A3Bを`--cpu-moe`運用し約34.6 tok/sまで引き上げた検証",
+      "summary": "Qiitaの2026-06-15投稿。Qwen3.5-35B-A3Bのような疎なMoEモデルでは、エキスパートをGPUへ多く載せるほど速いという直感が外れ、llama.cppで`--cpu-moe`を使ってエキスパートをCPU側へ退避したほうが、12GB VRAMをattentionとKV cacheへ優先配分できて高速になるという実測を示している。技術的新規性は、MoEの活性化特性とメモリ帯域律速を踏まえ、低VRAM環境での最適配置を具体的なスイープ結果として残している点にある。再現可能性は高く、llama.cppのビルド手順、GGUF取得先、`-ngl`や`-ncmoe`の指定、比較表、実用サーバ起動コマンドが明示されている。ただし34.6 tok/sという数値自体は筆者の単一GPU環境での実測であり、ベンダー公認ベンチマークではない点は区別が必要だ。",
+      "points": [
+        "同じRTX 4070 12GBで、Ollamaの自動オフロードではQwen3.5-35B-A3Bが約12.2 tok/s、58% CPU / 42% GPUの分割だったのに対し、llama.cppへ切り替えて`--cpu-moe`相当の設定を使うと約34.6 tok/sまで伸びたと報告している。",
+        "著者は`-ngl 99`を固定して`-ncmoe`を48から24まで振り、エキスパートをCPUへ逃がす量を減らすほど速度が単調に落ちることを示し、『半分だけGPUへ置く』より『全部CPUへ置く』ほうが速いという反直感的な結果を残している。",
+        "説明として、attentionとKV cacheは帯域律速なのでVRAMの恩恵が大きい一方、MoEエキスパートは疎にしか活性化しないため、VRAMを中途半端なエキスパート配置で消費するより、attention側に使い切らせたほうが全体スループットが上がると整理している。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kenimo49/items/dff3c8a2a0ee563ca16f",
+      "publishedAt": "2026-06-15",
+      "priority": "signal",
+      "tags": [
+        "open-source",
+        "benchmark",
+        "coding",
+        "model-release"
+      ]
+    }
+  ]
+}
