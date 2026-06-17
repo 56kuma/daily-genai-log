@@ -37,7 +37,8 @@ function render() {
   const edition = state.edition;
   $("#edition-date").textContent = formatDate(edition.date);
   $("#edition-summary").textContent = edition.summary;
-  renderOverviewHighlights(edition.highlights || []);
+  renderOverviewStructure(edition);
+  renderOverviewHighlights(edition.highlights || [], Array.isArray(edition.overview) && edition.overview.length > 0);
   $("#metric-scanned").textContent = padMetric(edition.metrics.scanned);
   $("#metric-captured").textContent = padMetric(edition.metrics.captured);
   $("#metric-critical").textContent = padMetric(edition.metrics.critical);
@@ -49,6 +50,55 @@ function render() {
   renderArticles(edition.articles);
   renderTags(edition.tags);
   renderSources(edition.sources);
+}
+
+function renderOverviewStructure(edition) {
+  const container = $("#overview-structure");
+  const sections = normalizeOverview(edition);
+  container.innerHTML = "";
+
+  if (!sections.length) return;
+
+  sections.forEach((section, sectionIndex) => {
+    const block = document.createElement("section");
+    block.className = "overview-block";
+
+    const major = document.createElement("h3");
+    major.className = "overview-major";
+    major.textContent = `${String(sectionIndex + 1).padStart(2, "0")} / ${section.title}`;
+    block.appendChild(major);
+
+    const mids = document.createElement("div");
+    mids.className = "overview-mids";
+
+    (section.items || []).forEach((item, itemIndex) => {
+      const mid = document.createElement("article");
+      mid.className = "overview-mid";
+
+      const title = document.createElement("h4");
+      title.className = "overview-mid-title";
+      title.textContent = `${sectionIndex + 1}.${itemIndex + 1} ${item.title}`;
+      mid.appendChild(title);
+
+      const pointList = document.createElement("ul");
+      pointList.className = "overview-minor-list";
+
+      (item.points || []).forEach((point) => {
+        const li = document.createElement("li");
+        li.textContent = point;
+        pointList.appendChild(li);
+      });
+
+      if (pointList.childElementCount) {
+        mid.appendChild(pointList);
+      }
+
+      mids.appendChild(mid);
+    });
+
+    block.appendChild(mids);
+    container.appendChild(block);
+  });
 }
 
 function renderFilters(articles) {
@@ -106,14 +156,47 @@ function renderArticles(articles) {
   });
 }
 
-function renderOverviewHighlights(highlights) {
+function renderOverviewHighlights(highlights, hasStructuredOverview = false) {
   const container = $("#overview-highlights");
   container.innerHTML = "";
+  if (hasStructuredOverview) return;
   highlights.slice(0, 3).forEach((highlight) => {
     const item = document.createElement("li");
     item.textContent = highlight;
     container.appendChild(item);
   });
+}
+
+function normalizeOverview(edition) {
+  if (Array.isArray(edition.overview) && edition.overview.length) {
+    return edition.overview
+      .map((section) => ({
+        title: section?.title ? String(section.title) : "",
+        items: Array.isArray(section?.items)
+          ? section.items.map((item) => ({
+              title: item?.title ? String(item.title) : "",
+              points: Array.isArray(item?.points)
+                ? item.points.map((point) => String(point)).filter(Boolean)
+                : [],
+            })).filter((item) => item.title || item.points.length)
+          : [],
+      }))
+      .filter((section) => section.title || section.items.length);
+  }
+
+  const fallbackPoints = Array.isArray(edition.highlights)
+    ? edition.highlights.map((point) => String(point)).filter(Boolean)
+    : [];
+
+  if (!fallbackPoints.length) return [];
+
+  return [{
+    title: "Overview",
+    items: [{
+      title: "Highlights",
+      points: fallbackPoints.slice(0, 3),
+    }],
+  }];
 }
 
 function normalizeArticlePoints(article) {

@@ -2,6 +2,20 @@
   "date": "YYYY-MM-DD",
   "updatedAt": "YYYY-MM-DDTHH:mm:ss+09:00",
   "summary": "その日の生成AI動向を2〜3文で要約する。",
+  "overview": [
+    {
+      "title": "大項目",
+      "items": [
+        {
+          "title": "中項目",
+          "points": [
+            "小項目1",
+            "小項目2"
+          ]
+        }
+      ]
+    }
+  ],
   "highlights": [
     "最重要な変化や発表。",
     "エンジニアへの具体的な影響。",

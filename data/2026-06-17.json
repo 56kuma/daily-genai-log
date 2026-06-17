@@ -1,7 +1,73 @@
 {
   "date": "2026-06-17",
   "updatedAt": "2026-06-17T06:05:58+09:00",
-  "summary": "2026-06-17実行の直近36時間調査では、公式ソースで新規性と技術的中身が十分あったのはOpenAIの2026-06-16研究記事1件だった。OpenAIは、実運用に近い会話文脈を候補モデルへ差し替えてリリース前の望ましくない挙動率を見積もるDeployment Simulationを公開し、1.3百万件の匿名化会話と12万件の社内コーディングエージェント軌跡で、従来の静的な難問評価より配備後リスク予測を改善できると説明した。コミュニティ枠ではQiitaから、Amazon Bedrock AgentCore Harness上でスキル発火・スキル実行・最終回答を分離して評価するSkillOps実践と、RTX 4070 12GBでQwen 35B-A3Bをllama.cppの`--cpu-moe`運用に切り替えて約34.6 tok/sまで引き上げた再現ログを採用した。前者はAWS公式ドキュメントでCloudWatch上のobservability収集経路を追認でき、後者はベンダーベンチマークではなく筆者の単一GPU実測だが、コマンド、フラグ、比較表が明示されていて再現しやすい。Anthropic News、Google DeepMind Blog、Hugging Face Blogは直近窓に新しい技術発表がなく、Xは公開ページの抽出が不安定、ZennとReddit日本語圏・海外は議論中心か自己宣伝色が強く、一次情報で十分に裏付けられる新規投稿を採用しなかった。",
+  "summary": "直近36時間では、OpenAIの新しい評価研究1件と、Qiitaの実装・検証メモ2件を採用した。概要は下の大項目・中項目・小項目で読める形に整理している。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用結果",
+          "points": [
+            "採用は3件で、内訳はOpenAI公式1件、Qiita 2件。",
+            "criticalはOpenAIのDeployment Simulationのみで、残り2件は再現性のある実務シグナルとしてsignal扱い。"
+          ]
+        },
+        {
+          "title": "除外結果",
+          "points": [
+            "Anthropic News、Google DeepMind Blog、Hugging Face Blogは直近36時間に採用水準の新規技術発表なし。",
+            "X、Zenn、Reddit日本語圏・海外は議論中心、自己宣伝、または一次情報裏付け不足で除外。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "重要トピック",
+      "items": [
+        {
+          "title": "OpenAI Deployment Simulation",
+          "points": [
+            "匿名化した過去会話の接頭文脈を候補モデルへ差し替え、配備前に望ましくない挙動率を予測する評価系。",
+            "標準チャットだけでなく、12万件の社内コーディングエージェント軌跡にも拡張している。"
+          ]
+        },
+        {
+          "title": "Qiita SkillOps on Bedrock AgentCore",
+          "points": [
+            "スキル発火、スキル実行、最終回答を分離評価し、失敗箇所を設計レベルで切り分ける実践。",
+            "AWS公式observability導線でCloudWatchログまで追えるため、運用再現性が高い。"
+          ]
+        },
+        {
+          "title": "Qiita Qwen 35B `--cpu-moe` 検証",
+          "points": [
+            "RTX 4070 12GBでエキスパートをCPUへ逃がし、VRAMをattentionとKV cacheへ寄せる構成が高速化した実測。",
+            "コマンド、フラグ、比較表が明示されており、単一GPU環境で追試しやすい。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "実務判断",
+      "items": [
+        {
+          "title": "技術的新規性",
+          "points": [
+            "OpenAIは評価手法そのものの更新、Qiita 2件は評価運用と低VRAM最適化という実装知見が中心。",
+            "性能数値は一般化せず、再現条件が明示された範囲で扱う方針を維持。"
+          ]
+        },
+        {
+          "title": "再現可能性",
+          "points": [
+            "OpenAIは設計詳細と論文導線があるがコード非公開のため中程度。",
+            "Qiita 2件は手順とパラメータが具体的で、一次情報との照合も可能なため高め。"
+          ]
+        }
+      ]
+    }
+  ],
   "highlights": [
     "OpenAIは2026-06-16にDeployment Simulationを公開し、匿名化した過去会話を候補モデルで再生成することで、配備前に実運用近傍のリスク頻度を推定する評価系を詳説した。",
     "QiitaのSkillOps記事は、Bedrock AgentCore Harnessでスキル起動条件、ツール実行列、最終回答品質を分けて評価する実装パターンを提示し、AgentCore observabilityの公式ログ経路で追える形に落としている。",

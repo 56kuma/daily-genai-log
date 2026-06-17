@@ -22,7 +22,7 @@ python -m http.server 8000
 - `data/template.json`: 日次 JSON のテンプレート
 - `index.html` / `styles.css` / `app.js`: 表示用の静的サイト
 
-`research.json` の `priority` は `high` / `medium` / `low`、タグの `weight` は `1` から `5` を想定しています。日次ログは `data/template.json` と同じ形で作成し、概要は `highlights`、各記事の要点は `articles[].points` に 3 項目前後で記録します。
+`research.json` の `priority` は `high` / `medium` / `low`、タグの `weight` は `1` から `5` を想定しています。日次ログは `data/template.json` と同じ形で作成し、概要は `summary` に短い導入文、`overview` に `title > items[].title > items[].points[]` の3階層、`highlights` に補助的な3項目前後を記録します。各記事の要点は `articles[].points` に 3 項目前後で記録します。
 
 ## Automation policy
 
