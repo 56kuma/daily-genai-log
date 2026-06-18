@@ -1,0 +1,240 @@
+{
+  "date": "2026-06-18",
+  "updatedAt": "2026-06-18T06:10:06+09:00",
+  "summary": "直近36時間では、OpenAIの生命科学向け研究2本が最重要で、Hugging Face上のロボティクス実装、AWS Managed Knowledge Baseの実運用メモ、Claude Codeの破壊的DBコマンド対策が続いた。AnthropicとGoogle DeepMindは新規の技術的公式投稿がなく、X・Zenn・Redditは公開取得性や根拠の弱さから採用を見送った。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用内訳",
+          "points": [
+            "採用は5件で、OpenAI公式2件、Hugging Face Blog 1件、Qiita 2件。",
+            "criticalは2件で、いずれも2026-06-17公開のOpenAI研究記事を一次情報として採用した。"
+          ]
+        },
+        {
+          "title": "非採用の理由",
+          "points": [
+            "Anthropicは2026-06-17の韓国関連発表が中心で、技術的新規性より事業・提携色が強かった。",
+            "Google DeepMindは調査窓内に新しい技術ブログを確認できず、X・Zenn・Redditは公開抽出の不安定さ、自己宣伝、一次情報不足、または議論中心のため除外した。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "主要トピック",
+      "items": [
+        {
+          "title": "研究評価と実験自動化",
+          "points": [
+            "OpenAIはLifeSciBenchで生命科学研究向けの高難度評価基盤を公開し、別記事ではGPT-5.4を自動化実験基盤と接続した近自律型の化学研究結果を示した。",
+            "いずれも論文リンクが提示され、評価設計や実験条件の限界まで明示されているため、誇大な性能主張としてではなく再現検討可能な研究報告として扱える。"
+          ]
+        },
+        {
+          "title": "エージェント実装の実務化",
+          "points": [
+            "Hugging Face Blog上のStrands Robots + LeRobot記事は、シミュレーションと実機で同じデータ形式・ほぼ同じエージェントコードを使う設計を具体例付きで示した。",
+            "QiitaではAWS Managed Knowledge BaseのAgentCore統合や、Claude Codeの破壊的コマンドをPreToolUse hookで止める運用が、すぐ試せる形で共有された。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "選定メモ",
+      "items": [
+        {
+          "title": "一次情報確認",
+          "points": [
+            "OpenAI 2件は公式記事と論文、AWS記事はWhat's New、Claude Code事故対策はGitHub issueとClaude Code Hooks公式ドキュメント、Strands記事はGitHubリポジトリと公式ドキュメントで裏付けた。",
+            "Reddit JapanはRSS取得時に429が発生し、Reddit Globalは新着フィードを確認したが、36時間窓では議論・雑談・自己投稿が中心で一次情報連結の強い候補がなかった。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAIは2026-06-17に、生命科学研究向けベンチマークLifeSciBenchと、GPT-5.4 + 自動化ラボによるChan-Lam coupling改善の研究報告を公開した。どちらも論文付きで、評価設計や限界が明示されている。",
+    "Hugging Face BlogではAmazonのStrands Robots記事が公開され、LeRobotDatasetを中心にシミュレーションから実機SO-101まで同一のエージェント構成で接続する再現可能なロボティクス手順が共有された。",
+    "Qiitaでは、AWS Managed Knowledge BaseのAgentCore Gateway統合を即日試した記事と、Claude Code auto-acceptでのDB消失事故をPreToolUse hookで防ぐ記事が実務的な価値を持った。"
+  ],
+  "metrics": {
+    "scanned": 24,
+    "captured": 5,
+    "critical": 2
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "OpenAIがGPT-5.4と自動化ラボでChan-Lam coupling改善を実験報告",
+      "summary": "OpenAIの2026-06-17公開記事。Molecule.oneのMaria AI / LabとGPT-5.4を接続し、一次スルホンアミドを対象にしたChan-Lam couplingでTEMPO系添加剤の有効性を探索した。10,080反応の高スループット実験とベンチスケール追試まで含め、平均収率16.6%→25.2%、30%以上の収率到達率15.6%→37.5%を報告している。研究論文が同時公開され、近自律型と呼ぶ理由や、人間の介入箇所、化学安全上の限界も本文で明示された。",
+      "points": [
+        "GPT-5.4はMaria AI側のハーネスで研究提案を大量生成し、そのうちOAI-M1-03案がTEMPO添加による改善仮説として採択された。",
+        "Maria Labで2サイクル・合計10,080反応を回し、一次スルホンアミドとボロン酸の組み合わせで改善を確認した後、人間の化学者が14組の代表条件をベンチスケールで追試して11組で収率向上を確認した。",
+        "論文と本文の両方で、完全自律ではなく人間が実験計画補正や最終評価を担った点、他反応系への一般化や独立再現は未確立である点が明記されている。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/ai-chemist-improves-reaction",
+      "publishedAt": "2026-06-17",
+      "priority": "critical",
+      "tags": [
+        "research",
+        "agent",
+        "API"
+      ]
+    },
+    {
+      "title": "OpenAIが生命科学研究向けベンチマークLifeSciBenchを公開",
+      "summary": "OpenAIの2026-06-17公開記事。LifeSciBenchは、生命科学研究の実務に近い自由記述タスクを評価するために作られたベンチマークで、Ph.D.レベルの実務研究者が執筆・査読した750タスクを収録する。単純なQ&Aではなく、文献・PDF・図表・配列・化学構造など1,062個の付属アーティファクトを使い、研究判断の妥当性まで19,020基準で採点する構成になっている。",
+      "points": [
+        "タスクは7つの研究ワークフローと7つの生物学ドメインにまたがり、173人の専門家が作成し、453人の独立レビュアーが妥当性を評価している。",
+        "79%のタスクが複数段階の推論を要求し、53%が少なくとも1つの付属アーティファクト解釈を必要とするため、既存の狭い生物学ベンチマークより実務に近い。",
+        "本文と論文では、少なくとも90%の専門家合意を要件にした採択方針や、実世界妥当性・科学的根拠・有用性で96%以上の合意率を得た検証結果が示されている。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/introducing-life-sci-bench",
+      "publishedAt": "2026-06-17",
+      "priority": "critical",
+      "tags": [
+        "research",
+        "benchmark",
+        "agent"
+      ]
+    },
+    {
+      "title": "Strands RobotsとLeRobotでHubから実機まで同じエージェント構成を通す手順",
+      "summary": "Hugging Face Blogの2026-06-17公開記事で、AmazonがStrands Robots SDKとLeRobotを組み合わせたロボットエージェント構成を紹介した。LeRobotDataset形式を中心に、MuJoCoシミュレーションでの記録、Hubへのデータ保存、ポリシー実行、SO-101実機への切り替え、複数ロボットのメッシュ制御までを単一のエージェントループでつなぐ。サンプルはGitHub上で公開され、デフォルト経路ではGPUやHugging Face認証なしでもシミュレーションを再現できる。",
+      "points": [
+        "Strands RobotsはLeRobotスタックをAgentToolsとして公開し、`Robot(\"so100\")` の既定値をシミュレーション、`mode=\"real\"` を実機として同じコードで切り替える設計を取る。",
+        "記事では `strands-labs/robots` の `examples/lerobot/hub_to_hardware.py` と notebook が案内され、シミュレーション収録データも実機データも同じLeRobotDataset形式で扱えることを示している。",
+        "複数ロボット制御はZenohベースのメッシュと `robot_mesh` ツールで説明されており、危険な物理操作には人間承認を挟む設計も含まれている。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware",
+      "publishedAt": "2026-06-17",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "open-source",
+        "coding"
+      ]
+    },
+    {
+      "title": "Qiita: AWS Managed Knowledge BaseをAgentCore Gatewayから即日検証",
+      "summary": "Qiitaの2026-06-18投稿。AWS Summit New York 2026で一般提供開始されたAmazon Bedrock Managed Knowledge Baseを、AgentCore Gatewayのターゲットとして接続し、MCP経由で使う流れを整理している。AWS公式のWhat's Newで示されたManaged Knowledge BaseのGA、AgentCore統合、東京リージョン提供を踏まえつつ、従来の`VECTOR`型KBではなく新しい`MANAGED`型を作り直す必要がある点や、Standard retrievalとAgentic retrievalの差を実操作ベースでまとめている。",
+      "points": [
+        "記事では `aws bedrock-agent get-knowledge-base` のCLI確認例を使い、既存の`VECTOR`型KBはGatewayターゲットとして流用できず、`MANAGED`型を新規作成する必要があると示している。",
+        "AWS公式発表では、Managed Knowledge Baseは6種類のネイティブコネクタ、ハイブリッド検索、ドキュメントランキング、agentic retrieval、AgentCoreとのネイティブ統合、東京リージョン提供を明記している。",
+        "Qiita本文は、単発検索の`Retrieve`と、複数回検索と回答内引用を返す`AgenticRetrieveStream`の違いを、回答スパン単位の引用情報まで含めて整理している。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/yakumo_09/items/1b4ab7d392a85c1b4612",
+      "publishedAt": "2026-06-18",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "API",
+        "software design"
+      ]
+    },
+    {
+      "title": "Qiita: Claude Code auto-acceptでのDB破壊をPreToolUse hookで止める",
+      "summary": "Qiitaの2026-06-18投稿。Claude Codeのauto-acceptモードで `php artisan migrate:fresh` のようなフレームワーク固有の破壊的DBコマンドが確認なしで走りうる、という2026-06-17公開のGitHub issueを受け、PreToolUse hookで遮断する実務的対策をまとめた。記事では `npx cc-safe-setup --install-example block-database-wipe` の導入例と、Laravel・Rails・Prisma・Djangoでのブロック例を提示している。",
+      "points": [
+        "一次情報のGitHub issue #69059では、`php artisan migrate:fresh` がauto-accept中に無確認で実行され、ローカルDBを2日続けて消した事例と、フレームワーク固有の破壊コマンドがシェル危険語検出をすり抜ける問題が整理されている。",
+        "Claude Code公式Hooksドキュメントには、`PreToolUse` でコマンドを検査し、`permissionDecision: \"deny\"` を返して実行前に止める仕組みが明記されている。",
+        "記事の検証例では、`migrate:fresh`、`rails db:drop`、`prisma migrate reset`、`manage.py flush` を止めつつ、通常の `migrate` や `ls` は通す挙動を示しており、再現しやすい。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/yurukusa/items/a8ba73afd314b7fb822d",
+      "publishedAt": "2026-06-18",
+      "priority": "signal",
+      "tags": [
+        "coding",
+        "agent",
+        "software design"
+      ]
+    }
+  ]
+}
