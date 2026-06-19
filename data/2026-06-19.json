@@ -1,0 +1,243 @@
+{
+  "date": "2026-06-19",
+  "updatedAt": "2026-06-19T12:13:11+09:00",
+  "summary": "直近36時間では、OpenAIの医療推論とEnterprise運用管理、Hugging Faceのエージェント向けツール評価、Chrome系ブラウザエージェント基盤の更新が目立った。AnthropicとGoogle DeepMindには新しい技術寄り公式投稿がなく、XとRedditは公開取得の不安定さや一次情報不足から採用を見送った。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用内訳",
+          "points": [
+            "採用は5件で、OpenAI公式2件、Hugging Face Blog 1件、Qiita 1件、Zenn 1件。",
+            "criticalは2件で、OpenAIの希少疾患再解析とHugging Faceのエージェント向け評価ハーネスを、一次情報付きで重点採用した。"
+          ]
+        },
+        {
+          "title": "非採用の理由",
+          "points": [
+            "Anthropic Newsは2026-06-17の韓国拠点や提携発表が中心で、技術的新規性より事業色が強かった。Google DeepMind Blogも調査窓内に新しい技術記事を確認できなかった。",
+            "Xは公開取得が不安定で継続的な抽出が難しく、Reddit Japanは429、Reddit Globalは議論・自己宣伝・一次情報不足の投稿が中心だったため除外した。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "主要トピック",
+      "items": [
+        {
+          "title": "OpenAIの医療・運用アップデート",
+          "points": [
+            "OpenAIは未診断の希少疾患376例をo3 Deep Researchで再解析し、専門医確認後に18件の診断確定へつなげた研究記事を公開した。",
+            "同日にChatGPT Enterpriseでは、CodexとChatGPTを横断したクレジット利用分析、グループ別上限、個別オーバーライド、統合Cost APIが公開され、運用面の可視化が進んだ。"
+          ]
+        },
+        {
+          "title": "エージェント向けツール設計の具体化",
+          "points": [
+            "Hugging Faceは、ツールの最終正答だけでなく、エージェントがそこに到達するまでのトークン数・ターン数・失敗パターンも測る評価ハーネスを公開した。",
+            "国内コミュニティでは、WebMCPのオリジントライアルやChrome DevTools for agentsのv1.1.1追加機能を前提に、ブラウザ操作を推測ベースからツール呼び出しベースへ寄せる実装・運用ノートが増えた。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "選定メモ",
+      "items": [
+        {
+          "title": "一次情報確認",
+          "points": [
+            "OpenAI 2件はOpenAI公式記事、NEJM AI abstract、Help Centerを確認した。Hugging Face記事は公式Blogと公開GitHubリポジトリを確認した。",
+            "QiitaとZennの2件は、developer.chrome.comのDevTools for agents / DevTools 149記事、ChromeDevTools GitHub、Microsoft LearnのMCP on Windows資料で主張の中核を裏付けた。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAIは2026-06-18、o3 Deep Researchを使った希少疾患の再解析研究を公開し、既存検査で未解決だった376例から18件の診断確定につながったと報告した。人間の専門医確認と臨床検査を前提にしており、完全自律診断とは位置付けていない。",
+    "Hugging Faceは2026-06-18、transformersを題材にしたエージェント向けツール評価ハーネスを紹介し、最終正答だけでなくトークン数・ターン数・経路品質まで測る設計を公開リポジトリ付きで提示した。",
+    "Chrome 149系ではWebMCPデバッグとchrome-devtools-mcp v1.1.1の機能拡張が注目点で、国内記事でもClaude Codeから既存Chromeセッションを使う具体手順や、サイト側がツールを宣言する設計が整理され始めた。"
+  ],
+  "metrics": {
+    "scanned": 28,
+    "captured": 5,
+    "critical": 2
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "OpenAIが未診断希少疾患376例の再解析で18件の診断確定を支援",
+      "summary": "OpenAIの2026-06-18公開記事。Boston Children's HospitalとHarvardの研究者が、o3 Deep Researchを使って過去に未解決だった376件の臨床・ゲノム症例を再解析し、専門家レビューと追加検査を経て18件の診断確定につなげた。記事本文とNEJM AI abstractの両方で、モデルは診断そのものを行わず、根拠付き仮説生成を担当し、最終判断は臨床チームが担った点が明記されている。",
+      "points": [
+        "対象は神経発達症、神経筋疾患、児童思春期精神症状、SUDPを含む376例で、追加診断率は4.8%だった。",
+        "既知症例での事前検証、HPO語彙とバリアント表を含む入力設計、ACMG/AMP基準に基づく専門家レビュー、CLIA認証ラボでの確認という流れが説明されている。",
+        "限界として、後ろ向き研究であること、他の遺伝変異型の網羅評価が未実施なこと、時間短縮や偽陽性コストを測っていないことが本文で明示されている。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/diagnose-rare-childhood-diseases",
+      "publishedAt": "2026-06-18",
+      "priority": "critical",
+      "tags": [
+        "research",
+        "agent",
+        "API"
+      ]
+    },
+    {
+      "title": "ChatGPT EnterpriseでCodex/ChatGPT横断の利用分析と予算上限設定が強化",
+      "summary": "OpenAIの2026-06-18公開記事。Global Admin Consoleに、ChatGPTとCodexのクレジット利用を横断して見る分析画面が追加され、ユーザー別・製品別・モデル別の内訳確認、統合Cost API、グループ別上限、個別オーバーライド、利用者側の追加申請フローが案内された。Enterprise運用で『誰がどのモデルをどのくらい消費しているか』を可視化しやすくなった点が実務上の新規性になる。",
+      "points": [
+        "管理者は時系列トレンド、上位利用者、製品別・モデル別内訳を確認でき、同じデータをCost API経由で自社の監視やBIに流せる。",
+        "既存のロール別制限に加えて、ワークスペース既定値、グループ単位上限、個人単位オーバーライドが加わり、強い利用者だけに追加枠を与えやすくなった。",
+        "利用者側も残予算を見ながら追加クレジット申請できるため、Codexの横展開時に一律制限か無制限かの二択を避けやすい。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/chatgpt-enterprise-spend-controls",
+      "publishedAt": "2026-06-18",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "API",
+        "software design"
+      ]
+    },
+    {
+      "title": "Hugging Faceがエージェント向けツール評価ハーネスを公開",
+      "summary": "Hugging Face Blogの2026-06-18公開記事。transformersを題材に、エージェントがツールをどう使って正解に到達したかを測る評価ハーネスを紹介し、公開リポジトリも案内している。pi coding agentとopen model群を使い、モデル、リポジトリrevision、タスク、支援tierを変えながら、最終正答だけでなくトークン数、ターン数、失敗、deprecated API利用まで比較する設計が要点だ。",
+      "points": [
+        "記事では、CLI、Skill、タスク特化サンプルの有無がエージェント効率にどう効くかを、transformers利用タスクで比較する枠組みを示している。",
+        "大規模open modelでは成功率が飽和しやすいため、正答率よりもトークン数、レイテンシ、ターン数、経路のきれいさを重視すべきだと整理している。",
+        "評価実行はHugging Face Jobsに載せ、リポジトリ `huggingface/is-it-agentic-enough` で再現用コードとレポート生成の土台を公開している。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/is-it-agentic-enough",
+      "publishedAt": "2026-06-18",
+      "priority": "critical",
+      "tags": [
+        "agent",
+        "coding",
+        "open-source",
+        "benchmark"
+      ]
+    },
+    {
+      "title": "Qiita: WebMCPのChrome 149試験開始を日本語で整理",
+      "summary": "Qiitaの2026-06-18投稿。Chrome 149で始まったWebMCPデバッグのオリジントライアルを、日本語で実装観点から整理している。`document.modelContext.registerTool()` による命令的APIと、`<form>`属性での宣言的APIを並べて説明しており、Chrome公式のDevTools 149記事とWebMCP資料に沿って『画面推測ではなくサイト側がエージェントへ道具を渡す』設計を追える。",
+      "points": [
+        "命令的APIではツール名、説明、JSON Schema、`execute` を定義し、SPA向けに `AbortController` で登録解除を扱う点まで触れている。",
+        "宣言的APIでは既存フォームへ `toolname` や `toolparamdescription` を追加するだけでツール化できるため、既存業務UIをエージェント対応しやすい。",
+        "Chrome公式ではWebMCPを早期プレビューの提案標準と位置付け、`#devtools-webmcp-support` と `#enable-webmcp-testing` のフラグで試せることが明記されている。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/okssusucha/items/d05cb98637d4584b51be",
+      "publishedAt": "2026-06-18",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "API",
+        "coding"
+      ]
+    },
+    {
+      "title": "Zenn: Claude Codeにchrome-devtools-mcpをつなぐ実践ガイド",
+      "summary": "Zennの2026-06-18投稿。Claude Codeから `chrome-devtools-mcp@1.2.0` を使って既存Chromeへ `--autoConnect` する手順と、Lighthouse監査、モバイル低速回線再現、認証済みセッション利用、Protocol MonitorでのCDP観察をまとめている。developer.chrome.comの公式ガイドとGitHubリポジトリに沿った内容で、Claude Code運用に落とし込みやすいのが価値になる。",
+      "points": [
+        "記事は `mcpServers` 設定例を示し、別ブラウザインスタンスや専用プロファイルなしで、普段使いChromeへ接続する構成を説明している。",
+        "Chrome 149 / v1.1.1で入ったWebMCPデバッグ、カスタムHTTPヘッダー、サードパーティツール公開も補足しており、単なる導入メモ以上に最近の仕様変化を追っている。",
+        "一方で、auto-connectはCookieやログイン状態をそのままエージェントへ見せるため、公式ドキュメントどおり信頼できる用途に限定すべきという注意点も明示している。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/takna/articles/claude-code-chrome-devtools-mcp",
+      "publishedAt": "2026-06-18",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "MCP",
+        "software design"
+      ]
+    }
+  ]
+}
