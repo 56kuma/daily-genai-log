@@ -1,0 +1,222 @@
+{
+  "date": "2026-06-20",
+  "updatedAt": "2026-06-20T06:14:53+09:00",
+  "summary": "直近36時間では、OpenAIの健康応答評価更新と、Hugging Face経由で共有された深掘りエージェントのプライバシー漏えい評価が最重要だった。国内コミュニティでは、LangGraphへ複数MCPサーバーを束ねる実装メモと、VercelのEveをディレクトリ駆動エージェントとして捉える解説が有用だった一方、AnthropicとGoogle DeepMindには窓内の新しい技術寄り公式投稿がなく、XとRedditも採用基準に届かなかった。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用内訳",
+          "points": [
+            "採用は4件で、OpenAI公式1件、Hugging Face Blog 1件、Qiita 1件、Zenn 1件。",
+            "criticalは2件で、OpenAIのHealthBench系評価更新と、MosaicLeaksの深掘りエージェント漏えい評価を重点採用した。"
+          ]
+        },
+        {
+          "title": "非採用の理由",
+          "points": [
+            "Anthropic Newsは直近で確認できた項目が既報のアクセス停止声明や事業寄り告知中心で、技術的新規性の高い新着を確認できなかった。Google DeepMind Blogも調査窓内に新しい技術記事を確認できなかった。",
+            "Xは公開画面からの安定抽出が今回も難しく、Reddit Japanは429、Reddit Globalは質問・雑談・自己投稿が中心で、一次情報付きの新規技術投稿を採用できなかった。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "主要トピック",
+      "items": [
+        {
+          "title": "健康応答と深掘りエージェントの評価軸が具体化",
+          "points": [
+            "OpenAIは、GPT-5.5 InstantがHealthBench系評価と3,500件の医師比較レビューで旧Instant系から大きく改善し、健康関連の本番トラフィックでも事実性フラグ率が2カ月で71%低下したと報告した。",
+            "Hugging Face Blogで紹介されたMosaicLeaksは、私有文書を参照しつつ外部検索するdeep research agentが、検索クエリの集合から秘密を漏らしうることを1,001タスクで測り、PA-DRで精度と漏えい抑制を両立させる方向を示した。"
+          ]
+        },
+        {
+          "title": "エージェント実装の接続面が整理された",
+          "points": [
+            "Qiitaでは、LangChain MCP Adaptersを使って複数のMCP serverをLangGraphのToolNodeへそのまま流し込む構成が整理され、stdio/HTTP/SSE混在でも単一クライアントで扱える点が実装上の利点として共有された。",
+            "Zennでは、VercelのEveを『エージェントをディレクトリと規約で定義するフレームワーク』として読み解き、durable execution、sandboxed compute、human-in-the-loop approvals、subagents、evalsを最初から備える設計が紹介された。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "選定メモ",
+      "items": [
+        {
+          "title": "一次情報確認",
+          "points": [
+            "OpenAI記事は公式本文に加え、HealthBenchとHealthBench Professionalの一次資料を参照した。Hugging Face記事は公式Blogと対応するarXiv論文を確認した。",
+            "Qiita記事は `langchain-ai/langchain-mcp-adapters` GitHub、PyPI、LangGraph docs、MCP公式サイトで主張を確認した。Zenn記事はVercelの `eve` 公式ページ、Introducing Eveブログ、サンプルGitHubリポジトリで構成要素を追認した。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAIは2026-06-18、GPT-5.5 Instantの健康応答改善を公表し、HealthBench系評価、3,500件の医師比較レビュー、2カ月で71%低下した健康領域の事実性フラグ率を示した。臨床判断の代替ではなく、健康情報の説明・文脈確認・受診勧奨の質改善として位置付けている。",
+    "Hugging Face Blogの2026-06-18記事と対応論文は、deep research agentが外部検索クエリ経由で私有情報を漏らす問題をMosaicLeaksで定式化し、Qwen3-4Bでstrict chain successを48.7%から58.7%へ上げつつ、answer/full-information leakageを34.0%から9.9%へ下げるPA-DRを報告した。",
+    "国内実装メモでは、LangChain MCP Adaptersによる複数MCP server統合と、Vercel Eveのディレクトリ駆動設計が収穫だった。どちらも『道具の接続』『長期実行』『承認フロー』をフレームワーク側で吸収し、個別アプリ側の配線量を減らす方向を示している。"
+  ],
+  "metrics": {
+    "scanned": 27,
+    "captured": 4,
+    "critical": 2
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "OpenAIがChatGPTの健康応答評価を更新、GPT-5.5 Instantの改善指標を公開",
+      "summary": "OpenAIの2026-06-18公開記事。GPT-5.5 InstantがHealthBench系評価でfrontier Thinking系に近い水準へ到達し、3,500件の医師比較レビューでも旧モデル群より高評価だったと説明している。230 million超の週次健康利用と、健康領域の本番トラフィックで事実性フラグ付き応答率が直近2カ月で71%低下したという運用指標も示し、医師ネットワークによる評価設計を前面に出した点が新しい。",
+      "points": [
+        "一次情報では、HealthBenchとHealthBench Professionalを使い、正確性、安全性、文脈把握、完全性、適切な受診勧奨などを評価軸にしている。",
+        "OpenAIは260人超の医師が60カ国・49言語・26専門領域で評価設計に関与し、これまで70万件超の応答例をレビューしたと説明している。",
+        "再現性は評価設計の理解という意味では高いが、本番トラフィックのモニタリング生データは公開されていないため、数値全体を第三者が即座に再集計できる形ではない点は区別が必要だ。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/improving-health-intelligence-in-chatgpt",
+      "publishedAt": "2026-06-18",
+      "priority": "critical",
+      "tags": [
+        "research",
+        "agent",
+        "API"
+      ]
+    },
+    {
+      "title": "Hugging Face Blog: MosaicLeaksがdeep research agentの漏えいリスクを定量化",
+      "summary": "Hugging Face Blogの2026-06-18公開記事。ServiceNowのMosaicLeaksを紹介し、私有文書を参照しながら外部検索するresearch agentが、検索クエリの集積から秘密を漏らす『mosaic effect』を測る1,001タスクのベンチマークと、Privacy-Aware Deep Research (PA-DR) を整理している。対応するarXiv論文では、Qwen3-4B-Instructでstrict chain successを48.7%から58.7%へ改善しつつ、answer/full-information leakageを34.0%から9.9%へ下げたと報告している。",
+      "points": [
+        "論文は、公開Webコーパスと私有企業文書をまたぐmulti-hop taskを構成し、外部クエリだけを見る攻撃者LLMが意図・私有質問への答え・検証可能な主張をどこまで推測できるかを測っている。",
+        "zero-shotの『漏らすな』プロンプトは多少効いても十分ではなく、タスク成功だけを最適化するRLは漏えいを34.0%から51.7%へ悪化させた、という逆効果も示している。",
+        "技術的主張の裏付けは強いが、記事面で即実行できる公開コード導線は前面に出ておらず、再現性はGitHub完備の実装記事より一段低い。今回は一次研究としての重要度を優先して採用した。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
+      "publishedAt": "2026-06-18",
+      "priority": "critical",
+      "tags": [
+        "agent",
+        "research",
+        "benchmark"
+      ]
+    },
+    {
+      "title": "Qiita: LangChain MCP Adaptersで複数MCP serverをLangGraphへ直結",
+      "summary": "Qiitaの2026-06-19投稿。`langchain-mcp-adapters` を使い、MCP serverをLangChain/LangGraphのツールへ変換して、`MultiServerMCPClient` 1つでstdio・HTTP・SSEの複数サーバーを同時接続する構成を整理している。GitHub、PyPI、LangGraph docs、MCP公式サイトへ直接つながるため、MCPを単発デモからオーケストレーションへ伸ばす実装メモとして再現性が高い。",
+      "points": [
+        "記事のTL;DR時点で、MCP serverをLangGraphの`ToolNode`へ自然に流し込み、複数サーバーのツール群を統一的に扱える点が整理されている。",
+        "一次情報では、MITライセンスの `langchain-ai/langchain-mcp-adapters`、PyPI配布、LangGraphのStateGraph系ドキュメント、MCP公式仕様を確認できる。",
+        "技術的新規性は、ツールごとの手書きラッパーや個別transport配線を減らし、LangGraphエージェント側へMCPを標準的に取り込めるようにした点にある。`pip install` から始められるため再現性も高い。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kai_kou/items/a32ae1bca5933304300e",
+      "publishedAt": "2026-06-19",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "coding",
+        "API"
+      ]
+    },
+    {
+      "title": "Zenn: Vercel Eveを『ディレクトリがエージェント』として読み解く",
+      "summary": "Zennの2026-06-18投稿。Vercelが公開したEveを、`agent/` 配下のファイル配置そのものがツール、スキル、subagent、channel、scheduleを定義するフレームワークとして解説している。公式の `vercel.com/eve`、Introducing Eveブログ、サンプルGitHubリポジトリを参照しつつ、durable execution、sandboxed compute、human-in-the-loop approvals、subagents、evals が最初から入っている設計を把握できる。",
+      "points": [
+        "記事は `agent/tools/`、`agent/skills/`、`agent/subagents/`、`agent/channels/`、`agent/schedules/` の構造を例示し、ファイルパスがそのまま役割識別子になるというEveの設計思想を説明している。",
+        "Vercel公式ページではEveはpublic betaとされており、APIや挙動が変わりうる点を記事も明示している。したがって、今は概念と構成要素の把握に価値がある段階だ。",
+        "サンプルリポジトリが公開されているため再現性は中程度以上あり、長期実行・承認フロー・サンドボックスを自前実装せずに済ませたいチームには追う価値がある。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/sc30gsw/articles/a03d6a17af036c",
+      "publishedAt": "2026-06-18",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "software design"
+      ]
+    }
+  ]
+}
