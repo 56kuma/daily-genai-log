@@ -1,0 +1,222 @@
+{
+  "date": "2026-06-22",
+  "updatedAt": "2026-06-22T06:07:49+09:00",
+  "summary": "直近36時間（2026-06-20 18:01 JST以降）は、OpenAI・Anthropic・Google DeepMind・Hugging Faceの公式媒体に新規の技術発表がなく、採用はQiita 2件とZenn 3件になった。テーマは、WebMCPのページ側実装、LLMを絡めた大規模コード移行、OpenAI OCRの小規模業務自動化、低固定費で始めるRAG構成、Claudeのモデル/思考量の選定といった運用実装に集中した。Xは公開タイムラインを安定取得できず、Reddit日本語圏・海外は403で再取得も失敗したため、公式文書やツール文書で裏づけられる記事だけを残した。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用結果",
+          "points": [
+            "採用は5件で、Qiita 2件・Zenn 3件。critical は 0 件で、速報性よりも一次情報で追える再現可能な実装知見を優先した。",
+            "採用条件は、36時間窓内の投稿日、恒久URL、本文中の具体的なコードや構成、または公式ドキュメントで主要主張を追認できることに置いた。"
+          ]
+        },
+        {
+          "title": "技術テーマ",
+          "points": [
+            "WebMCPとcodemod活用の記事は、AIエージェントをDOM推測や全自動置換に任せきるのではなく、構造化インターフェースや決定的変換を組み合わせて事故を減らす方向に寄っていた。",
+            "一方で、OpenAI OCRを使ったレシート整理、TiDB CloudとGroqによる育つRAG、Claudeのモデル/effort選定といった記事は、PoCや日常運用に落とすためのコストと実装手順の整理が中心だった."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "除外と観測",
+      "items": [
+        {
+          "title": "除外理由",
+          "points": [
+            "OpenAI News RSS、Anthropic News、Google DeepMind Blog、Hugging Face Blogを確認したが、2026-06-20 18:01 JST以降に採用基準を満たす新規技術記事はなかった。",
+            "Xの公開タイムラインは本文と時刻を安定抽出できず、Reddit Japan / Global はJSON・RSSとも403だったため、今回も採用なしとした。",
+            "コミュニティ記事は、一次リンクがない宣伝投稿や、公式ドキュメントと食い違う挙動説明を含むものを除外した。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "QiitaのWebMCP記事は、Chrome公式ドキュメントへの直接リンク付きで、エージェントにページ機能を構造化公開する実装を命令型APIに絞って解説していた。",
+    "大規模コード移行の記事は、Airbnbの事例・関連論文・ast-grep / jscodeshift / OpenRewriteを束ね、LLMを決定的codemodの補助に置く設計へ整理していた。",
+    "Zennでは、OpenAI OCRの最小構成アプリ、TiDB Cloud + Groqの低固定費RAG、Claudeのモデル×effort選定ガイドのように、既存公式APIや文書を使ってすぐ試せる実装記事が目立った。"
+  ],
+  "metrics": {
+    "scanned": 31,
+    "captured": 5,
+    "critical": 0
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Qiita: WebMCP 命令型 API で始める AI エージェント対応 Web ページの作り方",
+      "summary": "Qiitaの2026-06-21公開記事。Webページ側がエージェントへツール定義を構造化公開するWebMCPを、命令型APIに絞って解説している。Chrome公式の `WebMCP`、`imperative-api`、`declarative-api` への直接リンクがあり、DOMを視覚推測で触らせる従来手法より壊れにくいページ設計として理解しやすい。",
+      "points": [
+        "Qiita APIの `created_at` は `2026-06-21T18:36:49+09:00` で、対象窓の下限を35分上回っている。",
+        "一次情報として `developer.chrome.com/docs/ai/webmcp` と命令型・宣言型APIの公式解説が本文から直接参照され、記事の主張をそのまま追える。",
+        "技術的新規性は、AIエージェントにページ機能を『DOMから推測させる』のではなく『Web側がツールとして宣言する』設計へ寄せている点で、再現可能性は高い。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/degudegu2510/items/27a581f44a8c67365b18",
+      "publishedAt": "2026-06-21",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "MCP",
+        "API"
+      ]
+    },
+    {
+      "title": "Qiita: AIにライブラリ移行を丸投げすると、なぜ静かに事故るのか",
+      "summary": "Qiitaの2026-06-21公開記事。大規模コード移行を、決定的codemod・LLM・人間レビューの三層で捌く実践ガイドとして整理している。Airbnbの移行事例、関連論文、`ast-grep`、`jscodeshift`、`OpenRewrite` といった一次/準一次情報へのリンクが揃っており、LLMを万能変換器ではなく曖昧部分の補助に限定する設計が明確だった。",
+      "points": [
+        "Qiita APIの `created_at` は `2026-06-21T21:45:04+09:00`。36時間窓内で、大規模移行におけるAI活用の失敗モードへ踏み込んだ新規記事。",
+        "本文は Airbnb Engineering、InfoQ、arXiv `2504.09691`、`ast-grep`、`jscodeshift`、`OpenRewrite` を参照しており、単なる意見記事ではなく既存知見の整理になっている。",
+        "技術的新規性は、生成AIを『一括置換の主役』ではなく『決定的変換で埋まらない差分の処理』へ押し込める運用設計にあり、再現可能性は実ツール群の導入で担保しやすい。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/akira_papa_AI/items/b8c02f90b38702b223ce",
+      "publishedAt": "2026-06-21",
+      "priority": "signal",
+      "tags": [
+        "coding",
+        "open-source",
+        "research"
+      ]
+    },
+    {
+      "title": "Zenn: OpenAI OCR × FastAPI × JavaScriptで作るレシート自動仕分け Web アプリ",
+      "summary": "Zennの2026-06-21公開記事。スマホで撮影したレシート画像をFastAPIへ送り、OpenAIのvision対応モデルで日付・店名・金額・用途カテゴリをJSON抽出する最小構成アプリを紹介している。小規模な経費精算や家計簿入力の手作業を減らす具体例で、記事内でも『最小構成で動く実装』に絞っている点がよい。",
+      "points": [
+        "Zenn APIの `published_at` は `2026-06-21T23:23:52.585+09:00`。対象窓内で、OpenAI OCRの実務寄りPoCとして十分新しい。",
+        "主要主張は、OpenAI公式の `Images and vision` ガイドと `Responses API` / structured output系のドキュメントで追認でき、画像入力から構造化抽出する使い方と整合する。",
+        "技術的新規性は、OCR単体ではなくFastAPIとブラウザUIまで含めた実装を小さく閉じている点で、再現可能性は記事の構成説明とコード断片から高い。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/soranijimame/articles/openai-receipt-ocr-fastapi-js",
+      "publishedAt": "2026-06-21",
+      "priority": "signal",
+      "tags": [
+        "coding",
+        "API",
+        "software design"
+      ]
+    },
+    {
+      "title": "Zenn: TiDB CloudとGroqで、育つナレッジRAGチャットを小さく試す",
+      "summary": "Zennの2026-06-22公開記事。固定費が重い検索基盤を避けつつ、管理画面から知識を継ぎ足せるRAGチャットを、TiDB CloudのVector SearchとGroqで小さく立ち上げる構成をまとめている。PingCAPの料金/クラスタ情報、Vector Search overview、Groq rate limits、公開デモまで揃っており、PoC前提の判断材料として具体的だった。",
+      "points": [
+        "Zenn APIの `published_at` は `2026-06-22T00:47:03.751+09:00`。今回の収集窓で最も新しい採用記事の一つ。",
+        "本文は PingCAP の料金ページ、TiDB Vector Search docs、Groq rate limits、公開デモへリンクしており、主要なアーキテクチャ要素を一次情報で確認できる。",
+        "技術的新規性は、『低固定費で始めて知識が育つRAG』というPoC向け構成判断を明示している点で、再現可能性は利用サービスと制約が具体化されているぶん高い。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/como/articles/tidb-groq-growing-rag-chat",
+      "publishedAt": "2026-06-22",
+      "priority": "signal",
+      "tags": [
+        "coding",
+        "API",
+        "research"
+      ]
+    },
+    {
+      "title": "Zenn: Claudeモデル×エフォート選択ガイド",
+      "summary": "Zennの2026-06-22公開記事。Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5 の使い分けを、モデル選択と effort 選択の二軸問題として整理している。Anthropic公式のモデルoverview、choosing-a-model、extended thinking、prompt cachingを主要出典に据え、品質・遅延・コストのトレードオフを実務上の選択行列へ落としていた。",
+      "points": [
+        "Zenn APIの `published_at` は `2026-06-22T00:11:20.685+09:00`。対象窓内で、Claude運用設計に寄った実装記事として新しい。",
+        "本文リンクには `platform.claude.com/docs/.../models/overview`、`choosing-a-model`、`extended-thinking`、`prompt-caching` が含まれ、主要主張を公式資料へ戻せる。",
+        "技術的新規性は、単純な『どのモデルが強いか』ではなく、思考量やキャッシュも含めた運用パラメータとして選択を整理している点にあり、再現可能性は高い。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/shun_producer/articles/claude-model-selection-guide",
+      "publishedAt": "2026-06-22",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "API"
+      ]
+    }
+  ]
+}

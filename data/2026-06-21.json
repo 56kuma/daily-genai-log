@@ -1,0 +1,206 @@
+{
+  "date": "2026-06-21",
+  "updatedAt": "2026-06-21T14:55:37+09:00",
+  "summary": "直近36時間（2026-06-20 02:55 JST以降）は、OpenAI・Anthropic・Google DeepMind・Hugging Faceの主要公式媒体に新しい技術発表がなく、採用はZenn 1件とQiita 3件に絞られた。内容はモデル発表よりも、Claude/Codex系の運用設計、Bedrock経由の導入手順、既存環境向けスキル/MCP整理、RAG実装の再整理といった実務寄りの知見が中心だった。Xは公開ページから投稿本文と時刻を安定抽出しにくく、Reddit Japanは429、Reddit Globalは新規投稿の多くが質問か自己宣伝で、一次情報が古いものは除外した。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用結果",
+          "points": [
+            "採用は4件で、Zenn 1件・Qiita 3件。critical は 0 件で、速報性よりも再現可能な実装知見を優先した。",
+            "コミュニティ投稿は、単なる感想や宣伝ではなく、設定ファイル、コード、公開デモ、一次資料リンクが確認できるものだけを残した。"
+          ]
+        },
+        {
+          "title": "技術テーマ",
+          "points": [
+            "Claude系エージェントの業務導入では、Bedrock経由のCoworkセットアップ、ROS1/Typstのような既存領域へのスキル/MCP適用、可視化UIの高速生成といった周辺運用の整備が目立った。",
+            "RAG領域では、ハイブリッド検索、LongContextReorder、Self-RAG、Ragas評価までを一つの実装系として整理し直す動きが見られた。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "除外と観測",
+      "items": [
+        {
+          "title": "除外理由",
+          "points": [
+            "OpenAI News RSS、Anthropic News、Google DeepMind Blog、Hugging Face Blog を確認したが、2026-06-20 02:55 JST以降に採用基準を満たす新規技術記事は確認できなかった。",
+            "Xは公開HTMLの取得自体はできたが、投稿本文と時刻の安定抽出が難しく、恒久URL付きで再検証可能な形に落とせなかったため採用なしとした。",
+            "Reddit Japan は 429 が継続し、Reddit Global は質問・雑談・自己宣伝が多かった。Ai2 MolmoMotion のように一次情報が 2026-06-17 公開のものは、今回の36時間窓から外れるため除外した。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "AWS JapanのZenn記事は、Claude DesktopのCoworkをAmazon Bedrock経由でWindowsへ導入する手順を、管理者側のIAM/API Key準備と利用者側のreadiness check・Desktop/MCP設定に分けて具体化していた。",
+    "Qiitaでは、Claude Code/Codex向けスキルやMCPを既存環境へ当て込む実務記事が目立ち、ROS1向け整理記事は公式スキル文書と複数GitHubリポジトリを横断して配置先と使い方をまとめていた。",
+    "RAG実装記事は、ハイブリッド検索からLongContextReorder、Self-RAG、Ragas評価までを一続きの改善手順として整理しており、単なる概説でなくコード断片と参照論文付きで再利用しやすかった。"
+  ],
+  "metrics": {
+    "scanned": 29,
+    "captured": 4,
+    "critical": 0
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Zenn: Claude Desktop の Cowork を Amazon Bedrock 経由で Windows にセットアップ",
+      "summary": "AWS Japanの2026-06-20公開記事。Claude DesktopのCoworkをAmazon Bedrock経由でWindowsに接続する流れを、AWS管理者がIAMリソースとAPI Keyを用意し、利用者が仮想マシンプラットフォーム有効化、readiness check、Claude Desktop導入、Bedrock接続設定、MCP Server設定を進める二段構えで整理している。単なる紹介ではなく、`claude.com/download` と readiness check へのリンク、画面付きの導入手順、役割分離が明示されており、社内展開時の再現性が高い。",
+      "points": [
+        "Zenn本文の `publishedAt` は `2026-06-20T16:44:06.804+09:00`。36時間窓内で、Claude Desktop の Cowork を Bedrock 経由で使う Windows 向け手順として十分に新しい。",
+        "一次情報として Claude Desktop のダウンロードページと Cowork readiness check への公式リンクが明示されており、AWS側も IAM 作成と API Key 配布、利用者側も Desktop と MCP 設定という責務分離が確認できる。",
+        "技術的新規性は、Cowork を web UI ではなく Bedrock 契約と Windows 端末運用へ落とし込む導入設計にあり、再現可能性は手順分解と公式リンクにより高い。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/aws_japan/articles/claude-cowork-on-bedrock-windows-setup",
+      "publishedAt": "2026-06-20",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "API",
+        "MCP"
+      ]
+    },
+    {
+      "title": "Qiita: ROS1中心のLLMスキル・MCP・設定ファイルまとめ",
+      "summary": "Qiitaの2026-06-21公開記事。ROS2前提に寄りがちなエージェント文脈をROS1環境へ引き戻し、`lpigeon/ros-skill`、`arpitg1304/robotics-agent-skills`、`robotmcp/ros-mcp-server` などのGitHub資産を、Claude Code Skills と OpenAI Codex Skills の公式文書と並べて整理している。ROS1現場で何をどこへ配置し、どのツール群を使うかが一望できるリンクマップになっている点が実務的に有用だった。",
+      "points": [
+        "Qiitaの JSON-LD で `datePublished` は `2026-06-21T03:05:28+09:00`。対象窓内で、ROS1継続利用環境向けに agent skill/MCP を棚卸しした新規記事。",
+        "一次情報として Claude Code Skills、OpenAI Codex Skills、ROS Noetic EOL告知、複数のGitHubリポジトリが張られており、単なる感想ではなく参照先を辿って配置と導入を再現できる。",
+        "技術的新規性は、ROS2寄り情報が増える中でROS1の残存現場向けに agent tooling を整理し直した点にあり、再現可能性はリンク先の `SKILL.md` やサーバ実装を追えば確保できる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/Tomoya-Oku/items/99048d9e005f3c61d075",
+      "publishedAt": "2026-06-21",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "MCP",
+        "API"
+      ]
+    },
+    {
+      "title": "Qiita: RAG の基礎技術を実装して整理する - ハイブリッド検索から Agentic RAG まで",
+      "summary": "Qiitaの2026-06-21公開記事。ハイブリッド検索、リランキング、LongContextReorder、Self-RAG、Faithfulness / Answer Relevance評価までを、Python実装片付きで一続きに整理している。`Lost in the Middle` 論文や Ragas ドキュメントを直接参照しつつ、検索・再配置・自己反省・評価をどこに差し込むかを具体化しており、RAG基盤を一段上げたい開発者向けの実装メモとして価値が高い。",
+      "points": [
+        "Qiitaの JSON-LD で `datePublished` は `2026-06-21T05:21:28+09:00`。実装コードでは `HybridRetriever`、Cross-Encoder reranker、LongContextReorder などの構成要素が明示されている。",
+        "一次情報として `Lost in the Middle` 論文と Ragas ドキュメントがリンクされ、Self-RAG を反省トークンによる自己評価付きの能動的RAGとして位置付けている。",
+        "技術的新規性は、個別テクニックの羅列ではなく検索、順位付け、文脈並べ替え、自己評価、評価指標までを一つの改善ループにまとめている点で、再現可能性はコード断片と参照文献から高い。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/atsushi11o7/items/44fe6858a17cd5d9d09e",
+      "publishedAt": "2026-06-21",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "research",
+        "benchmark",
+        "coding"
+      ]
+    },
+    {
+      "title": "Qiita: EMがClaude Codeでインタラクティブなチームスキルマップを作った話【プロンプト全文公開】",
+      "summary": "Qiitaの2026-06-21公開記事。Claude Code に対して、HTML + CSS + JavaScript（Chart.js）の単一ファイルでインタラクティブなチームスキルマップを30分で作らせた事例で、プロンプト全文、GitHub上の `index.html`、公開デモが揃っている。大規模なフレームワークなしで、可視化UIをエージェントへ一発生成させる実務パターンとして再利用しやすい。",
+      "points": [
+        "Qiitaの JSON-LD で `datePublished` は `2026-06-21T02:47:10+09:00`。説明文に、30分・単一HTML/CSS/JavaScript・Chart.js・プロンプト全文公開が明記されている。",
+        "一次情報として GitHub 上の `skill-map/index.html` と GitHub Pages の公開デモがリンクされ、出力物そのものを検証できるため、生成結果の再現性をユーザー側で確認しやすい。",
+        "技術的新規性は、Claude Code を『コード補完』ではなく可視化UIプロトタイパとして使い、成果物とプロンプトを丸ごと公開している点にあり、過剰な性能主張を避けているため採用した。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/mnoguchi/items/956bf333056db0ef5672",
+      "publishedAt": "2026-06-21",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "software design"
+      ]
+    }
+  ]
+}
