@@ -1,10 +1,10 @@
 {
-  "latest": "data/2026-06-22.json",
+  "latest": "data/2026-06-23.json",
   "archive": [
+    "data/2026-06-23.json",
     "data/2026-06-22.json",
     "data/2026-06-21.json",
     "data/2026-06-20.json",
-    "data/2026-06-19.json",
-    "data/2026-06-18.json"
+    "data/2026-06-19.json"
   ]
 }

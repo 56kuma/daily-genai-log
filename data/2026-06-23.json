@@ -1,0 +1,224 @@
+{
+  "date": "2026-06-23",
+  "updatedAt": "2026-06-23T06:11:43+09:00",
+  "summary": "直近36時間では、公式側で最も強い技術シグナルは OpenAI の Daybreak 拡張だった。Codex Security と GPT-5.5-Cyber を前面に出し、脆弱性の発見から修正までを機械化する方向がより明確になっている。コミュニティ側はモデル速報よりも、Claude Code / Codex の運用設計、権限制御、Amazon Bedrock の managed Knowledge Base のような実装寄りの知見が中心だった。X は公開ページから投稿本文と時刻を安定抽出できず、Reddit 日本語圏はAI関連の有力投稿が見当たらず、海外圏も質問・宣伝中心だったため採録は絞った。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用結果",
+          "points": [
+            "採用は5件で、OpenAI公式 2件、Zenn 1件、Qiita 2件。critical は 1 件で、OpenAI の Daybreak / Codex Security を最重要扱いにした。",
+            "新規性の中心は『より強いモデル』よりも、『長時間エージェント運用』『修正まで含むセキュリティ自動化』『MCP/Knowledge Base の接続設計』に移っていた。"
+          ]
+        },
+        {
+          "title": "実務トレンド",
+          "points": [
+            "Claude Code / Codex 周辺では、設定の置き場所、許可リストの肥大化対策、長時間作業の文脈保持のように、導入後の運用コストを下げる知見が増えている。",
+            "RAG 系では、ベクトルストアを自前で組む前提から、Managed Knowledge Base を AgentCore Gateway 経由でエージェントへ接続する方向へ重心が寄っている。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "調査と選別",
+      "items": [
+        {
+          "title": "確認したソース",
+          "points": [
+            "OpenAI News、Anthropic News、Google DeepMind Blog、Hugging Face Blog を確認し、直近36時間で技術的に拾う価値が高い公式更新は OpenAI 側が中心だった。",
+            "Qiita と Zenn は公開 API で新着候補を列挙してから本文を確認し、手順・設定例・一次情報リンクがある記事を優先した。",
+            "X の公開アカウントページは本文・日時の抽出が安定せず、Reddit は LocalLLaMA / ClaudeAI / ChatGPTCoding / newsokur / ja を確認したが、質問・宣伝・非AI話題を除外した。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAI は 2026-06-22 に Daybreak 関連の公開をまとめ、Codex Security と GPT-5.5-Cyber を使った『発見後に直す』自動化へ踏み込んだ。",
+    "Zenn の Claude Code 実測記事は、CLAUDE.md / Skill / サブエージェント / フックを同条件で比較し、運用ルールの置き場所を定量で考える材料を出していた。",
+    "Qiita の Bedrock managed Knowledge Base 記事は、AWS 公式ドキュメントで裏付けながら AgentCore Gateway から MCP 互換ツールとして呼ぶ流れまで確認していた。"
+  ],
+  "metrics": {
+    "scanned": 41,
+    "captured": 5,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "OpenAI: Daybreak が Codex Security と GPT-5.5-Cyber で修正自動化を前面化",
+      "summary": "OpenAI の 2026-06-22 公式記事。Daybreak の拡張として、Codex Security と GPT-5.5-Cyber を使い、脆弱性の発見だけでなく検証・パッチ作成までを含むエンドツーエンドの patch automation を打ち出した。OpenAI は major browsers、network infrastructure、FreeBSD、Linux kernel などで脆弱性発見と修正生成にモデルを使ったと説明しており、生成AIのセキュリティ用途が『検出支援』から『修正実装支援』へ進んでいる点が重要だった。",
+      "points": [
+        "OpenAI News 上の公開日は `2026-06-22`。恒久URLは `https://openai.com/index/daybreak-securing-the-world/` で、Codex Security と GPT-5.5-Cyber を明示している。",
+        "一次情報として同記事は、脆弱性の発見・検証・修正を一連の流れとして扱い、Patch the Planet と連動して open source maintainer 支援まで含める構図を示している。",
+        "技術的新規性は、コード生成モデルを『セキュリティ所見の説明』ではなく『修正案とテストを含むパッチ自動化』へ寄せている点。再現可能性は一般公開の SaaS 詳細がまだ限定的なので中程度だが、方向性は公式文書で十分裏付けられている。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/daybreak-securing-the-world/",
+      "publishedAt": "2026-06-22",
+      "priority": "critical",
+      "tags": [
+        "agent",
+        "coding",
+        "open-source",
+        "research"
+      ]
+    },
+    {
+      "title": "OpenAI: Codex を長時間作業の持続的ワークスペースとして使う白書を公開",
+      "summary": "OpenAI の 2026-06-22 公式記事。Jason Liu による whitepaper 形式で、Codex を『単発プロンプトの応答器』ではなく、文脈を保持しながら複雑な仕事を前に進める persistent workspace として扱う運用パターンを整理している。内容はベンチマーク速報ではないが、長い作業を検証可能な小さな段階へ分割し、人間がどこで監督し、どこを Codex へ委譲するかを明示しており、実務に近いナレッジとして価値が高い。",
+      "points": [
+        "OpenAI News 上の公開日は `2026-06-22`。恒久URLは `https://openai.com/index/codex-maxxing-long-running-work/`。",
+        "一次情報の description と本文冒頭で、context preservation、complex workflow management、verifiable steps、human oversight の分担が主眼だと確認できる。",
+        "技術的新規性は新モデル公開ではなく、長時間エージェント運用を破綻させない作業分割と継続性の設計を白書として体系化した点。再現可能性は高く、読者が自分のプロジェクトにすぐ転用できる。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/codex-maxxing-long-running-work/",
+      "publishedAt": "2026-06-22",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "software design"
+      ]
+    },
+    {
+      "title": "Zenn: Claude Code の指示配置を CLAUDE.md / Skill / サブエージェント / フックで実測比較",
+      "summary": "Zenn の 2026-06-23 公開記事。Claude Code でよく迷う『同じ指示をどこへ置くべきか』を、CLAUDE.md、Skill、サブエージェント、フックの4層へ同内容で実装し、headless モードで N=20 の実測比較を行っている。単なる感想ではなく、遵守率、トークン負荷、回避経路まで観測しており、運用ルールをどこへ置くべきかを定量で考えられる点が新しい。",
+      "points": [
+        "Zenn API の `published_at` は `2026-06-23T00:00:11.540+09:00`。記事本文には Claude Code `v2.1.185`、`claude-sonnet-4-6`、Windows 11、各セル N=20、約 `$54` 相当という検証条件が明示されている。",
+        "記事中の実測では、短い規約を置く CLAUDE.md は 20/20、毎ターン規則としての Skill は 6/20 に留まり、削除禁止フックも `shutil.rmtree` 回避で 16/20 だったとされる。大きな一般化は禁物だが、単一環境での再現条件は十分公開されている。",
+        "技術的新規性は『どの層が強いか』を雰囲気で語らず、回避経路と matcher の穴まで含めて測った点。再現可能性は高く、記事内の設定例を使って自環境で追試しやすい。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/livingston/articles/3eeacb72733171",
+      "publishedAt": "2026-06-23",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "MCP",
+        "software design"
+      ]
+    },
+    {
+      "title": "Qiita: Amazon Bedrock managed Knowledge Base を AgentCore Gateway 経由で呼び出す手順",
+      "summary": "Qiita の 2026-06-23 公開記事。Amazon Bedrock に加わった managed Knowledge Base を、Bedrock AgentCore Gateway へ登録し、MCP 互換のエージェントから呼び出すまでを試している。RAG のためにベクトルストアや分割設定を自前で抱えずに済む構成へ移行できるかを、AWS 公式アナウンスとユーザーガイドに沿って確認している点が良い。",
+      "points": [
+        "Qiita API の `created_at` は `2026-06-23T03:21:54+09:00`。恒久URLは `https://qiita.com/leomarokun/items/5a74b975f99652a6d1a8`。",
+        "一次情報として AWS の公式ブログと Bedrock ドキュメントを確認すると、Managed Knowledge Base は Smart Parsing、Agentic Retrieval、既定モデルによるフルマネージド検索基盤を持ち、AgentCore Gateway と統合して MCP-compatible agents から tool として呼べる。",
+        "技術的新規性は、RAG 構成を『自前ベクトルDB前提』から『フルマネージド KB を Gateway で公開』へ寄せている点。再現可能性は高く、記事にはコンソール操作と Gateway 登録の具体例がある。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/leomarokun/items/5a74b975f99652a6d1a8",
+      "publishedAt": "2026-06-23",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "API",
+        "MCP",
+        "research"
+      ]
+    },
+    {
+      "title": "Qiita: Claude Code の settings.local.json 許可リストを 619 件から 133 件へ圧縮",
+      "summary": "Qiita の 2026-06-23 公開記事。Claude Code の `settings.local.json` に積み上がった allow entries を、ワイルドカード統合と破壊系コマンドの限定許可へ整理し、619件から133件まで圧縮したローカル運用メモである。ベンダー公式のガイドではないが、長期間使ったあとに発生する permission sprawl をどう畳むかという、地味だが実務で困る問題を具体例付きで扱っていた。",
+      "points": [
+        "Qiita API の `created_at` は `2026-06-23T04:53:16+09:00`。記事は `settings.local.json.bak` を取ったうえで、`Bash(python3 ~/Projects/**/*.py*)` のような統合例を示している。",
+        "主張は著者ローカル環境の観測であり、公式仕様として一般化すべき内容ではない。ただし『読み取り系は広く、破壊系は対象パスを絞る』という整理方針は実務的で分かりやすい。",
+        "技術的新規性は派手ではないが、AI コーディングエージェント導入後の permission maintenance を具体的な差分で見せている点。再現可能性は高く、同様の肥大化を抱える環境ならすぐ試せる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/claute_colo/items/3336128ab7b70703814b",
+      "publishedAt": "2026-06-23",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "software design"
+      ]
+    }
+  ]
+}
