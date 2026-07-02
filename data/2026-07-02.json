@@ -1,231 +1,230 @@
 {
-    "date":  "2026-07-02",
-    "updatedAt":  "2026-07-02T13:41:23+09:00",
-    "summary":  "2026-07-02 13:41 JST 時点の直近36時間では、OpenAI News、Anthropic News、Google DeepMind Blog に対象窓内の新規開発記事は見当たらず、公式媒体で採用できたのは Hugging Face のリアルタイム音声AI構成 1 件だけだった。コミュニティ側は、Claude Code の hooks と Notification を安全に検証する手法、cross-vendor な独立検品、永続メモリ基盤の設計比較など、エージェント運用の安全性と継続性に寄った実装記事が中心だった。X は確認したが対象窓内の有意な技術投稿は既存発表の重複か告知色が強く、Reddit 日本語圏・海外圏も self-promo、質問、未検証ベンチマーク主張が大半で不採用とした。",
-    "overview":  [
-                     {
-                         "title":  "全体像",
-                         "items":  [
-                                       {
-                                           "title":  "採用状況",
-                                           "points":  [
-                                                          "採用は 5 件で、Hugging Face 公式 1 件、Qiita 2 件、Zenn 2 件。critical は Hugging Face の 1 件のみ。",
-                                                          "新モデル速報よりも、エージェントをどう止めるか、どう記憶させるか、どう別系統で採点するか、といった運用面の知見が優勢だった。"
-                                                      ]
-                                       },
-                                       {
-                                           "title":  "技術テーマ",
-                                           "points":  [
-                                                          "公式側の新規性は、Parakeet、Gemma 4、Qwen3-TTS、Cerebras をつないだ speech-to-speech 構成を参照実装として見せた点にあった。",
-                                                          "コミュニティ側は、stdin に流す JSON で hooks を単体テストする方法、MCP で独立検品を差し込む方法、セッション外記憶を検索基盤として扱う方法が目立った。"
-                                                      ]
-                                       }
-                                   ]
-                     },
-                     {
-                         "title":  "選定と除外",
-                         "items":  [
-                                       {
-                                           "title":  "確認したソース",
-                                           "points":  [
-                                                          "OpenAI News、Anthropic News、Google DeepMind Blog、Hugging Face Blog と RSS、OpenAI・AnthropicAI・GoogleDeepMind・huggingface の X 公開ページ、Qiita API、Zenn API と記事HTML、Reddit 日本語圏と海外圏の公開ページを確認した。",
-                                                          "重大な主張は Hugging Face 公式記事と `huggingface/speech-to-speech`、Anthropic の Claude Code changelog と hooks docs、`agentmemory`、`claude-mem`、`loop-verify` の GitHub README で裏取りした。"
-                                                      ]
-                                       },
-                                       {
-                                           "title":  "除外理由",
-                                           "points":  [
-                                                          "OpenAI News と Anthropic News の最新更新は 2026-06-30 で、2026-07-01 01:41 JST 以降の新規開発記事は確認できなかった。Google DeepMind も 2026-06 表示中心で、実行窓内の新規記事を確定できなかった。",
-                                                          "X は AnthropicAI の 2026-07-01 投稿などを確認できたが、既存発表の補足的告知に留まり、技術的新規性が薄かった。",
-                                                          "Reddit 日本語圏は AI 関連の新規シグナルが乏しく、海外圏は self-promo や根拠の薄い性能主張が多く、一次情報で十分に裏づけられる投稿を採用しなかった。"
-                                                      ]
-                                       }
-                                   ]
-                     }
-                 ],
-    "highlights":  [
-                       "Hugging Face は 2026-07-01 に、Parakeet STT、Gemma 4、Qwen3-TTS、Cerebras 推論をつないだ音声対話パイプラインを公式化した。",
-                       "Qiita と Zenn では、Claude Code の hooks と Notification を本番セッションなしで検証する実践記事が複数出ており、安全策の具体化が進んでいる。",
-                       "永続メモリと独立検品の両方が OSS として手元再現しやすい形で共有されていた点が、今日のコミュニティ側の大きな特徴だった。"
-                   ],
-    "metrics":  {
-                    "scanned":  63,
-                    "captured":  5,
-                    "critical":  1
-                },
-    "tags":  [
-                 {
-                     "name":  "agent",
-                     "weight":  5
-                 },
-                 {
-                     "name":  "coding",
-                     "weight":  5
-                 },
-                 {
-                     "name":  "model-release",
-                     "weight":  5
-                 },
-                 {
-                     "name":  "CAD",
-                     "weight":  5
-                 },
-                 {
-                     "name":  "software design",
-                     "weight":  5
-                 },
-                 {
-                     "name":  "API",
-                     "weight":  4
-                 },
-                 {
-                     "name":  "MCP",
-                     "weight":  4
-                 },
-                 {
-                     "name":  "open-source",
-                     "weight":  4
-                 },
-                 {
-                     "name":  "benchmark",
-                     "weight":  3
-                 },
-                 {
-                     "name":  "research",
-                     "weight":  2
-                 }
-             ],
-    "sources":  [
-                    {
-                        "name":  "OpenAI News",
-                        "priority":  "high"
-                    },
-                    {
-                        "name":  "Anthropic News",
-                        "priority":  "high"
-                    },
-                    {
-                        "name":  "Google DeepMind Blog",
-                        "priority":  "high"
-                    },
-                    {
-                        "name":  "Hugging Face Blog",
-                        "priority":  "high"
-                    },
-                    {
-                        "name":  "Qiita",
-                        "priority":  "medium"
-                    },
-                    {
-                        "name":  "X",
-                        "priority":  "medium"
-                    },
-                    {
-                        "name":  "Zenn",
-                        "priority":  "medium"
-                    },
-                    {
-                        "name":  "Reddit Japan",
-                        "priority":  "medium"
-                    },
-                    {
-                        "name":  "Reddit Global",
-                        "priority":  "medium"
-                    }
-                ],
-    "articles":  [
-                     {
-                         "title":  "Hugging Face: Gemma 4 と Cerebras でリアルタイム speech-to-speech 構成を公式化",
-                         "summary":  "Hugging Face Blog の 2026-07-01 記事。Parakeet STT、Gemma 4、Qwen3-TTS、Cerebras 推論をつないだ音声対話パイプラインを、オープンで差し替え可能な参照構成として示している。新規性はモデル単体ではなく、低遅延重視の speech-to-speech 全体構成を公式デモと OSS リポジトリでそろえて見せた点にある。完全再現には相応の推論基盤が要るが、構成要素と導入手順は十分公開されている。",
-                         "points":  [
-                                        "Hugging Face RSS の `pubDate` は `Wed, 01 Jul 2026 00:00:00 GMT`。恒久 URL は `https://huggingface.co/blog/cerebras-gemma4-voice-ai`。",
-                                        "一次情報の `huggingface/speech-to-speech` README でも、VAD、STT、LM、TTS の4段パイプライン、`pip install speech-to-speech`、Parakeet TDT、OpenAI-compatible backend、Qwen3-TTS を確認できた。",
-                                        "記事は tail latency を重視する立場で構成を説明しており、厳密な比較ベンチは限定的だが、Space と GitHub が公開されているため PoC 再現性は高い。"
-                                    ],
-                         "source":  "Hugging Face Blog",
-                         "url":  "https://huggingface.co/blog/cerebras-gemma4-voice-ai",
-                         "publishedAt":  "2026-07-01",
-                         "priority":  "critical",
-                         "tags":  [
-                                      "agent",
-                                      "API",
-                                      "open-source",
-                                      "research"
-                                  ]
-                     },
-                     {
-                         "title":  "Zenn: Claude Code hooks を危険操作の門番として単体テストで固める",
-                         "summary":  "Zenn の 2026-07-02 12:03 JST 投稿。Claude Code hooks を本物の危険操作で試すのではなく、stdin に JSON を流し込むシェル単体テストとして検証する手法をまとめている。新規性は hooks を設定ファイルの小技ではなく、決定的に再現できる安全制御ロジックとして扱った点にある。Anthropic の hooks docs と整合し、再現性は高い。",
-                         "points":  [
-                                        "Zenn 埋め込みデータの `publishedAt` は `2026-07-02T12:03:17.136+09:00`。恒久 URL は `https://zenn.dev/numarn/articles/claude-code-hooks-pretooluse-stop-handson`。",
-                                        "記事は `PreToolUse` フックで `rm -rf`、`git push --force`、`curl ... | sh` を拒否し、危険4件と安全4件を模擬 JSON で流して `8/8` の期待通り判定を示している。",
-                                        "Anthropic の hooks docs は、コマンドフックに JSON コンテキストが stdin で渡されることと、`hookSpecificOutput.permissionDecision` による `deny` を明示しており、記事の前提は一次情報と一致していた。"
-                                    ],
-                         "source":  "Zenn",
-                         "url":  "https://zenn.dev/numarn/articles/claude-code-hooks-pretooluse-stop-handson",
-                         "publishedAt":  "2026-07-02",
-                         "priority":  "signal",
-                         "tags":  [
-                                      "agent",
-                                      "coding",
-                                      "software design"
-                                  ]
-                     },
-                     {
-                         "title":  "Zenn: `agentmemory` と `claude-mem` を比較し、永続メモリの設計差を整理",
-                         "summary":  "Zenn の 2026-07-01 22:09 JST 投稿。コーディングAIのセッション間記憶を補う OSS として `agentmemory` と `claude-mem` を比較し、検索重視かプラグイン統合重視かの違いを整理している。新規性は新製品紹介ではなく、永続メモリを hook、MCP、検索基盤として分解して比較した点にある。主要主張は両リポジトリの README で裏づけられ、再現性も高い。",
-                         "points":  [
-                                        "Zenn 埋め込みデータの `publishedAt` は `2026-07-01T22:09:47.240+09:00`。恒久 URL は `https://zenn.dev/okssusucha/articles/20260630-cross-agent-persistent-memory-agentmemory`。",
-                                        "一次情報の `agentmemory` README は、`agentmemory` サーバーを `:3111` で起動し、`agentmemory connect claude-code` で接続する流れ、`BM25 + Vector + Graph` の RRF 融合、`LongMemEval-S` の `R@5 95.2%` を掲げている。",
-                                        "一方 `claude-mem` README は、正式導入手順を `npx claude-mem install` とし、`npm install -g claude-mem` では hooks を登録しないと明記している。さらに `SessionStart` など5フック、`SQLite + Chroma`、`search -\u003e timeline -\u003e get_observations` の3層ワークフローも確認できた。"
-                                    ],
-                         "source":  "Zenn",
-                         "url":  "https://zenn.dev/okssusucha/articles/20260630-cross-agent-persistent-memory-agentmemory",
-                         "publishedAt":  "2026-07-01",
-                         "priority":  "signal",
-                         "tags":  [
-                                      "agent",
-                                      "MCP",
-                                      "open-source",
-                                      "software design"
-                                  ]
-                     },
-                     {
-                         "title":  "Qiita: `loop-verify` で self-check を cross-vendor な独立検品へ差し替える",
-                         "summary":  "Qiita の 2026-07-02 13:01 JST 投稿。Claude 系で作った成果物を同系統モデルで検品する限界に対し、`codex`、`GPT`、`Gemini` 系へ採点だけを委譲する OSS `loop-verify` を紹介している。新規性は、別モデルで採点する発想を MCP サーバ兼 Python 関数として loop-kit へ drop-in できる形に落とした点にある。GitHub README にデモ、ベンチ、サーバ起動方法がそろっており、再現しやすい。",
-                         "points":  [
-                                        "Qiita API の `created_at` は `2026-07-02T13:01:56+09:00`。恒久 URL は `https://qiita.com/akihidem/items/3b989b7b987acd351875`。",
-                                        "一次情報の `loop-verify` README は、`independent_verify(criteria, artifact)` を提供する MCP サーバ、`python demo/run_demo.py --backend codex`、`python bench/edge_bench.py --backend codex`、loop-kit と同一 verdict 契約による drop-in 置換を明記している。",
-                                        "README では bundled 9 fixtures に対する codex backend の成績を `recall 1.0, false-positive 0.0 -\u003e GO` としている。評価規模は小さいが、デモ、ベンチ、Docker 運用まで公開されているため著者主張の再演は可能だ。"
-                                    ],
-                         "source":  "Qiita",
-                         "url":  "https://qiita.com/akihidem/items/3b989b7b987acd351875",
-                         "publishedAt":  "2026-07-02",
-                         "priority":  "signal",
-                         "tags":  [
-                                      "agent",
-                                      "MCP",
-                                      "benchmark",
-                                      "open-source"
-                                  ]
-                     },
-                     {
-                         "title":  "Qiita: Claude Code v2.1.198 の background agents 自動PR化と `Notification` hook を検証",
-                         "summary":  "Qiita の 2026-07-02 12:29 JST 投稿。Claude Code v2.1.198 で background agents が完了後に commit、push、draft PR まで自動化された点と、`agent_needs_input`、`agent_completed` を `Notification` hook で拾う運用を整理している。新規性は changelog の箇条書きを、運用上の影響と模擬ペイロード検証へ落とし込んだ点にある。公式 changelog と hooks docs で裏づけ可能だ。",
-                         "points":  [
-                                        "Qiita API の `created_at` は `2026-07-02T12:29:00+09:00`。恒久 URL は `https://qiita.com/kai_kou/items/f4d7198f1a5db10a0663`。",
-                                        "Anthropic の `claude-code` CHANGELOG `2.1.198` には、background agents が code work 完了後に `commit, push, and open a draft PR` することと、`Notification` hook で `agent_needs_input` と `agent_completed` が発火することが明記されている。",
-                                        "記事は `Notification` フックへ模擬 JSON を流し、`hook_event_name` は `Notification` で固定、実際の種別判定は `message` 側で行う最小実装を示している。公式 hooks docs でも共通フィールドと `Notification` イベントの存在は確認できる。"
-                                    ],
-                         "source":  "Qiita",
-                         "url":  "https://qiita.com/kai_kou/items/f4d7198f1a5db10a0663",
-                         "publishedAt":  "2026-07-02",
-                         "priority":  "signal",
-                         "tags":  [
-                                      "agent",
-                                      "coding",
-                                      "API"
-                                  ]
-                     }
-                 ]
+  "date": "2026-07-02",
+  "updatedAt": "2026-07-02T14:14:16+09:00",
+  "summary": "2026-07-02 14:14 JST?????config/research.json???36??????????OpenAI News?2026-06-30?GeneBench-Pro/engineering???Anthropic News?2026-06-30?Claude Sonnet 5/Claude Science????????????????????????????Google DeepMind Blog????????????????????????????Hugging Face?2026-07-01???????????AI???????????????????Claude Code hooks???????cross-vendor???Notification hook??????????????X???URL????????????????????Reddit??????????self-promo?????????????",
+  "overview": [
+    {
+      "title": "???",
+      "items": [
+        {
+          "title": "????",
+          "points": [
+            "???5???Hugging Face??1??Zenn 2??Qiita 2??critical?Hugging Face???????speech-to-speech??1???????",
+            "7/2????????????????????????????????????????????????????????????????????????????"
+          ]
+        },
+        {
+          "title": "?????",
+          "points": [
+            "Hugging Face?????Parakeet STT?Gemma 4 VLM?Qwen3-TTS?Cerebras inference??????????????????????????????????????",
+            "Zenn/Qiita???Claude Code?hook???????????????MCP/REST?????????cross-vendor???background agent????????????"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "?????",
+      "items": [
+        {
+          "title": "???????",
+          "points": [
+            "OpenAI News?Anthropic News?Google DeepMind Blog?Hugging Face Blog/RSS?Zenn???Qiita???GitHub README?Anthropic Claude Code docs/changelog??????",
+            "???????Hugging Face?????speech-to-speech GitHub?Anthropic hooks docs?Anthropic Claude Code changelog?agentmemory/claude-mem/loop-verify?GitHub README???????"
+          ]
+        },
+        {
+          "title": "????",
+          "points": [
+            "OpenAI?Anthropic????????2026-06-30??2026-07-01 02:14 JST???36??????????????????DeepMind???????URL????????????????",
+            "X???????????????????????????????????????????Reddit?????????????????????????????"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "Hugging Face??Gemma 4?Cerebras????????speech-to-speech?????????????????tail latency????????????",
+    "Claude Code hooks???????????????????stdin JSON????????????????????????",
+    "??????cross-vendor????AI?????????????????????????????????????????????????????"
+  ],
+  "metrics": {
+    "scanned": 68,
+    "captured": 5,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 4
+    },
+    {
+      "name": "CAD",
+      "weight": 2
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 5
+    },
+    {
+      "name": "open-source",
+      "weight": 5
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 3
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "Hugging Face: Gemma 4?Cerebras???????speech-to-speech?????",
+      "summary": "Hugging Face?2026-07-01??Parakeet STT?Gemma 4 VLM?Qwen3-TTS?Cerebras inference???????????????????????????????????????????????tail latency?????speech-to-speech??????Hugging Face Space?GitHub????????????????????????????????????embodied AI??????????????",
+      "points": [
+        "Hugging Face???????2026-07-01???URL? https://huggingface.co/blog/cerebras-gemma4-voice-ai?",
+        "??????? https://github.com/huggingface/speech-to-speech ?????VAD?STT?LM?TTS?4????pip install speech-to-speech?Parakeet TDT?OpenAI-compatible backend?Qwen3-TTS?????????",
+        "????????????????????UX?P95??????????????????????????????????????????????????????"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/cerebras-gemma4-voice-ai",
+      "publishedAt": "2026-07-01",
+      "priority": "critical",
+      "tags": [
+        "agent",
+        "API",
+        "open-source",
+        "research"
+      ]
+    },
+    {
+      "title": "Zenn: Claude Code hooks??????????????????",
+      "summary": "Zenn????Claude Code hooks??????????????PreToolUse hook?stdin JSON?????????deny????????????????????rm -rf?git push --force?curl pipe shell???????????????????????????????????????????Anthropic?hooks docs???stdin???hookSpecificOutput.permissionDecision???????????",
+      "points": [
+        "Zenn???????2026-07-02???URL? https://zenn.dev/numarn/articles/claude-code-hooks-pretooluse-stop-handson?",
+        "??????? https://code.claude.com/docs/en/hooks ?????hook?????stdin?????JSON?Notification?hookSpecificOutput??????????????",
+        "???????hook?????????????????/?????????????CI?????????????????????????"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/numarn/articles/claude-code-hooks-pretooluse-stop-handson",
+      "publishedAt": "2026-07-02",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "software design"
+      ]
+    },
+    {
+      "title": "Zenn: agentmemory?claude-mem?????????????????",
+      "summary": "Zenn????coding agent???????????????OSS???agentmemory?claude-mem????????agentmemory?BM25?vector?graph?RRF???LongMemEval-S?R@5 95.2%???????claude-mem?Claude Code????????hook?MCP??????????????????????????????MCP/REST???????????????????",
+      "points": [
+        "Zenn???????2026-07-01???URL? https://zenn.dev/okssusucha/articles/20260630-cross-agent-persistent-memory-agentmemory?",
+        "??????? https://github.com/rohitg00/agentmemory ?????agentmemory server?agentmemory connect?MCP/REST?LongMemEval-S?BM25 + Vector + Graph?????????",
+        "??????? https://github.com/thedotmack/claude-mem ?????hook?MCP????????????????????????????README????????????????????"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/okssusucha/articles/20260630-cross-agent-persistent-memory-agentmemory",
+      "publishedAt": "2026-07-01",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "open-source",
+        "software design"
+      ]
+    },
+    {
+      "title": "Qiita: loop-verify?Claude?????cross-vendor???????",
+      "summary": "Qiita????Claude????????????????????????????????Codex/GPT/Gemini????????OSS loop-verify????????MCP server??Python?????loop-kit?drop-in???????README????????Docker????????????????????????????????????????????????????",
+      "points": [
+        "Qiita???????2026-07-02???URL? https://qiita.com/akihidem/items/3b989b7b987acd351875?",
+        "??????? https://github.com/akihidem/loop-verify ?????independent_verify(criteria, artifact)?MCP server?demo/run_demo.py?bench/edge_bench.py?????????",
+        "bundled fixtures??recall?false-positive????????????????????????/??????????????????????????"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/akihidem/items/3b989b7b987acd351875",
+      "publishedAt": "2026-07-02",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "benchmark",
+        "open-source"
+      ]
+    },
+    {
+      "title": "Qiita: Claude Code v2.1.198??background agent???Notification hook???",
+      "summary": "Qiita????Claude Code?background agent??????????????Notification hook???????????????changelog?????2.1.196/2.1.191??background agent?session status?MCP?hook????????????????????????????????????????????????????????payload???hooks docs???????????",
+      "points": [
+        "Qiita???????2026-07-02???URL? https://qiita.com/kai_kou/items/f4d7198f1a5db10a0663?",
+        "??????? Anthropic Claude Code hooks docs ?Notification??????https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md ?background agents??????????",
+        "???????????????changelog????????????????????????????Notification hook????????payload?????????????"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/kai_kou/items/f4d7198f1a5db10a0663",
+      "publishedAt": "2026-07-02",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "API"
+      ]
+    }
+  ]
 }
