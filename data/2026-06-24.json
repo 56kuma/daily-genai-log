@@ -1,0 +1,247 @@
+{
+  "date": "2026-06-24",
+  "updatedAt": "2026-06-24T22:03:09+09:00",
+  "summary": "直近36時間では、公式側は OpenAI の推論専用 chip `Jalapeño` 公開が最も強いインフラ更新で、Anthropic は Slack 常駐型の `Claude Tag` を beta 提供し、Hugging Face は週次 release CI を具体的な GitHub Actions と検証手順まで公開した。国内コミュニティでは、Claude Code / Codex 向け MCP 接続設計、Momonga Search MCP の導入、Docker による MCP サンドボックス化といった、エージェント運用を固める実装記事が目立った。X は公開ページから投稿本文と時刻を安定抽出できず、Reddit 日本語圏・海外は `new.json` が 403 だったため、本文採録は一次情報で追える記事に絞った。",
+  "overview": [
+    {
+      "title": "公式動向",
+      "items": [
+        {
+          "title": "インフラと共同作業",
+          "points": [
+            "OpenAI は 2026-06-24 に Broadcom との推論専用 chip `Jalapeño` を公開し、現行最先端より高い performance per watt を初期試験で見込むと説明した。",
+            "Anthropic は 2026-06-23 に Slack 常駐型 `Claude Tag` を beta 提供し、チャネル単位の記憶、ツール権限、支出上限、監査ログをまとめて扱えるようにした。",
+            "Hugging Face は `huggingface_hub` を毎週リリースする GitHub Actions ワークフローを公開し、AI draft と deterministic verification と human review の役割分離をコード付きで示した."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "実装知見",
+      "items": [
+        {
+          "title": "MCP の接続設計と安全策",
+          "points": [
+            "Qiita の Claude Code MCP 解説は、HTTP / SSE / stdio の transport と scope 優先順位を Anthropic docs ベースで整理し、重複設定時の競合解決ルールまで明文化していた。",
+            "Zenn では Momonga Search MCP の stdio 導入手順と、Docker による MCP サンドボックス化が並び、Codex / Claude 周辺を安全に組み立てる実装記事が増えている。",
+            "いずれも単なる感想ではなく、GitHub リポジトリ、Docker docs、公式設定画面、環境変数名まで具体的に出しており、PoC へ移しやすい。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "調査メモ",
+      "items": [
+        {
+          "title": "未採録と除外",
+          "points": [
+            "Google DeepMind Blog は対象窓の新規技術記事を確認できず、OpenAI の `How agents are transforming work` は公開日が `2026-06-25` で今回の窓外だった。",
+            "X は `OpenAI` / `AnthropicAI` / `GoogleDeepMind` / `huggingface` の公開ページと検索を確認したが、本文と日時の抽出が安定しなかった。",
+            "Reddit Japan / Global は `r/newsokur`, `r/ja`, `r/LocalLLaMA`, `r/MachineLearning`, `r/artificial`, `r/ClaudeAI`, `r/ChatGPTCoding` の `new.json` がいずれも `403` で、HTML代替でも有力新規シグナルを採れなかった。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAI の `Jalapeño` は、モデル・kernel・serving pattern を前提に設計した専用推論 chip を前面に出し、OpenAI が『モデルの上』だけでなく『推論基盤の下』まで自前最適化へ踏み込んだ更新だった。",
+    "Hugging Face の週次 release CI 記事は、AI に changelog 草案を書かせつつ、PR 抜け漏れを deterministic script で検証し、人間が最終判断するという再利用しやすい release 設計を公開した。",
+    "国内記事はモデル速報よりも、MCP の transport / scope 設計、stdio サーバー導入、Docker サンドボックスといった安全で再現可能な周辺実装へ重心が移っていた。"
+  ],
+  "metrics": {
+    "scanned": 54,
+    "captured": 6,
+    "critical": 1
+  },
+  "tags": [
+    {
+      "name": "agent",
+      "weight": 5
+    },
+    {
+      "name": "coding",
+      "weight": 5
+    },
+    {
+      "name": "model-release",
+      "weight": 5
+    },
+    {
+      "name": "CAD",
+      "weight": 5
+    },
+    {
+      "name": "software design",
+      "weight": 5
+    },
+    {
+      "name": "API",
+      "weight": 4
+    },
+    {
+      "name": "MCP",
+      "weight": 4
+    },
+    {
+      "name": "open-source",
+      "weight": 4
+    },
+    {
+      "name": "benchmark",
+      "weight": 3
+    },
+    {
+      "name": "research",
+      "weight": 2
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "priority": "high"
+    },
+    {
+      "name": "Anthropic News",
+      "priority": "high"
+    },
+    {
+      "name": "Google DeepMind Blog",
+      "priority": "high"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "priority": "medium"
+    },
+    {
+      "name": "Qiita",
+      "priority": "medium"
+    },
+    {
+      "name": "X",
+      "priority": "medium"
+    },
+    {
+      "name": "Zenn",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Japan",
+      "priority": "medium"
+    },
+    {
+      "name": "Reddit Global",
+      "priority": "medium"
+    }
+  ],
+  "articles": [
+    {
+      "title": "OpenAI: Broadcom と推論専用 chip `Jalapeño` を公開",
+      "summary": "OpenAI の 2026-06-24 公式記事。OpenAI 初の `Intelligence Processor` として、LLM 推論専用 accelerator `Jalapeño` を Broadcom と共同公開した。現時点では性能比較の詳細値は未公開だが、engineering sample が `GPT-5.3-Codex-Spark` を production target frequency / power で動かしていること、9か月で tape-out したこと、2026年末から複数世代で展開する計画を明示しており、生成AIの競争軸が『モデル性能』から『推論基盤そのもの』へ広がっている。",
+      "points": [
+        "OpenAI News 一覧上の公開日は `2026-06-24`。恒久URLは `https://openai.com/index/openai-broadcom-jalapeno-inference-chip/`。",
+        "本文は `Jalapeño` を OpenAI 初の `Intelligence Processor` と位置づけ、OpenAI の model / kernel / serving 系の知見を前提に設計し、`GPT-5.3-Codex-Spark` を lab で production target frequency / power で走らせていると説明する。",
+        "重大な主張は OpenAI 公式記事で確認したが、性能比較の詳細は『今後数か月で technical report を出す』段階で、現時点の再現可能性は低い。評価は vendor self-report として読むのが妥当。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "publishedAt": "2026-06-24",
+      "priority": "critical",
+      "tags": [
+        "model-release",
+        "research"
+      ]
+    },
+    {
+      "title": "Anthropic: Slack 上で共有記憶と権限制御を持つ `Claude Tag` を beta 提供",
+      "summary": "Anthropic の 2026-06-23 公式記事。`@Claude` を Slack チャネルへ常駐させ、選択したツール、データ、コードベースへ接続したうえで、チーム全員が同じ Claude を共同利用できる `Claude Tag` を beta 提供した。チャネル単位の memory、ambient update、自己スケジュール実行、organization / channel ごとの spend limit、監査ログまで含めており、個人チャット型から『共有エージェント型』への拡張として意味が大きい。",
+      "points": [
+        "Anthropic News 一覧上の公開日は `2026-06-23`。恒久URLは `https://www.anthropic.com/news/introducing-claude-tag`。",
+        "公式記事と `Claude Tag` docs / Slack support 記事で、チャネル単位に access と memory を分離し、管理者が接続先、token spend、activity log を制御できることを確認した。",
+        "再現には Claude Enterprise または Team と Slack 管理者設定が必要で、個人検証の敷居は高い。ただし主要主張は公式文書で揃っており、実運用の前提条件は明確。"
+      ],
+      "source": "Anthropic News",
+      "url": "https://www.anthropic.com/news/introducing-claude-tag",
+      "publishedAt": "2026-06-23",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "software design"
+      ]
+    },
+    {
+      "title": "Hugging Face: `huggingface_hub` の週次 release CI を GitHub Actions ごと公開",
+      "summary": "Hugging Face の 2026-06-23 公式記事。`huggingface_hub` を 4〜6 週間ごとから毎週リリースへ変えるため、version bump、release branch、downstream test branch、release notes draft、Slack announcement draft までを一つの GitHub Actions workflow へまとめた。重要なのは AI に全面委譲していないことで、PR 一覧は deterministic script で ground truth 化し、release notes は AI draft を人間が最終確認する構造がそのまま公開されている。",
+      "points": [
+        "公開日時は `2026-06-23T03:56:16`。恒久URLは `https://huggingface.co/blog/huggingface-hub-release-ci`。",
+        "記事から `release.yml`、release notes utility、`hf-release-notes` skill、PyPI trusted publishers への一次リンクを辿れ、ワークフロー全体を自分の repo へ移植しやすい。",
+        "新規性は『AI を release operator にする』のではなく、『AI は下書き、検証は決定的、公開判断は人間』に役割を切った点にある。再現可能性は高い。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/huggingface-hub-release-ci",
+      "publishedAt": "2026-06-23",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "open-source",
+        "software design"
+      ]
+    },
+    {
+      "title": "Qiita: Claude Code の MCP 接続を transport と scope 優先順位まで整理",
+      "summary": "Qiita の 2026-06-24 公開記事。Claude Code の MCP 連携を、HTTP / SSE / stdio の 3 transport、`local > project > user > plugin-provided > claude.ai connectors` の優先順位、重複時に一つだけ接続する挙動まで整理している。新機能の速報ではないが、2026-06-09 の docs 改稿を踏まえて企業向け control まで再検証しており、運用設計のベースとして価値が高い。",
+      "points": [
+        "Qiita API の `created_at` は `2026-06-24T02:23:16+09:00`。恒久URLは `https://qiita.com/akihidem/items/405d5d07837c1e202af1`。",
+        "本文は Anthropic の MCP docs を一次情報にして、HTTP は remote MCP server 向け推奨、stdio はローカル実行向け、scope 競合は上位定義だけが生きると整理している。",
+        "記事内に command 例と docs 参照があり再現可能性は高い。一方で独自ベンチマークや性能主張ではなく、運用整理メモとして読むのが妥当。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/akihidem/items/405d5d07837c1e202af1",
+      "publishedAt": "2026-06-24",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "coding",
+        "MCP",
+        "software design"
+      ]
+    },
+    {
+      "title": "Zenn: Momonga Search MCP を Claude / Codex の stdio サーバーとして導入",
+      "summary": "Zenn の 2026-06-24 公開記事。企業公表資料と経済ニュース向けの workflow MCP server `momonga_search_mcp` を、Claude Desktop / Claude Code / Codex へ stdio 接続する手順を、repo clone、`.env` の API key、base URL、cache 設定、client への登録まで順番に整理している。汎用検索ではなく『根拠提示付きの安全な企業調査』へ寄せた MCP をすぐ試せる点が新しい。",
+      "points": [
+        "Zenn API の `published_at` は `2026-06-24T02:11:55.338+09:00`。恒久URLは `https://zenn.dev/ray000/articles/momonga-search-mcp-setup`。",
+        "一次情報として GitHub の `ReiMinamoto/momonga_search_mcp` README を確認すると、stdio transport、bounded retrieval、`MOMONGA_SEARCH_API_KEY` などの主要環境変数、Claude / Codex 向け登録導線が明記されている。",
+        "再現には Momonga Search API key が必要だが、手順と設定名が具体的で再現可能性は高い。検索品質そのものの性能主張ではなく、導入ガイドとして評価した。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/ray000/articles/momonga-search-mcp-setup",
+      "publishedAt": "2026-06-24",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "research"
+      ]
+    },
+    {
+      "title": "Zenn: MCP サーバーを Docker へ閉じ込めて二重ロックする運用",
+      "summary": "Zenn の 2026-06-24 公開記事。Filesystem MCP Server のようにローカル読み書きできる MCP を、その server 自身の設定だけに頼らず Docker 側でもサンドボックス化し、ホストで見せるフォルダーを限定する運用を提案している。Docker MCP Toolkit / Catalog、`modelcontextprotocol/servers` の filesystem Dockerfile、`mcp.json` の上書きまで具体化しており、破壊系ツールの安全境界を一段上げる実務メモとして有用だった。",
+      "points": [
+        "Zenn API の `published_at` は `2026-06-24T02:04:08.042+09:00`。恒久URLは `https://zenn.dev/shinta0806/articles/docker-mcp-server`。",
+        "記事は Docker 公式の `Docker MCP Catalog and Toolkit` と、`modelcontextprotocol/servers` の filesystem Dockerfile を一次情報として張り、MCP server の内部設定とは別に host 側の公開フォルダーを縛る発想を説明している。",
+        "再現には Docker Desktop の beta feature と MCP Toolkit が必要だが、設定画面と防御意図が具体的で再現可能性は中高。誤削除対策として人間承認や自己検証と併用すべき点も妥当。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/shinta0806/articles/docker-mcp-server",
+      "publishedAt": "2026-06-24",
+      "priority": "signal",
+      "tags": [
+        "agent",
+        "MCP",
+        "software design"
+      ]
+    }
+  ]
+}

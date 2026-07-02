@@ -1,0 +1,164 @@
+{
+  "date": "2026-06-27",
+  "updatedAt": "2026-06-27T13:23:17+09:00",
+  "summary": "2026-06-27 13:23 JST 時点の直近調査では、公式媒体の新規性は OpenAI の GPT-5.6 Sol プレビュー公開と、Hugging Face の HF Jobs 上で vLLM を 1 コマンド配備する手順が中心だった。国内コミュニティでは、OpenAI Agents SDK の SQLite 永続セッション、Claude Code 向けの画像生成用カスタム MCP、Windows での statusLine 実装、Firefox 153 と Firefox DevTools MCP を組み合わせた headless WebGPU 開発など、実装に直結する記事が揃った。Anthropic の公式新着は 2026-06-23 の Claude Tag 以降に採録対象がなく、Google DeepMind も直近 36 時間で時刻を確定できる開発者向け新着を確認できなかった。X はログアウト状態の公開 HTML から安定した status URL と時刻を抽出できず、Reddit 日本語圏・海外は引き続き `new.json` が 403 で、一次情報補強付きの採録候補は得られなかった。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採録状況",
+          "points": [
+            "採録は 6 件で、OpenAI 1 件、Hugging Face 1 件、Qiita 2 件、Zenn 2 件。critical は OpenAI の GPT-5.6 Sol プレビュー 1 件だけに絞った。",
+            "前回実行の `2026-06-26T06:03:07+09:00` 以降に公開された記事を優先し、同じ話題をなぞるだけの二次解説や宣伝色の強い投稿は落とした。"
+          ]
+        },
+        {
+          "title": "技術テーマ",
+          "points": [
+            "公式側は、フロンティアモデルの能力拡張と、安全制約付きプレビュー提供、OpenAI 互換サービングの簡略化という二つの方向が目立った。",
+            "コミュニティ側は、セッション永続化、MCP による機能拡張、CLI 表示の安定化、ブラウザ自動化と WebGPU の接続など、エージェント実装の足回りを改善する記事が中心だった。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "検証と除外",
+      "items": [
+        {
+          "title": "確認したソース",
+          "points": [
+            "OpenAI News、Anthropic News、Google DeepMind Blog、Hugging Face Blog、X の公式アカウント / 検索結果、Qiita API、Zenn API、Reddit `new.json` を確認した。",
+            "重大な主張は OpenAI の公式記事と API docs、OpenAI Agents SDK docs、Anthropic Claude Code docs、Mozilla MDN、`mozilla/firefox-devtools-mcp` GitHub、`Shin-sibainu/cc-company` GitHub の一次情報で突き合わせた。"
+          ]
+        },
+        {
+          "title": "不採用理由",
+          "points": [
+            "Anthropic は最新の公式技術記事が 2026-06-23 の `Introducing Claude Tag` で、今回の時間窓外だった。Google DeepMind も直近の開発者向け新着を時刻付きで確定できなかったため不採用とした。",
+            "X は公開 HTML だけでは in-window の投稿 URL と時刻を安定取得できず、Reddit は `r/LocalLLaMA`、`r/ClaudeAI`、`r/ChatGPTCoding`、`r/newsokur`、`r/ja` の `new.json` が 403 のままだった。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAI は 2026-06-26 に GPT-5.6 Sol / Terra / Luna を発表し、Sol に `max` reasoning effort と subagent 活用の `ultra` モードを加えた。安全面では限定プレビュー運用と追加評価を前面に出している。",
+    "Hugging Face は HF Jobs 上で `vllm/vllm-openai` を起動し、OpenAI 互換エンドポイントを短時間で立てる手順を公式化した。PoC、評価、エージェント接続の初速がかなり上がる。",
+    "Qiita と Zenn では、セッション永続化、カスタム MCP、Windows の statusLine、Firefox MCP + WebGPU など、手元の開発体験を直接改善する再現可能な記事が強かった。"
+  ],
+  "metrics": {
+    "scanned": 54,
+    "captured": 6,
+    "critical": 1
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "CAD", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "sources": [
+    { "name": "OpenAI News", "priority": "high" },
+    { "name": "Anthropic News", "priority": "high" },
+    { "name": "Google DeepMind Blog", "priority": "high" },
+    { "name": "Hugging Face Blog", "priority": "high" },
+    { "name": "Qiita", "priority": "medium" },
+    { "name": "X", "priority": "medium" },
+    { "name": "Zenn", "priority": "medium" },
+    { "name": "Reddit Japan", "priority": "medium" },
+    { "name": "Reddit Global", "priority": "medium" }
+  ],
+  "articles": [
+    {
+      "title": "OpenAI: GPT-5.6 Sol を限定プレビュー公開、`max` と `ultra` で長期エージェント作業を強化",
+      "summary": "OpenAI は 2026-06-26 に GPT-5.6 Sol のプレビューを公開し、同時に Terra と Luna も案内した。Sol には、より深く考えさせる `max` reasoning effort と、subagent を使って複雑作業を並列化する `ultra` モードが追加されている。公式記事では Terminal-Bench 2.1 での改善と、限定プレビューの安全運用を前面に出しており、今回の調査窓で最重要のモデル更新だった。",
+      "points": [
+        "OpenAI News の一覧では `Previewing GPT-5.6 Sol: a next-generation model` が 2026-06-26 公開。恒久 URL は https://openai.com/index/previewing-gpt-5-6-sol/。",
+        "公式本文では `max` reasoning effort と `ultra` モードを明示し、`ultra` は subagents を活用して複雑作業を加速すると説明している。モデル構成を Sol / Terra / Luna に分け、Sol を長時間の知的作業向けに位置づけている点が新しい。",
+        "再現性は一般公開前の限定プレビューゆえ完全ではないが、主張の主要部分は OpenAI の公式記事と安全関連の付随文書で追える。ベンチマーク値や安全運用の詳細は一次情報で確認可能な範囲に限定して扱うべきだ。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol/",
+      "publishedAt": "2026-06-26",
+      "priority": "critical",
+      "tags": ["model-release", "agent", "coding", "research"]
+    },
+    {
+      "title": "Hugging Face: HF Jobs で OpenAI 互換 vLLM サーバーを 1 コマンド起動",
+      "summary": "Hugging Face Blog の 2026-06-26 記事。`hf jobs run --flavor ... --expose 8000 vllm/vllm-openai:latest ...` で、プライベートな OpenAI 互換エンドポイントを HF Jobs 上に短時間で立てる手順を公式に整理している。curl、Python クライアント、Gradio UI、SSH、さらに Pi を使ったコーディングエージェント接続まで一続きで示されており、評価・PoC・一時サービングの再現性が高い。",
+      "points": [
+        "記事の公開日は 2026-06-26。恒久 URL は https://huggingface.co/blog/vllm-jobs。",
+        "公式記事では `huggingface_hub >= 1.20.0`、`hf auth login`、`hf jobs run --flavor a10g-large --expose 8000 --timeout 2h vllm/vllm-openai:latest ...` を起点に、ジョブ URL 経由で OpenAI 互換 API を叩く手順を具体的に示している。",
+        "認証は HF token でゲートされ、公開 URL であってもそのまま誰でも使えるわけではない点まで明記されている。公式記事だけでコマンド、起動条件、後片付け (`hf jobs cancel`) まで追えるため再現しやすい。"
+      ],
+      "source": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog/vllm-jobs",
+      "publishedAt": "2026-06-26",
+      "priority": "signal",
+      "tags": ["agent", "API", "coding", "open-source"]
+    },
+    {
+      "title": "Qiita: OpenAI Agents SDK の `SQLiteSession` で会話履歴をユーザー単位に永続化",
+      "summary": "Qiita の 2026-06-26 23:04 JST 投稿。`SQLiteSession(\"user_1\", \"ai-memory.db\")` を使って、同じ SQLite DB 内で `session_id` ごとに会話履歴を分離し、同一ユーザーだけが過去文脈を引き継ぐ挙動を小さな weather tool 実験で示している。派手な新機能ではないが、『複数ユーザーを持つ chat アプリで Agents SDK の memory をどう切るか』を最短で確認できる実装メモとして有用だ。",
+      "points": [
+        "Qiita API の `created_at` は 2026-06-26T23:04:57+09:00。恒久 URL は https://qiita.com/jungyeounjae/items/f105ea01bbb76a0f872f。",
+        "記事は `SQLiteSession` に `session_id` と DB ファイルを渡し、同一 DB 上で `user_1` と `user_2` の履歴が分かれることをコード付きで確認している。質問文を変えずに文脈有無だけを比較しているので、観察の切り分けが明快だ。",
+        "一次情報の OpenAI Agents SDK docs でも、session を渡すと実行前に履歴を取得し、実行後に新しい items を自動保存すると明記されている。記事の中心主張は公式仕様と一致しており、再現も容易だ。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/jungyeounjae/items/f105ea01bbb76a0f872f",
+      "publishedAt": "2026-06-26",
+      "priority": "signal",
+      "tags": ["agent", "API", "coding"]
+    },
+    {
+      "title": "Qiita: cc-company に画像生成用の自作 MCP を足し、Claude Code から `gpt-image-2` を呼ぶ",
+      "summary": "Qiita の 2026-06-26 14:00 JST 投稿。Claude Code の仮想組織プラグイン `cc-company` に『デザイン部署』を追加し、秘書経由で OpenAI の `gpt-image-2` に画像生成や i2i 編集を流す構成を、ディレクトリ構成とバージョン付きで説明している。シリーズ前提ではあるが、MCP を単なるツール列挙ではなく、役割分担のある組織プラグインへ画像生成能力を注入する実装例として面白い。",
+      "points": [
+        "Qiita API の `created_at` は 2026-06-26T14:00:03+09:00。恒久 URL は https://qiita.com/Fuses-Garage/items/cba1812eca0f8bdce440。",
+        "記事は Claude Code 2.1.144、cc-company 2.1.0、Python 3.12.6 を前提に、`.company/design/` 配下の構成、`CLAUDE.md`、生成画像 / プロンプト保存先まで具体化しているため、前提条件が揃えば再現できる。",
+        "一次情報では OpenAI の image generation docs が `gpt-image-2` で生成・編集の両方を扱えることを説明しており、cc-company の GitHub README でも Claude Code プラグインとしての構成が確認できる。依存する前回記事がある点は読み手の前提として明記すべきだ。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/Fuses-Garage/items/cba1812eca0f8bdce440",
+      "publishedAt": "2026-06-26",
+      "priority": "signal",
+      "tags": ["MCP", "API", "coding", "software design"]
+    },
+    {
+      "title": "Zenn: Windows + Git Bash で空白になる Claude Code `statusLine` を Node.js 実装へ差し替える",
+      "summary": "Zenn の 2026-06-27 02:53 JST 投稿。Windows + Git Bash で Claude Code の `statusLine` が空白になる症状に対し、PowerShell スクリプトを Node.js 実装へ移植し、stdin で受ける JSON をそのまま描画する構成に変えると解消したという報告だ。根本原因の『PowerShell 起動遅延』自体は著者の観測ベースだが、症状、設定例、置換後コードが揃っており、同条件なら追試しやすい。",
+      "points": [
+        "Zenn API の `published_at` は 2026-06-27T02:53:19.350+09:00。恒久 URL は https://zenn.dev/masaki_mori72/articles/851b1580cb72b6。",
+        "記事では `~/.claude/settings.json` の `statusLine.command` に PowerShell スクリプトを指定した例を示し、その後 Node.js 版 `statusline.js` へ差し替えて `model.display_name` や `context_window.used_percentage` を描画している。",
+        "一次情報の Claude Code docs でも、status line はローカル実行で API token を消費せず、各種 JSON フィールドを stdin で渡すと明記されている。『PowerShell 起動遅延が真因』までは公式化されていないので、その点だけは著者検証として扱うのが妥当だ。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/masaki_mori72/articles/851b1580cb72b6",
+      "publishedAt": "2026-06-27",
+      "priority": "signal",
+      "tags": ["coding", "software design"]
+    },
+    {
+      "title": "Zenn: Firefox 153 + `firefox-devtools-mcp` で headless WebGPU 開発を Claude Code から回す",
+      "summary": "Zenn の 2026-06-27 02:45 JST 投稿。Firefox 153 で利用可能になった user script 実行と `@mozilla/firefox-devtools-mcp` の `--headless --enableScript` を組み合わせ、Claude Code などの MCP クライアントから headless Firefox を通じて WebGPU 開発を回す構成を紹介している。Linux 前提だが、Mozilla の一次情報とコマンド例が揃っていて再現性が高い。",
+      "points": [
+        "Zenn API の `published_at` は 2026-06-27T02:45:28.221+09:00。恒久 URL は https://zenn.dev/syoyo/articles/df78b5418dac8e。",
+        "記事本文では `@mozilla/firefox-devtools-mcp@latest` を `npx` で起動し、`--firefox-path`、`--headless`、`--viewport 1280x720`、`--enableScript` を渡す `mcpServers` 設定例を示している。",
+        "一次情報として、MDN の Firefox 153 release notes は `userScripts.execute()` 対応を説明し、`mozilla/firefox-devtools-mcp` README は Firefox 153+ で `--enable-script` により debug / script 系ツールが使えると明記している。記事の主張は公式仕様に沿っている。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/syoyo/articles/df78b5418dac8e",
+      "publishedAt": "2026-06-27",
+      "priority": "signal",
+      "tags": ["MCP", "coding", "open-source"]
+    }
+  ]
+}

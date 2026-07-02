@@ -1,0 +1,151 @@
+{
+  "date": "2026-06-26",
+  "updatedAt": "2026-06-26T06:03:07+09:00",
+  "summary": "2026-06-26 06:03 JST 時点の直近36時間では、公式媒体で採用できた新規技術シグナルは OpenAI の Codex 利用実態を定量化した経済研究記事が中心だった。コミュニティ側は、OpenAI Agents SDK のストリーミング実装、Claude Code v2.1.191 の運用影響、ローカル JSONL から見たトークンキャッシュ実態、Claude Tag での Remote MCP 配布と認証分離など、エージェント運用の内側を詰める記事が目立った。Hugging Face Blog には 2026-06-26 の新記事が見えたが、schema の `datePublished` は 2026-06-26T00:00:00.715Z で Asia/Tokyo では 09:00 となり、実行時刻 06:03 より後だったため本日分には入れていない。X は公開HTMLから当日分の安定した status URL と時刻を拾えず、Reddit 日本語圏・海外の `new.json` は今回も 403 のままだった。",
+  "overview": [
+    {
+      "title": "全体像",
+      "items": [
+        {
+          "title": "採用状況",
+          "points": [
+            "採用は 5 件で、OpenAI 公式 1 件、Qiita 3 件、Zenn 1 件。critical は OpenAI の Codex 利用研究 1 件だけに絞った。",
+            "モデル速報よりも、エージェントをどう動かすか、どう観測するか、どこでコストが膨らむか、といった運用面の知見が優勢だった。"
+          ]
+        },
+        {
+          "title": "技術テーマ",
+          "points": [
+            "OpenAI 側は『チャットから長時間エージェントへ』という利用形態の変化を、社内とユーザーの利用データで定量化していた。",
+            "Qiita と Zenn は、Streaming UI、MCP の接続/認証、Claude Code のキャッシュ課金のように、実装や運用判断へ直結する話題に集中していた。"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "選定と除外",
+      "items": [
+        {
+          "title": "確認したソース",
+          "points": [
+            "OpenAI News、Anthropic News、Google DeepMind Blog、Hugging Face Blog、公式 X アカウント 4 件、Qiita タグ API、Zenn API、Reddit `new.json` を確認した。",
+            "重大な主張は OpenAI 公式記事と論文、OpenAI Agents SDK 公式 docs、Anthropic の Claude Code changelog と pricing docs、Anthropic の Claude Tag 発表で裏取りした。"
+          ]
+        },
+        {
+          "title": "除外理由",
+          "points": [
+            "Anthropic の直近公式 `Introducing Claude Tag` は 2026-06-23 公開で対象窓外、Google DeepMind は一覧上は 2026-06 の記事が並ぶが、実行窓内と確定できる新規開発者向け記事を拾えなかった。",
+            "Hugging Face Blog の `Run a vLLM Server on HF Jobs in One Command` は記事自体は有望だったが、schema の `datePublished` が 2026-06-26T00:00:00.715Z、すなわち 2026-06-26 09:00 JST で、実行時刻より後だったため除外した。",
+            "X は OpenAI・GoogleDeepMind・huggingface で当日分 status URL を抽出できず、AnthropicAI も抽出できた status URL は対象窓外だった。Reddit は `r/LocalLLaMA`、`r/ClaudeAI`、`r/ChatGPTCoding`、`r/newsokur`、`r/ja` の `new.json` がすべて 403 で不採用とした。"
+          ]
+        }
+      ]
+    }
+  ],
+  "highlights": [
+    "OpenAI は 2026-06-25 公開記事で、Codex が OpenAI 社内の週次出力トークンの 99.8% を占め、非開発職の利用が急増していると示し、長時間エージェント化を経済研究テーマとして前面化した。",
+    "Qiita では OpenAI Agents SDK の `Runner.run_streamed()` と Claude Code v2.1.191 の changelog 整理が並び、利用者体験と運用保守の両面で '見え方を改善する' 記事が強かった。",
+    "コミュニティ記事の中では、Claude Code の JSONL usage 集計によるキャッシュ比率の可視化と、Claude Tag の Remote MCP 認証分離の実装メモが、再現性のある運用知見として残った。"
+  ],
+  "metrics": {
+    "scanned": 47,
+    "captured": 5,
+    "critical": 1
+  },
+  "tags": [
+    { "name": "agent", "weight": 5 },
+    { "name": "coding", "weight": 5 },
+    { "name": "model-release", "weight": 5 },
+    { "name": "CAD", "weight": 5 },
+    { "name": "software design", "weight": 5 },
+    { "name": "API", "weight": 4 },
+    { "name": "MCP", "weight": 4 },
+    { "name": "open-source", "weight": 4 },
+    { "name": "benchmark", "weight": 3 },
+    { "name": "research", "weight": 2 }
+  ],
+  "sources": [
+    { "name": "OpenAI News", "priority": "high" },
+    { "name": "Anthropic News", "priority": "high" },
+    { "name": "Google DeepMind Blog", "priority": "high" },
+    { "name": "Hugging Face Blog", "priority": "high" },
+    { "name": "Qiita", "priority": "medium" },
+    { "name": "X", "priority": "medium" },
+    { "name": "Zenn", "priority": "medium" },
+    { "name": "Reddit Japan", "priority": "medium" },
+    { "name": "Reddit Global", "priority": "medium" }
+  ],
+  "articles": [
+    {
+      "title": "OpenAI: Codex の長時間タスク化を、社内利用データと経済研究で定量化",
+      "summary": "OpenAI の 2026-06-25 公式記事。Codex が『単発チャット』より『長時間の委譲タスク』へ利用の中心を移したことを、社内・組織・個人の利用データで示している。技術的新規性は、エージェントの経済的インパクトをプロダクト紹介ではなく利用統計と論文で前面化した点にある。一方で、人間作業時間の推定は LLM-as-judge と 0.1% サンプルに依存するため、方向感の強い研究シグナルとして読むのが妥当だ。",
+      "points": [
+        "OpenAI 記事の公開日は 2026-06-25。恒久 URL は https://openai.com/index/how-agents-are-transforming-work/ で、本文から OpenAI Economic Research の論文 PDF へ到達できる。",
+        "本文では、2026-05 時点で sampled individual users の 80.6% が 30 分超、70.2% が 1 時間超、25.6% が 8 時間超と推定される Codex 依頼を少なくとも一度行ったこと、OpenAI 社内では Codex が週次出力トークンの 99.8% を占めることを示している。",
+        "ただし脚注では、作業時間閾値は Codex transcript を見た LLM-as-judge 推定であり、個人ユーザー 0.1% のランダムサンプルに基づくため exact ではなく directional と明記している。再現可能性は低めだが、重大な主張自体は公式記事と論文で裏付けられる。"
+      ],
+      "source": "OpenAI News",
+      "url": "https://openai.com/index/how-agents-are-transforming-work/",
+      "publishedAt": "2026-06-25",
+      "priority": "critical",
+      "tags": ["agent", "coding", "research"]
+    },
+    {
+      "title": "Qiita: OpenAI Agents SDK の `Runner.run()` と `run_streamed()` を UI 体験差で整理",
+      "summary": "Qiita の 2026-06-24 23:34 JST 投稿。OpenAI Agents SDK で、完了後にまとめて結果を返す `Runner.run()` と、進行中イベントを流せる `Runner.run_streamed()` の違いを、最小ツール付きエージェントコードで比較している。新規性はアルゴリズムではなく、ストリーミングを『エージェントの能力差』ではなく『UI 体験差』として捉え直している点にある。公式 docs と整合し、再現も容易だ。",
+      "points": [
+        "Qiita API の `created_at` は 2026-06-24T23:34:02+09:00。恒久 URL は https://qiita.com/jungyeounjae/items/e11987a5c471dbb9c4e5。",
+        "OpenAI Agents SDK 公式 docs は `Runner.run()` が `RunResult` を返し、`Runner.run_streamed()` が `RunResultStreaming` を返して `stream_events()` でイベントを購読できると説明している。記事の説明はこの一次情報と一致していた。",
+        "本文は `@function_tool` を付けた最小例から始め、ツール呼び出し中の無反応感と進捗表示の違いを比較している。再現可能性は高く、Streaming UI を入れる判断材料として扱いやすい。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/jungyeounjae/items/e11987a5c471dbb9c4e5",
+      "publishedAt": "2026-06-24",
+      "priority": "signal",
+      "tags": ["agent", "API", "coding"]
+    },
+    {
+      "title": "Qiita: Claude Code v2.1.191 の `/rewind` と CPU 約37%削減を changelog ベースで整理",
+      "summary": "Qiita の 2026-06-25 22:50 JST 投稿。Claude Code v2.1.191 の変更点を、`/clear` 前へ戻れる `/rewind`、ストリーミング中 CPU 約37%削減、MCP retry と OAuth 改善、404 の URL 表示などに分けて整理している。技術的新規性は新機能そのものよりも、日常運用へどう効くかを changelog から読み解いている点にある。一次情報の Anthropic changelog と整合し、再現性は高い。",
+      "points": [
+        "Qiita API の `created_at` は 2026-06-25T22:50:59+09:00。恒久 URL は https://qiita.com/picnic/items/7ebdf55900335ebcf71c。",
+        "Anthropic の公式 `Claude Code changelog` には 2.1.191 / June 24, 2026 として、`/rewind` support、MCP capability discovery retry、headless 環境での OAuth URL 貼り付けフロー、HTTP 404 の URL 表示、sandbox ホスト許可のセッション記憶、CPU usage ~37% reduction が明記されている。",
+        "記事はそれらをヘッドレス CI や長時間セッションの観点で翻訳している。性能値は公式 changelog 由来なので裏付けはあるが、ローカル実効差は環境依存である点は残る。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/picnic/items/7ebdf55900335ebcf71c",
+      "publishedAt": "2026-06-25",
+      "priority": "signal",
+      "tags": ["agent", "MCP", "coding"]
+    },
+    {
+      "title": "Qiita: Claude Code の JSONL usage を集計し、キャッシュ課金比率を可視化",
+      "summary": "Qiita の 2026-06-26 00:11 JST 投稿。Claude Code がローカルに残す JSONL ログから `input_tokens`、`cache_read_input_tokens`、`cache_creation_input_tokens`、`output_tokens` を集計し、実際のコストの多くがキャッシュ読取に寄っていることを示した。記事の数値自体は著者のローカル環境に依存するが、usage フィールドの存在と prompt caching の価格体系は公式 docs で確認できる。ローカル運用者には再現しやすい。",
+      "points": [
+        "Qiita API の `created_at` は 2026-06-26T00:11:06+09:00。恒久 URL は https://qiita.com/leomarokun/items/1e299daebd089b26786d。",
+        "記事は `~/.claude/projects/<...>/<session>.jsonl` の assistant event に付く usage を集計している。本文中のサンプルには `input_tokens`、`cache_read_input_tokens`、`cache_creation_input_tokens`、`output_tokens` が明示されている。",
+        "Anthropic 公式 pricing docs では、5-minute cache write は base input の 1.25x、1-hour cache write は 2x、cache read hit は 0.1x と説明されている。したがって記事の『自分のワークロードでは大半が cache read だった』という主張は、一般化はできないが計算前提自体は一次情報で裏付けられる。"
+      ],
+      "source": "Qiita",
+      "url": "https://qiita.com/leomarokun/items/1e299daebd089b26786d",
+      "publishedAt": "2026-06-26",
+      "priority": "signal",
+      "tags": ["benchmark", "coding", "API"]
+    },
+    {
+      "title": "Zenn: Claude Tag で Remote MCP を配るとき、接続設定と認証情報を分ける",
+      "summary": "Zenn の 2026-06-26 01:01 JST 投稿。Claude Tag 上で Remote MCP Server を使う際、`plugin.json` の `mcpServers` で接続先を配り、認証情報は Claude Tag の『認証情報』タブへ分離して管理する構成を、AWS Lambda Function URL と Backlog API を使った実装で説明している。Claude Tag 自体の存在と Slack 連携は Anthropic 公式発表で確認できるが、`plugin.json` と credential tab の具体的な組み合わせは著者検証ベースの実装知見として読むべきだ。",
+      "points": [
+        "Zenn API の `published_at` は 2026-06-26T01:01:39.351+09:00。恒久 URL は https://zenn.dev/youyo/articles/claudetag-remote-mcp-plugin。",
+        "記事は `youyo/logvalet` を AWS Lambda + Lambda Web Adapter でホストし、Claude Tag から Bearer 認証付き Remote MCP としてつなぎ、Backlog API key はサーバー側へ置く構成を具体的に示している。",
+        "Anthropic の `Introducing Claude Tag` は 2026-06-23 公開で、Claude Tag が Slack 上で selected channels と tools/data/codebases に接続できることを明記している。記事が主張する credential tab と plugin 配布の細部は公式仕様書としては未確認なので、著者検証済みの運用パターンとして採用した。"
+      ],
+      "source": "Zenn",
+      "url": "https://zenn.dev/youyo/articles/claudetag-remote-mcp-plugin",
+      "publishedAt": "2026-06-26",
+      "priority": "signal",
+      "tags": ["agent", "MCP", "API", "software design"]
+    }
+  ]
+}

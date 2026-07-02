@@ -1,0 +1,228 @@
+﻿{
+    "date":  "2026-06-25",
+    "updatedAt":  "2026-06-25T06:01:28+09:00",
+    "summary":  "2026-06-25 朝時点で、公式媒体から明確に拾えた大型技術トピックは OpenAI と Broadcom の推論向け独自チップ Jalapeno の発表のみだった。コミュニティ側は、MCP の集約運用、脆弱性トリアージ、音声認識と LLM の疎結合化、日本向け SaaS コネクタのライフサイクル管理のように、実装や運用へ直結する再現可能な記事が中心だった。X は公開 HTML から投稿 URL と時刻を安定抽出できず、Reddit 日本語圏と海外は JSON と RSS が 403 のままで、有意な一次情報補強付き投稿は採用しなかった。",
+    "overview":  [
+                     {
+                         "title":  "全体像",
+                         "items":  [
+                                       {
+                                           "title":  "採用状況",
+                                           "points":  [
+                                                          "採用は 5 件で、OpenAI 1 件、Qiita 2 件、Zenn 2 件。critical は OpenAI の Jalapeno 発表 1 件だけに絞った。",
+                                                          "単なる感想、宣伝、一次情報リンクのない性能主張は落とし、GitHub README、公式ドキュメント、公式 RSS で裏取りできるものを優先した。"
+                                                      ]
+                                       },
+                                       {
+                                           "title":  "技術テーマ",
+                                           "points":  [
+                                                          "今朝のコミュニティ投稿は、モデルそのものよりも、MCP の接続面と運用面、脆弱性トリアージ、ヘッドレス部品化のような実務パターンに集中していた。",
+                                                          "特に MCP 関連は、単にサーバーを増やす話ではなく、集約、重複排除、運用終了判定まで含めた設計に話題が移っている。"
+                                                      ]
+                                       }
+                                   ]
+                     },
+                     {
+                         "title":  "選定と除外",
+                         "items":  [
+                                       {
+                                           "title":  "確認したソース",
+                                           "points":  [
+                                                          "OpenAI News RSS、Anthropic News、Google DeepMind Blog、Hugging Face Blog、公式 X アカウント 4 件、Qiita タグ API、Zenn 最新 API、Reddit の JSON と RSS を確認した。",
+                                                          "Qiita と Zenn は公開 API と記事本文から投稿時刻、恒久 URL、再現手順、外部リンクを確認し、主要主張は GitHub README や公式ページで突き合わせた。"
+                                                      ]
+                                       },
+                                       {
+                                           "title":  "除外理由",
+                                           "points":  [
+                                                          "Anthropic、DeepMind、Hugging Face は、36 時間窓で明確に技術的新規性があり、かつ時刻を確定できる開発者向け公式記事を採用できなかった。",
+                                                          "X はログアウト状態の公開 HTML では status URL と日時を安定抽出できず、Reddit は LocalLLaMA、ClaudeAI、ChatGPTCoding、newsokur、ja の JSON と RSS がいずれも 403 だったため不採用とした。"
+                                                      ]
+                                       }
+                                   ]
+                     }
+                 ],
+    "highlights":  [
+                       "OpenAI は 2026-06-24 15:00 JST 公開の Jalapeno で、推論基盤を自社チップまで垂直統合し始めたが、性能優位はまだ early testing 段階で詳細レポート待ち。",
+                       "Qiita では CVE MCP Server と MCPX の 2 本が、MCP をツール数ではなく横断トリアージと設定集約の実装として扱っていた。",
+                       "Zenn では、音声認識と LLM をヘッドレスな Web Component として分離する記事と、公式 MCP 出現を前提にコネクタを畳む運用を CI 化する記事が目立った。"
+                   ],
+    "metrics":  {
+                    "scanned":  44,
+                    "captured":  5,
+                    "critical":  1
+                },
+    "tags":  [
+                 {
+                     "name":  "agent",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "coding",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "model-release",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "CAD",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "software design",
+                     "weight":  5
+                 },
+                 {
+                     "name":  "API",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "MCP",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "open-source",
+                     "weight":  4
+                 },
+                 {
+                     "name":  "benchmark",
+                     "weight":  3
+                 },
+                 {
+                     "name":  "research",
+                     "weight":  2
+                 }
+             ],
+    "sources":  [
+                    {
+                        "name":  "OpenAI News",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Anthropic News",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Google DeepMind Blog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Hugging Face Blog",
+                        "priority":  "high"
+                    },
+                    {
+                        "name":  "Qiita",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "X",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Zenn",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Reddit Japan",
+                        "priority":  "medium"
+                    },
+                    {
+                        "name":  "Reddit Global",
+                        "priority":  "medium"
+                    }
+                ],
+    "articles":  [
+                     {
+                         "title":  "OpenAI: Broadcom と推論専用チップ Jalapeno を公開し、マルチ世代推論基盤へ進む",
+                         "summary":  "OpenAI が 2026-06-24 15:00 JST に RSS 配信した公式発表。Jalapeno は LLM 推論専用に設計した OpenAI 初のアクセラレータで、GPT-5.3-Codex-Spark を含む ML ワークロードが既に目標周波数と電力で動作しているとする。9 か月で tape-out した点と、2026 年末からのマルチ世代展開計画が新規性だが、性能優位の主張は early testing 段階なので、詳細ベンチマークは後報待ちとして扱う。",
+                         "points":  [
+                                        "OpenAI RSS の pubDate は Wed, 24 Jun 2026 06:00:00 GMT で、Asia/Tokyo では 2026-06-24 15:00。恒久 URL は https://openai.com/index/openai-broadcom-jalapeno-inference-chip。",
+                                        "記事本文では、OpenAI が Broadcom と Celestica と組み、推論専用チップ、ボード、ラック、高性能ネットワークを含むマルチ世代基盤を設計していることと、サンプルが GPT-5.3-Codex-Spark を含む実負荷で動作していることを明記している。",
+                                        "一方で、現行最先端より大幅に高い performance per watt は early testing の主張で、詳細技術レポートは coming months とされている。重大主張としては公式発表までは確認できるが、性能値そのものは未公開と整理する。"
+                                    ],
+                         "source":  "OpenAI News",
+                         "url":  "https://openai.com/index/openai-broadcom-jalapeno-inference-chip",
+                         "publishedAt":  "2026-06-24",
+                         "priority":  "critical",
+                         "tags":  [
+                                      "model-release",
+                                      "coding",
+                                      "research"
+                                  ]
+                     },
+                     {
+                         "title":  "Qiita: CVE MCP Server で Claude Code に脆弱性トリアージを束ねる手順",
+                         "summary":  "Qiita の 2026-06-25 04:57 JST 投稿。NVD、CISA KEV、EPSS、GitHub Advisory など複数の脆弱性ソースを MCP で Claude Code に束ね、CVE ごとの優先度判断を自然言語で進めるハンズオンで、インストールから Claude Code と Claude Desktop への登録まで手順が揃っている。一次情報としてリンクされている GitHub README は取得時点で 28 tools と triage_cve orchestrator、24 data sources を掲げており、記事中の 27 ツールは一つ前のスナップショットとみるのが妥当だ。",
+                         "points":  [
+                                        "Qiita API の created_at は 2026-06-25T04:57:29+09:00。恒久 URL は https://qiita.com/kai_kou/items/cdbfb6155c4a84a14d65。",
+                                        "記事は https://github.com/mukul975/cve-mcp-server を一次リンクとして示し、Claude Code と Claude Desktop への登録、自然言語による CVE 調査、複数ソース横断の使い方を順に再現できる構成になっている。",
+                                        "上流 README では 28 tools と one-call triage_cve orchestrator、24 data sources を明示していた。ツール数の表現には差があるが、脆弱性情報を MCP で集約する構成とセットアップ自体は一次情報で裏付けられる。"
+                                    ],
+                         "source":  "Qiita",
+                         "url":  "https://qiita.com/kai_kou/items/cdbfb6155c4a84a14d65",
+                         "publishedAt":  "2026-06-25",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "coding",
+                                      "MCP",
+                                      "open-source"
+                                  ]
+                     },
+                     {
+                         "title":  "Qiita: MCPX で M×N の MCP 設定を M+1+N に圧縮する自己ホスト手順",
+                         "summary":  "Qiita の 2026-06-25 01:56 JST 投稿。Lunar MCPX を Docker で立ち上げ、複数 MCP サーバーを 1 つのゲートウェイに束ね、Claude Code から接続するまでを 4 ステップで整理している。GitHub README 側でも aggregator、zero-code integration、JSON configuration が明記されており、記事の中心主張は一次情報で追える。",
+                         "points":  [
+                                        "Qiita API の created_at は 2026-06-25T01:56:46+09:00。恒久 URL は https://qiita.com/kai_kou/items/e1dde26d6fcdbea86918。",
+                                        "記事の一次リンクは https://github.com/TheLunarCompany/lunar と https://github.com/TheLunarCompany/lunar/blob/main/mcpx/README.md。README では MCPX を複数 MCP サーバーの aggregator、zero-code integration、unified API interface と説明している。",
+                                        "本文は Docker 起動、mcp.json 定義、app.yaml による tool 単位制御、Claude Code からの接続までを順に記しており、設定集約の再現可能性が高い。"
+                                    ],
+                         "source":  "Qiita",
+                         "url":  "https://qiita.com/kai_kou/items/e1dde26d6fcdbea86918",
+                         "publishedAt":  "2026-06-25",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "agent",
+                                      "MCP",
+                                      "open-source"
+                                  ]
+                     },
+                     {
+                         "title":  "Zenn: ami-voice と ai-agent を配線だけでつなぐ音声要約コンポーネント",
+                         "summary":  "Zenn の 2026-06-25 05:38 JST 投稿。AmiVoice 音声認識と LLM 呼び出しを、それぞれ UI を持たない Web Component に閉じ込め、アプリ側は いつ LLM に投げるか だけを書く設計を示している。一次情報の GitHub 例では、秘密鍵をサーバー外へ出さず、鍵ゼロなら完全オフラインのフェイク上流でも動く構成まで確認できた。",
+                         "points":  [
+                                        "Zenn API の published_at は 2026-06-25T05:38:23.198+09:00。恒久 URL は https://zenn.dev/mogera/articles/910e3a46134c62。",
+                                        "記事本文と Zenn API から、ami-voice が文字起こし、ai-agent が要約を担当するヘッドレス構成で、transcript から prompt を組み立てて send する一行ポリシーだけをアプリ側に残す設計だと確認できる。",
+                                        "一次情報の https://github.com/csbc-dev/ami-voice/tree/main/examples/voice-llm/README.md では、AMIVOICE_APPKEY と AI_API_KEY をサーバー側に保持し、鍵なしでもフェイク AmiVoice 上流とフェイク LLM で完全オフライン動作できることが明記されている。"
+                                    ],
+                         "source":  "Zenn",
+                         "url":  "https://zenn.dev/mogera/articles/910e3a46134c62",
+                         "publishedAt":  "2026-06-25",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "agent",
+                                      "API",
+                                      "software design"
+                                  ]
+                     },
+                     {
+                         "title":  "Zenn: mcp-jp で作りすぎない日本向け SaaS コネクタ運用を CI 化",
+                         "summary":  "Zenn の 2026-06-25 01:06 JST 投稿。日本の SMB 向け SaaS を対象にした MCP コネクタ集 mcp-jp について、作るよりも、公式が出たら畳む、需要がないものを着手しない、を仕組み化する設計を解説している。コネクタ数の自慢ではなく、候補選定マトリクス、公式 MCP との重複チェック、archive 退避運用を前面に出している点が新しい。",
+                         "points":  [
+                                        "Zenn API の published_at は 2026-06-25T01:06:27.587+09:00。恒久 URL は https://zenn.dev/mediiiiium/articles/mcp-jp-connector-curation。",
+                                        "記事は https://github.com/mediiiiium/mcp-jp を一次リンクとして示し、本文では 独自実装 30+、候補選定マトリクス、公式 MCP との重複を CI で落とす巡回チェック、archive 退避を中心に説明している。",
+                                        "取得時点の README でも、公式 MCP が存在しない日本向け SaaS コネクタ集であることと、複数サービス向けコネクタ一覧が確認できた。実装そのものよりライフサイクル管理を主題にしているので、運用設計のシグナルとして採用した。"
+                                    ],
+                         "source":  "Zenn",
+                         "url":  "https://zenn.dev/mediiiiium/articles/mcp-jp-connector-curation",
+                         "publishedAt":  "2026-06-25",
+                         "priority":  "signal",
+                         "tags":  [
+                                      "agent",
+                                      "MCP",
+                                      "open-source",
+                                      "software design"
+                                  ]
+                     }
+                 ]
+}
