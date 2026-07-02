@@ -6,9 +6,9 @@ const state = {
 const fallbackEdition = {
   date: new Date().toISOString().slice(0, 10),
   updatedAt: null,
-  summary: "まだ調査結果がありません。Codexに本日の調査とデータ生成を依頼すると、ここに日次ブリーフィングが表示されます。",
+  summary: "\u307e\u3060\u8abf\u67fb\u7d50\u679c\u304c\u3042\u308a\u307e\u305b\u3093\u3002Codex\u306b\u672c\u65e5\u306e\u8abf\u67fb\u3068\u30c7\u30fc\u30bf\u751f\u6210\u3092\u4f9d\u983c\u3059\u308b\u3068\u3001\u3053\u3053\u306b\u65e5\u6b21\u30d6\u30ea\u30fc\u30d5\u30a3\u30f3\u30b0\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
   highlights: [
-    "重点URLとタグを設定すると、調査結果の重要点がここに表示されます。",
+    "\u91cd\u8981URL\u3068\u30bf\u30b0\u3092\u8a2d\u5b9a\u3059\u308b\u3068\u3001\u8abf\u67fb\u7d50\u679c\u306e\u8981\u70b9\u304c\u3053\u3053\u306b\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
   ],
   metrics: { scanned: 0, captured: 0, critical: 0 },
   tags: [],
@@ -128,7 +128,7 @@ function renderArticles(articles) {
       <div class="empty-state">
         <div>
           <strong>NO SIGNALS CAPTURED</strong>
-          <span><code>config/research.json</code> を設定し、Codexへ本日の調査を依頼してください。</span>
+          <span><code>config/research.json</code> \u3092\u8a2d\u5b9a\u3057\u3001Codex\u3078\u672c\u65e5\u306e\u8abf\u67fb\u3092\u4f9d\u983c\u3057\u3066\u304f\u3060\u3055\u3044\u3002</span>
         </div>
       </div>`;
     return;
@@ -138,7 +138,7 @@ function renderArticles(articles) {
   visibleArticles.forEach((article) => {
     const fragment = $("#article-template").content.cloneNode(true);
     const badge = fragment.querySelector(".priority-badge");
-    badge.textContent = article.priority === "critical" ? "● CRITICAL" : "◆ SIGNAL";
+    badge.textContent = article.priority === "critical" ? "\u25b2 CRITICAL" : "\u25c6 SIGNAL";
     badge.dataset.priority = article.priority;
     fragment.querySelector("time").textContent = article.publishedAt || "DATE N/A";
     fragment.querySelector(".card-tags").innerHTML = article.tags.map((tag) => `<span>#${escapeHtml(tag)}</span>`).join("");
@@ -205,11 +205,11 @@ function normalizeArticlePoints(article) {
   }
 
   const sentences = String(article.summary || "")
-    .match(/[^。！？]+[。！？]?/g)
+    .match(/[^\u3002\uff01\uff1f]+[\u3002\uff01\uff1f]?/g)
     ?.map((sentence) => sentence.trim())
     .filter(Boolean);
 
-  return sentences?.length ? sentences.slice(0, 4) : ["要約はまだありません。"];
+  return sentences?.length ? sentences.slice(0, 4) : ["\u8981\u7d04\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002"];
 }
 
 function renderTags(tags) {

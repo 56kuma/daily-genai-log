@@ -43,8 +43,8 @@
   ],
   "excludeKeywords": [
     "sponsored",
-    "求人",
-    "投資助言"
+    "\u6c42\u4eba",
+    "\u6295\u8cc7\u52e7\u8a98"
   ],
   "xResearch": {
     "enabled": true,
@@ -64,10 +64,10 @@
       "huggingface"
     ],
     "selectionRules": [
-      "公式発表前の技術デモ、実装知見、OSS公開を優先する",
-      "原投稿へのURLを保存する",
-      "宣伝だけの投稿や根拠のない性能主張は除外する",
-      "重大な主張はGitHub、論文、公式文書で裏付ける"
+      "\u516c\u5f0f\u767a\u8868\u524d\u306e\u6280\u8853\u30c7\u30e2\u3001\u5b9f\u88c5\u77e5\u898b\u3001OSS\u516c\u958b\u3092\u512a\u5148\u3059\u308b",
+      "\u539f\u6295\u7a3f\u3078\u306eURL\u3092\u4fdd\u5b58\u3059\u308b",
+      "\u5ba3\u4f1d\u3060\u3051\u306e\u6295\u7a3f\u3084\u6839\u62e0\u306e\u306a\u3044\u6027\u80fd\u4e3b\u5f35\u306f\u9664\u5916\u3059\u308b",
+      "\u91cd\u5927\u306a\u4e3b\u5f35\u306fGitHub\u3001\u8ad6\u6587\u3001\u516c\u5f0f\u6587\u66f8\u3067\u88cf\u4ed8\u3051\u308b"
     ]
   },
   "communityResearch": {
@@ -81,11 +81,11 @@
         "language": "ja",
         "priority": "medium",
         "queries": [
-          "生成AI エージェント",
+          "\u751f\u6210AI \u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
           "Claude Code OR Codex",
           "MCP",
-          "生成AI CAD",
-          "LLM ソフトウェア設計"
+          "\u751f\u6210AI CAD",
+          "LLM \u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u8a2d\u8a08"
         ]
       },
       {
@@ -94,11 +94,11 @@
         "language": "ja",
         "priority": "medium",
         "queries": [
-          "生成AI エージェント",
+          "\u751f\u6210AI \u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
           "Claude Code OR Codex",
           "MCP",
-          "生成AI CAD",
-          "LLM ソフトウェア設計"
+          "\u751f\u6210AI CAD",
+          "LLM \u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u8a2d\u8a08"
         ]
       },
       {
@@ -107,10 +107,10 @@
         "language": "ja",
         "priority": "medium",
         "queries": [
-          "生成AI",
-          "AIエージェント",
+          "\u751f\u6210AI",
+          "AI\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
           "Claude Code OR Codex",
-          "MCP 日本語"
+          "MCP \u65e5\u672c\u8a9e"
         ],
         "subreddits": [
           "newsokur",
@@ -139,12 +139,12 @@
       }
     ],
     "selectionRules": [
-      "実装コード、検証手順、ベンチマーク、失敗事例を含む投稿を優先する",
-      "投稿本文ではなく元記事、GitHub、論文へのリンクがある場合は一次情報も確認する",
-      "投票数や反応数だけで採用せず、技術的新規性と再現可能性を評価する",
-      "同じニュースの転載や要約は重複として除外する",
-      "Redditの未検証情報はその旨を要約に明記し、重大な主張は一次情報で裏付ける",
-      "投稿または記事の恒久URLを保存する"
+      "\u5b9f\u88c5\u30b3\u30fc\u30c9\u3001\u691c\u8a3c\u624b\u9806\u3001\u30d9\u30f3\u30c1\u30de\u30fc\u30af\u3001\u5931\u6557\u4e8b\u4f8b\u3092\u542b\u3080\u6295\u7a3f\u3092\u512a\u5148\u3059\u308b",
+      "\u6295\u7a3f\u672c\u6587\u3067\u306f\u306a\u304f\u5143\u8a18\u4e8b\u3001GitHub\u3001\u8ad6\u6587\u3078\u306e\u30ea\u30f3\u30af\u304c\u3042\u308b\u5834\u5408\u306f\u4e00\u6b21\u60c5\u5831\u3082\u78ba\u8a8d\u3059\u308b",
+      "\u6295\u7968\u6570\u3084\u53cd\u5fdc\u6570\u3060\u3051\u3067\u306f\u63a1\u7528\u305b\u305a\u3001\u6280\u8853\u7684\u65b0\u898f\u6027\u3068\u518d\u73fe\u53ef\u80fd\u6027\u3092\u8a55\u4fa1\u3059\u308b",
+      "\u540c\u3058\u30cb\u30e5\u30fc\u30b9\u306e\u8ee2\u8f09\u3084\u8981\u7d04\u306f\u91cd\u8907\u3068\u3057\u3066\u9664\u5916\u3059\u308b",
+      "Reddit\u306e\u672a\u691c\u8a3c\u60c5\u5831\u306f\u305d\u306e\u65e8\u3092\u8981\u7d04\u306b\u660e\u8a18\u3057\u3001\u91cd\u5927\u306a\u4e3b\u5f35\u306f\u4e00\u6b21\u60c5\u5831\u3067\u88cf\u4ed8\u3051\u308b",
+      "\u6295\u7a3f\u307e\u305f\u306f\u8a18\u4e8b\u306e\u6052\u4e45URL\u3092\u4fdd\u5b58\u3059\u308b"
     ]
   }
 }
